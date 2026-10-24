@@ -1,0 +1,1 @@
+{"name":"brujo-ryan-vr","version":"0.1.0","private":true,"type":"module","description":"The First Threshold — a playful WebXR labyrinth.","scripts":{"start":"node server.js","check":"node --check server.js && node --check src/main.js"},"engines":{"node":">=20"}}
