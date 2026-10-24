@@ -55,21 +55,47 @@ let yaw=0,pitch=0,dragging=false,lastX=0,lastY=0,moved=false;const canvas=render
 canvas.addEventListener('pointerdown',e=>{dragging=true;moved=false;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!dragging||renderer.xr.isPresenting)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;yaw-=dx*.004;pitch=Math.max(-.95,Math.min(.95,pitch-dy*.004));camera.rotation.set(pitch,yaw,0,'YXZ')});
 canvas.addEventListener('pointerup',e=>{dragging=false;if(moved||renderer.xr.isPresenting)return;mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(residents,true);if(hits.length){const item=hits[0].object;if(goblin.children.includes(item))say('goblin');else if(faerie.children.includes(item))say('faerie');else say('gate')}});
-document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
+document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.position.set(0,1.65,10);camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
+const keys=new Set();
+addEventListener('keydown',e=>{
+ if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+ const key=e.key.toLowerCase();
+ if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(key)){keys.add(key);e.preventDefault()}
+});
+addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
+addEventListener('blur',()=>keys.clear());
+function walk(dt){
+ if(!started||renderer.xr.isPresenting||!document.getElementById('dialogue').hidden)return;
+ let forward=Number(keys.has('w')||keys.has('arrowup'))-Number(keys.has('s')||keys.has('arrowdown'));
+ let side=Number(keys.has('d')||keys.has('arrowright'))-Number(keys.has('a')||keys.has('arrowleft'));
+ const length=Math.hypot(forward,side);if(!length)return;
+ forward/=length;side/=length;
+ const speed=3.7*dt;
+ const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*speed;
+ const dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*speed;
+ camera.position.x=THREE.MathUtils.clamp(camera.position.x+dx,-5.9,5.9);
+ camera.position.z=THREE.MathUtils.clamp(camera.position.z+dz,-11.3,11.5);
+}
 let audio=null,soundEnabled=true,started=false;
 function makeAudio(){if(audio)return;const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;const ctx=new AudioContext(),master=ctx.createGain();master.gain.value=.13;master.connect(ctx.destination);audio={ctx,master};}
 function snore(){if(!audio||!soundEnabled)return;const {ctx,master}=audio;if(ctx.state==='suspended')ctx.resume();const now=ctx.currentTime;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sawtooth';osc.frequency.setValueAtTime(56,now);osc.frequency.exponentialRampToValueAtTime(31,now+1.9);gain.gain.setValueAtTime(.001,now);gain.gain.exponentialRampToValueAtTime(.3,now+.5);gain.gain.exponentialRampToValueAtTime(.001,now+2.6);osc.connect(gain).connect(master);osc.start(now);osc.stop(now+2.7);shaking=2.7}
 document.getElementById('sound').onclick=()=>{soundEnabled=!soundEnabled;document.getElementById('sound').textContent=soundEnabled?'Sound: On':'Sound: Off';if(soundEnabled)makeAudio()};
 document.getElementById('begin').onclick=()=>{document.getElementById('threshold').hidden=true;document.getElementById('threshold').style.display='none';document.querySelector('.controls').hidden=false;document.getElementById('hint').hidden=false;started=true;makeAudio();audio?.ctx.resume();say('gate')};
-try{const btn=VRButton.createButton(renderer);btn.style.bottom='85px';btn.style.background='#315d36';btn.style.border='1px solid #ff6900';document.body.appendChild(btn)}catch(e){console.info('WebXR unavailable',e)}
+// No unsupported-VR warning on desktop. Show entry only on compatible headsets.
+if(navigator.xr?.isSessionSupported){
+ navigator.xr.isSessionSupported('immersive-vr').then(supported=>{
+  if(!supported)return;
+  const btn=VRButton.createButton(renderer);btn.style.bottom='85px';btn.style.background='#315d36';btn.style.border='1px solid #ff6900';document.body.appendChild(btn);
+ }).catch(()=>{});
+}
 renderer.xr.addEventListener('sessionstart',()=>{const t=document.getElementById('threshold');t.hidden=true;t.style.display='none';document.querySelector('.controls').hidden=true;document.getElementById('hint').hidden=true;started=true;makeAudio()});
 renderer.xr.addEventListener('sessionend',()=>{document.querySelector('.controls').hidden=false});
 const clock=new THREE.Clock();let elapsed=0,lastSnore=0,shaking=0;
-renderer.setAnimationLoop(()=>{const dt=Math.min(clock.getDelta(),.1);elapsed+=dt;
+renderer.setAnimationLoop(()=>{const dt=Math.min(clock.getDelta(),.1);elapsed+=dt;walk(dt);
 faerie.position.y=2.5+Math.sin(elapsed*1.7)*.22;goblin.rotation.y=Math.sin(elapsed*.65)*.12;
 for(const s of sprites)s.mesh.position.y=s.y+Math.sin(elapsed*1.2+s.phase)*.18;
 if(started&&elapsed-lastSnore>17){lastSnore=elapsed;snore()}
-if(shaking>0){shaking-=dt;if(!renderer.xr.isPresenting){camera.position.x=Math.sin(elapsed*28)*.035*Math.max(0,shaking)/2.7}}else camera.position.x=0;
+if(shaking>0){shaking-=dt;if(!renderer.xr.isPresenting){camera.position.y=1.65+Math.sin(elapsed*28)*.035*Math.max(0,shaking)/2.7}}else camera.position.y=1.65;
 torch.intensity=60+Math.sin(elapsed*2)*9;
 renderer.render(scene,camera)});
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
