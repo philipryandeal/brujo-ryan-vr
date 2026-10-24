@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#183c29">
+<meta name="description" content="The First Threshold of Brujo Ryan's VR Labyrinth. Spirits live here. Mind your manners.">
+<title>Brujo Ryan's Labyrinth | The First Threshold</title><link rel="stylesheet" href="./style.css"></head>
+<body><div id="stage" aria-label="Interactive three-dimensional labyrinth entrance"></div>
+<header class="mast"><span>BRUJO RYAN'S LABYRINTH</span><span class="subtitle">THE FIRST THRESHOLD · 001</span></header>
+<section id="threshold" class="overlay"><div class="welcome"><p class="eyebrow">A STRANGE LITTLE KINGDOM</p><h1>BRUJO RYAN'S<br>LABYRINTH</h1><p class="motto">Spirits live here. Mind your manners.</p><p>Beyond these stones: a maze that remembers, a Tree at its heart, and something enormous sleeping in the moat.</p><button id="begin">Cross the Threshold →</button><p class="small">Headphones encouraged · No account · No tracking · No walking required</p></div></section>
+<aside id="dialogue" class="dialogue" hidden aria-live="polite"><p id="speaker"></p><p id="speech"></p><button id="dismiss">Close ×</button></aside>
+<nav class="controls" aria-label="Scene controls" hidden><button id="goblin">Meet the Goblin</button><button id="faerie">Ask the Faerie</button><button id="gate">Approach the Gate</button><button id="sound">Sound: On</button><button id="reset">Look to Gate</button></nav>
+<p id="hint" class="hint" hidden>Drag to look · Tap a glowing resident · Enter VR in a compatible headset</p>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}</script>
+<script type="module" src="./src/main.js"></script></body></html>
