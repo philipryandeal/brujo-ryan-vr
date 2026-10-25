@@ -15,7 +15,7 @@ renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFi
 stage.appendChild(renderer.domElement);renderer.shadowMap.enabled=false;
 const V={dark:0x303636,stone:0x303636,hedge:0x495a58,light:0xb9f3a4,orange:0xff5e1f,deep:0x303636};
 const mat=(color,extra={})=>new THREE.MeshStandardMaterial({color,...extra});
-const stone=mat(V.stone,{roughness:.95}),dark=mat(V.dark),hedge=mat(V.hedge),orange=mat(V.orange,{emissive:V.orange,emissiveIntensity:1.2}),light=mat(V.light,{emissive:0xb9f3a4,emissiveIntensity:.4}),black=mat(V.deep);
+const stone=mat(V.stone,{roughness:.95}),dark=mat(V.dark),hedge=mat(V.hedge,{emissive:V.hedge,emissiveIntensity:.38}),orange=mat(V.orange,{emissive:V.orange,emissiveIntensity:1.2}),light=mat(V.light,{emissive:0xb9f3a4,emissiveIntensity:.4}),black=mat(V.deep);
 scene.add(new THREE.HemisphereLight(V.light,0x303636,2.3));const moon=new THREE.DirectionalLight(0xb9f3a4,2);moon.position.set(-9,19,4);scene.add(moon);
 const torch=new THREE.PointLight(V.orange,70,29);torch.position.set(0,5,-9);scene.add(torch);
 function box(x,y,z,w,h,d,m){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);scene.add(o);return o}

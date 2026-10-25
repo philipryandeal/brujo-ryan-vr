@@ -2,7 +2,7 @@
 export function makeWhisperHedges(THREE, palette) {
   const group = new THREE.Group();
   const material = (color, opts = {}) => new THREE.MeshStandardMaterial({color, ...opts});
-  const hedge = material(palette.hedge, {roughness: .98});
+  const hedge = material(palette.hedge, {roughness: .98, emissive: palette.hedge, emissiveIntensity: .38});
   const stone = material(palette.stone, {roughness: .95});
   const orange = material(palette.orange, {emissive: palette.orange, emissiveIntensity: .8});
   const leaf = material(palette.light, {emissive: 0x495a58, emissiveIntensity: .3});
