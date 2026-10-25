@@ -5,6 +5,7 @@ const veil = document.getElementById('scene-veil');
 const veilText = document.getElementById('scene-veil-text');
 const listeners = new Set();
 let changing = false;
+export const TRANSITION_READ_MS = 5000;
 
 export const currentScene = () => world.current();
 export function onSceneEnter(listener) { listeners.add(listener); }
@@ -22,7 +23,7 @@ function syncControls() {
   document.querySelector('.subtitle').textContent = `${SCENES[currentScene()].title.toUpperCase()} · ${inHedges ? '002' : '001'}`;
 }
 
-export async function goToScene(destination) {
+export async function goToScene(destination, {readMs = TRANSITION_READ_MS} = {}) {
   if (changing || !world.canEnter(destination)) return false;
   changing = true;
   const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -37,7 +38,8 @@ export async function goToScene(destination) {
   world.enter(destination);
   syncControls();
   for (const listener of listeners) listener(currentScene());
-  await pause(reducedMotion ? 0 : 350);
+  // Reading time is independent of animation preferences: the words matter.
+  await pause(readMs);
   veil.classList.remove('visible');
   await pause(reducedMotion ? 0 : 650);
   veil.hidden = true;

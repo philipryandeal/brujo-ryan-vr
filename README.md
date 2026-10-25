@@ -8,6 +8,8 @@ Dark-green stone and hedge walls, orange runes, the Orange Gate, a goblin named 
 
 **Two scenes are connected now.** Cross the Orange Gate to reach the opinionated Whisper Hedges, then return through the glowing doorway. A gentle orange-thread fade makes the passage feel magical. Future destinations remain intentionally unbuilt.
 
+Transition narration remains fully readable for five seconds between the fades, including when the visitor prefers reduced motion. This timing is shared by both passages and future scenes.
+
 There is **no map and never will be one**. Discover the world by exploring actual scenes, talking to residents, and choosing doorways. Navigation is scene-to-scene, not a giant continuously loaded 3D level; each scene has explicit entrances and exits, and no headset or long walk is required.
 
 ## Goblin-keeper story foundation
