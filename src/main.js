@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {VRButton} from 'three/addons/webxr/VRButton.js';
+import {openStory, openNotices, registerWorldStart} from './story-ui.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x0d281c);scene.fog=new THREE.FogExp2(0x0d281c,.017);
@@ -32,6 +33,14 @@ const greeting=new THREE.Group();scene.add(greeting);
 // Goblin booth to the left
 box(-5.4,.65,-6.5,2.3,1.3,1.7,dark);box(-5.4,1.5,-6.5,2.7,.28,1.9,stone);
 const goblin=new THREE.Group();goblin.position.set(-5.35,1.83,-6.35);scene.add(goblin);
+// A physical noticeboard makes goblin bureaucracy part of the scenery.
+const noticeCanvas=document.createElement('canvas');noticeCanvas.width=512;noticeCanvas.height=256;
+const nc=noticeCanvas.getContext('2d');nc.fillStyle='#123b29';nc.fillRect(0,0,512,256);
+nc.strokeStyle='#ff6900';nc.lineWidth=18;nc.strokeRect(12,12,488,232);
+nc.fillStyle='#c7f5a7';nc.font='bold 55px Georgia';nc.textAlign='center';
+nc.fillText('GOBLIN',256,112);nc.fillText('NOTICES',256,181);
+const noticeBoard=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1.3),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(noticeCanvas),side:THREE.DoubleSide}));
+noticeBoard.position.set(-3.05,2.7,-6.2);scene.add(noticeBoard);
 function part(parent,geo,material,x,y,z){const o=new THREE.Mesh(geo,material);o.position.set(x,y,z);parent.add(o);return o}
 part(goblin,new THREE.SphereGeometry(.38,12,8),light,0,.32,0);
 part(goblin,new THREE.ConeGeometry(.3,.63,5),dark,0,.84,0);
@@ -46,15 +55,12 @@ tube(0,1,-23,.36,3.5,stone);cone(0,5.5,-23,2,5,light);orb(0,6,-23,.48,orange);
 // Tiny floating sprites
 const sprites=[];for(let i=0;i<48;i++){let x=Math.sin(i*31.13)*7,z=-2-(i*13%22),y=1.2+i%5;
 const s=orb(x,y,z,.038+(i%3)*.02,i%3===0?orange:light);sprites.push({mesh:s,y,phase:i*.8})}
-const residents=[goblin,faerie,gate];const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
-const words={goblin:['Nettle, Keeper of Questionable Keys','Oh good. Another wanderer. Try not to get eaten or enlightened.'],faerie:['Mothlight, Unlicensed Oracle','The maze remembers footsteps, unfinished wishes, and particularly dramatic entrances.'],gate:['The Orange Gate','The deeper passages are still growing. The Tree is waiting beyond them. You may linger here.']};
-function say(which){const [name,line]=words[which];document.getElementById('speaker').textContent=name;document.getElementById('speech').textContent=line;document.getElementById('dialogue').hidden=false}
-document.getElementById('dismiss').onclick=()=>document.getElementById('dialogue').hidden=true;
-document.getElementById('goblin').onclick=()=>say('goblin');document.getElementById('faerie').onclick=()=>say('faerie');document.getElementById('gate').onclick=()=>say('gate');
+const residents=[goblin,faerie,gate,noticeBoard];const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
+function say(which){openStory(which)}
 let yaw=0,pitch=0,dragging=false,lastX=0,lastY=0,moved=false;const canvas=renderer.domElement;
 canvas.addEventListener('pointerdown',e=>{dragging=true;moved=false;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!dragging||renderer.xr.isPresenting)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;yaw-=dx*.004;pitch=Math.max(-.95,Math.min(.95,pitch-dy*.004));camera.rotation.set(pitch,yaw,0,'YXZ')});
-canvas.addEventListener('pointerup',e=>{dragging=false;if(moved||renderer.xr.isPresenting)return;mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(residents,true);if(hits.length){const item=hits[0].object;if(goblin.children.includes(item))say('goblin');else if(faerie.children.includes(item))say('faerie');else say('gate')}});
+canvas.addEventListener('pointerup',e=>{dragging=false;if(moved||renderer.xr.isPresenting)return;mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(residents,true);if(hits.length){const item=hits[0].object;if(goblin.children.includes(item))say('goblin');else if(faerie.children.includes(item))say('faerie');else if(item===noticeBoard)openNotices();else say('gate')}});
 document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.position.set(0,1.65,10);camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
 const keys=new Set();
 addEventListener('keydown',e=>{
@@ -80,7 +86,7 @@ let audio=null,soundEnabled=true,started=false;
 function makeAudio(){if(audio)return;const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;const ctx=new AudioContext(),master=ctx.createGain();master.gain.value=.13;master.connect(ctx.destination);audio={ctx,master};}
 function snore(){if(!audio||!soundEnabled)return;const {ctx,master}=audio;if(ctx.state==='suspended')ctx.resume();const now=ctx.currentTime;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sawtooth';osc.frequency.setValueAtTime(56,now);osc.frequency.exponentialRampToValueAtTime(31,now+1.9);gain.gain.setValueAtTime(.001,now);gain.gain.exponentialRampToValueAtTime(.3,now+.5);gain.gain.exponentialRampToValueAtTime(.001,now+2.6);osc.connect(gain).connect(master);osc.start(now);osc.stop(now+2.7);shaking=2.7}
 document.getElementById('sound').onclick=()=>{soundEnabled=!soundEnabled;document.getElementById('sound').textContent=soundEnabled?'Sound: On':'Sound: Off';if(soundEnabled)makeAudio()};
-document.getElementById('begin').onclick=()=>{document.getElementById('threshold').hidden=true;document.getElementById('threshold').style.display='none';document.querySelector('.controls').hidden=false;document.getElementById('hint').hidden=false;started=true;makeAudio();audio?.ctx.resume();say('gate')};
+registerWorldStart(()=>{started=true;makeAudio();audio?.ctx.resume()});
 // No unsupported-VR warning on desktop. Show entry only on compatible headsets.
 if(navigator.xr?.isSessionSupported){
  navigator.xr.isSessionSupported('immersive-vr').then(supported=>{
@@ -99,3 +105,4 @@ if(shaking>0){shaking-=dt;if(!renderer.xr.isPresenting){camera.position.y=1.65+M
 torch.intensity=60+Math.sin(elapsed*2)*9;
 renderer.render(scene,camera)});
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+
