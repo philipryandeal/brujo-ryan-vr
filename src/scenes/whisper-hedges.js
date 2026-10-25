@@ -5,7 +5,7 @@ export function makeWhisperHedges(THREE, palette) {
   const hedge = material(palette.hedge, {roughness: .98});
   const stone = material(palette.stone, {roughness: .95});
   const orange = material(palette.orange, {emissive: palette.orange, emissiveIntensity: .8});
-  const leaf = material(palette.light, {emissive: 0x28582c, emissiveIntensity: .3});
+  const leaf = material(palette.light, {emissive: 0x495a58, emissiveIntensity: .3});
   const deep = material(palette.deep);
   function add(geometry, mat, x, y, z) {
     const object = new THREE.Mesh(geometry, mat);
@@ -19,7 +19,7 @@ export function makeWhisperHedges(THREE, palette) {
 
   // A garden court and a winding, intentionally contained path.
   box(0,-.23,-10,28,.4,54,stone);
-  box(0,.015,-9,4,.05,41,material(0x3b6140));
+  box(0,.015,-9,4,.05,41,material(0x495a58));
   for (let i=0;i<14;i++) {
     const z=8-i*2.5;
     const sway=Math.sin(i*1.8)*.35;
@@ -57,9 +57,9 @@ export function makeWhisperHedges(THREE, palette) {
   // A little late-1990s-web-style sign, now truly part of the 3D stage.
   const signCanvas=document.createElement('canvas');signCanvas.width=512;signCanvas.height=256;
   const brush=signCanvas.getContext('2d');
-  brush.fillStyle='#143624';brush.fillRect(0,0,512,256);
-  brush.strokeStyle='#ff6900';brush.lineWidth=16;brush.strokeRect(12,12,488,232);
-  brush.fillStyle='#c7f5a7';brush.textAlign='center';brush.font='bold 48px Georgia';
+  brush.fillStyle='#303636';brush.fillRect(0,0,512,256);
+  brush.strokeStyle='#FF5E1F';brush.lineWidth=16;brush.strokeRect(12,12,488,232);
+  brush.fillStyle='#ffffff';brush.textAlign='center';brush.font='bold 48px Georgia';
   brush.fillText('HEDGE VISITS',256,108);brush.fillText('BY APPOINTMENT',256,176);
   const sign=add(new THREE.PlaneGeometry(3.5,1.75),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(signCanvas),side:THREE.DoubleSide}),0,4.6,-10);
 

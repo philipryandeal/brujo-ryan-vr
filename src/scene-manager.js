@@ -7,7 +7,7 @@ export const SCENES = Object.freeze({
     exits: Object.freeze(['whisper-hedges']),
     controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices']),
     arrivalText: 'The thread winds home. Nettle is already blaming someone.',
-    appearance: Object.freeze({ background: 0x0d281c, torch: 0xff6900, resetLabel: 'Look to Gate' })
+    appearance: Object.freeze({ background: 0x303636, torch: 0xff5e1f, resetLabel: 'Look to Gate' })
   }),
   'whisper-hedges': Object.freeze({
     number: '002',
@@ -15,7 +15,7 @@ export const SCENES = Object.freeze({
     exits: Object.freeze(['threshold']),
     controls: Object.freeze(['hedge', 'return-gate']),
     arrivalText: 'The Orange Thread unspools. Somewhere, a hedge files a complaint.',
-    appearance: Object.freeze({ background: 0x143421, torch: 0xb9f3a4, resetLabel: 'Look Ahead' })
+    appearance: Object.freeze({ background: 0x303636, torch: 0xb9f3a4, resetLabel: 'Look Ahead' })
   })
 });
 

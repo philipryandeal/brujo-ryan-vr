@@ -7,16 +7,16 @@ import {createStageRuntime} from './scenes/stage-runtime.js';
 import {makeWhisperHedges} from './scenes/whisper-hedges.js';
 
 const stage=document.getElementById('stage');
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x0d281c);scene.fog=new THREE.FogExp2(0x0d281c,.017);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x303636);scene.fog=new THREE.FogExp2(0x303636,.017);
 const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,.1,160);camera.position.set(0,1.65,10);camera.lookAt(0,2,-10);
 const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
 renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.xr.enabled=true;
 renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;
 stage.appendChild(renderer.domElement);renderer.shadowMap.enabled=false;
-const V={dark:0x123b29,stone:0x29563b,hedge:0x17472c,light:0xb9f3a4,orange:0xff6900,deep:0x071b15};
+const V={dark:0x303636,stone:0x303636,hedge:0x495a58,light:0xb9f3a4,orange:0xff5e1f,deep:0x303636};
 const mat=(color,extra={})=>new THREE.MeshStandardMaterial({color,...extra});
-const stone=mat(V.stone,{roughness:.95}),dark=mat(V.dark),hedge=mat(V.hedge),orange=mat(V.orange,{emissive:V.orange,emissiveIntensity:1.2}),light=mat(V.light,{emissive:0x5da44b,emissiveIntensity:.4}),black=mat(V.deep);
-scene.add(new THREE.HemisphereLight(V.light,0x07221a,2.3));const moon=new THREE.DirectionalLight(0xb9f3a4,2);moon.position.set(-9,19,4);scene.add(moon);
+const stone=mat(V.stone,{roughness:.95}),dark=mat(V.dark),hedge=mat(V.hedge),orange=mat(V.orange,{emissive:V.orange,emissiveIntensity:1.2}),light=mat(V.light,{emissive:0xb9f3a4,emissiveIntensity:.4}),black=mat(V.deep);
+scene.add(new THREE.HemisphereLight(V.light,0x303636,2.3));const moon=new THREE.DirectionalLight(0xb9f3a4,2);moon.position.set(-9,19,4);scene.add(moon);
 const torch=new THREE.PointLight(V.orange,70,29);torch.position.set(0,5,-9);scene.add(torch);
 function box(x,y,z,w,h,d,m){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);scene.add(o);return o}
 function orb(x,y,z,r,m){const o=new THREE.Mesh(new THREE.SphereGeometry(r,12,10),m);o.position.set(x,y,z);scene.add(o);return o}
@@ -39,9 +39,9 @@ box(-5.4,.65,-6.5,2.3,1.3,1.7,dark);box(-5.4,1.5,-6.5,2.7,.28,1.9,stone);
 const goblin=new THREE.Group();goblin.position.set(-5.35,1.83,-6.35);scene.add(goblin);
 // A physical noticeboard makes goblin bureaucracy part of the scenery.
 const noticeCanvas=document.createElement('canvas');noticeCanvas.width=512;noticeCanvas.height=256;
-const nc=noticeCanvas.getContext('2d');nc.fillStyle='#123b29';nc.fillRect(0,0,512,256);
-nc.strokeStyle='#ff6900';nc.lineWidth=18;nc.strokeRect(12,12,488,232);
-nc.fillStyle='#c7f5a7';nc.font='bold 55px Georgia';nc.textAlign='center';
+const nc=noticeCanvas.getContext('2d');nc.fillStyle='#303636';nc.fillRect(0,0,512,256);
+nc.strokeStyle='#FF5E1F';nc.lineWidth=18;nc.strokeRect(12,12,488,232);
+nc.fillStyle='#ffffff';nc.font='bold 55px Georgia';nc.textAlign='center';
 nc.fillText('GOBLIN',256,112);nc.fillText('NOTICES',256,181);
 const noticeBoard=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1.3),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(noticeCanvas),side:THREE.DoubleSide}));
 noticeBoard.position.set(-3.05,2.7,-6.2);scene.add(noticeBoard);
@@ -136,7 +136,7 @@ registerWorldStart(()=>{started=true;makeAudio();audio?.ctx.resume()});
 if(navigator.xr?.isSessionSupported){
  navigator.xr.isSessionSupported('immersive-vr').then(supported=>{
   if(!supported)return;
-  const btn=VRButton.createButton(renderer);btn.style.bottom='85px';btn.style.background='#315d36';btn.style.border='1px solid #ff6900';document.body.appendChild(btn);
+  const btn=VRButton.createButton(renderer);btn.style.bottom='85px';btn.style.background='#495A58';btn.style.border='1px solid #FF5E1F';document.body.appendChild(btn);
  }).catch(()=>{});
 }
 renderer.xr.addEventListener('sessionstart',()=>{const t=document.getElementById('threshold');t.hidden=true;t.style.display='none';document.querySelector('.controls').hidden=true;document.getElementById('hint').hidden=true;started=true;makeAudio()});
