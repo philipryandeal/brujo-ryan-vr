@@ -1,5 +1,8 @@
 # The Goblin Keepers' Charter
 
+**Guild coat-of-arms motto:** ONE HUMAN. A COUNCIL OF QUESTIONABLE ARCHITECTS. AND AN ANCIENT AQUATIC ENTITY WITH NO TAX LIABILITY.
+
+
 *A ridiculous magical kingdom populated by creatures who have their own lives and really couldn't give two hoots about visitors' expectations.*
 
 ## Creative compass
