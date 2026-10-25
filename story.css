@@ -9,3 +9,11 @@
 body.text-mode #stage:after{content:'The stones are quiet today. The goblins can still be consulted below.';position:absolute;top:32%;left:50%;transform:translateX(-50%);width:min(80vw,460px);color:#c7f5a7;text-align:center;font:italic 20px/1.5 Georgia,serif;opacity:.8;pointer-events:none}
 @media(max-width:600px){.dialogue{max-height:calc(100dvh - 140px);padding:16px}.choices{max-height:30vh}.dialogue #speech{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+.controls button[hidden]{display:none!important}
+.scene-veil[hidden]{display:none}
+.scene-veil{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:28px;background:radial-gradient(circle at center,#20482f,#06170f 75%);color:#c7f5a7;opacity:0;transition:opacity .65s ease;pointer-events:none}
+.scene-veil.visible{opacity:1;pointer-events:auto}
+.scene-veil:before{content:'';position:absolute;left:8%;right:8%;top:50%;height:3px;background:#ff6900;box-shadow:0 0 30px #ff6900;transform:rotate(-4deg)}
+.scene-veil p{position:relative;max-width:600px;padding:22px;background:#103924eb;border:1px solid #ff6900;text-align:center;font:italic clamp(19px,3vw,26px)/1.5 Georgia,serif}
+body.text-mode[data-scene="whisper-hedges"] #stage:after{content:'The hedges rustle, gossip, and complain about their working conditions.'}
+@media(prefers-reduced-motion:reduce){.scene-veil{transition:none}}

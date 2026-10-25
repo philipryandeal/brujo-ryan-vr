@@ -54,7 +54,8 @@ const RESIDENTS = {
     questions: [
       {
         id: 'open', label: 'May I go through?',
-        reply: 'Not today. The next paths are under construction, and a goblin has misplaced the concept of caution.'
+        reply: 'You may. Nettle insists you have completed the proper forms. Fortunately, the forms are blank.',
+        destination: 'whisper-hedges'
       },
       {
         id: 'listen', label: 'Listen to the hinges.',
@@ -63,6 +64,29 @@ const RESIDENTS = {
       {
         id: 'why', label: 'Why are you orange?',
         reply: 'Because the doors held a vote. Green was already taken by absolutely everything else.'
+      }
+    ]
+  },
+  hedge: {
+    name: 'The Hedge, Acting Receptionist',
+    greeting: 'Ahem. You must be the new person. We are not accepting visitors today. Kindly ignore that WELCOME sign.',
+    returnGreeting: 'Back already? I have barely had time to complain about your last visit.',
+    questions: [
+      {
+        id: 'appointment', label: 'Do I need an appointment?',
+        reply: 'Naturally. Appointments are booked through the roots. They have been on lunch break since 1897.'
+      },
+      {
+        id: 'leaves', label: 'Your leaves look lovely.',
+        reply: 'Oh! Well. Thank you. I just had them done. It is difficult to find a stylist who understands topiary.'
+      },
+      {
+        id: 'goblins', label: 'Do the goblins work here?',
+        reply: 'Work? Yes. Productively? We are currently reviewing the evidence. Moldy has been sweeping the same leaf since Thursday.'
+      },
+      {
+        id: 'doors', label: 'Where do these paths lead?',
+        reply: 'Places with very poor signage. For the moment, the Orange Gate will take you back. New paths are still growing.'
       }
     ]
   }
@@ -78,14 +102,20 @@ const NOTICES = [
   'COMPLAINTS: Place them in the orange box. The box is a carnivorous plant. — Customer Relations'
 ];
 
-const AMBIENT = [
-  'Far away, someone accuses a mushroom of cheating at cards.',
-  'Two goblins are conducting an audit of the moon.',
-  'The hedges whisper. One of them seems to be telling a very long joke.',
-  'A shoggoth snores beneath the moat. The stones politely tremble.',
-  'Somewhere beyond the Gate, a kettle has won an argument.',
-  'The Labyrinth continues its business, with or without an audience.'
-];
+const AMBIENT = {
+  threshold: [
+    'Far away, someone accuses a mushroom of cheating at cards.',
+    'Two goblins are conducting an audit of the moon.',
+    'A shoggoth snores beneath the moat. The stones politely tremble.',
+    'The Orange Gate hums. Something beyond it is arguing with a fern.'
+  ],
+  'whisper-hedges': [
+    'The hedges whisper. One of them is telling a very long joke.',
+    'Somewhere among the leaves, Moldy loses an argument with a rake.',
+    'A flower turns its head to watch you, then pretends it was stretching.',
+    'The Labyrinth continues its business, with or without an audience.'
+  ]
+};
 
 export function createKingdom() {
   const visits = new Map();
@@ -108,7 +138,7 @@ export function createKingdom() {
     const resident = RESIDENTS[id];
     const question = resident?.questions.find(item => item.id === questionId);
     if (!question) throw new Error(`Unknown question: ${id}/${questionId}`);
-    return { speaker: resident.name, text: question.reply };
+    return { speaker: resident.name, text: question.reply, destination: question.destination };
   }
 
   function nextNotice() {
@@ -117,8 +147,9 @@ export function createKingdom() {
     return { speaker: 'The Goblin Noticeboard', text: message };
   }
 
-  function nextAmbient() {
-    const message = AMBIENT[ambientIndex % AMBIENT.length];
+  function nextAmbient(scene = 'threshold') {
+    const lines = AMBIENT[scene] || AMBIENT.threshold;
+    const message = lines[ambientIndex % lines.length];
     ambientIndex += 1;
     return message;
   }
