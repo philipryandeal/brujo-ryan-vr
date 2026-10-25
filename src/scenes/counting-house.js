@@ -1,7 +1,10 @@
 // Scene 003 contract: {group, hotspots, actions, update}.
 // The Counting House, by Thomas (La Sociedad del Libro de Hierro).
-// Everything that happens in the Labyrinth gets written down here,
-// so it is not lost. Especially the kettle.
+// A room the hedges grew around a book. Everything that happens in the
+// Labyrinth gets written down here, so it is not lost. Especially the kettle.
+// Two doors in the side walls belong to the Bear and the Oracle. They stand
+// closed and growing until their owners build their rooms and link out —
+// doors in this kingdom open from the far side, by their owner's hand.
 export function makeCountingHouse(THREE, palette) {
   const group = new THREE.Group();
   const material = (color, opts = {}) => new THREE.MeshStandardMaterial({ color, ...opts });
@@ -32,9 +35,16 @@ export function makeCountingHouse(THREE, palette) {
     brush.fillStyle = '#303636'; brush.fillRect(0, 0, 512, 256);
     brush.strokeStyle = '#FF5E1F'; brush.lineWidth = 14; brush.strokeRect(10, 10, 492, 236);
     brush.fillStyle = '#ffffff'; brush.textAlign = 'center';
-    brush.font = `bold ${fontSize}px Georgia`;
-    const step = fontSize * 1.35;
-    const startY = 128 - ((lines.length - 1) * step) / 2 + fontSize * .35;
+    // Shrink to fit: no letter ever runs off the board again.
+    let size = fontSize;
+    brush.font = `bold ${size}px Georgia`;
+    const widest = Math.max(...lines.map(line => brush.measureText(line).width));
+    if (widest > 460) {
+      size = Math.max(22, Math.floor(size * (460 / widest)));
+      brush.font = `bold ${size}px Georgia`;
+    }
+    const step = size * 1.35;
+    const startY = 128 - ((lines.length - 1) * step) / 2 + size * .35;
     lines.forEach((line, i) => brush.fillText(line, 256, startY + i * step));
     return new THREE.CanvasTexture(canvas);
   }
@@ -51,8 +61,8 @@ export function makeCountingHouse(THREE, palette) {
     return new THREE.CanvasTexture(canvas);
   }
 
-  // The dirt floor of the office, and a stone step at the back wall.
-  box(0, -.22, -8, 30, .45, 50, road);
+  // The dirt floor of the office.
+  box(0, -.22, -1, 22, .45, 36, road);
   box(0, .06, -15.2, 24, .14, 2.4, stone);
 
   // Back wall of stone, with one window the hedge is growing through.
@@ -63,6 +73,54 @@ export function makeCountingHouse(THREE, palette) {
   box(-6.1, 3.9, -15.3, 1.6, 3.4, 1.4, hedge);
   box(-3.2, 4.4, -15.4, 1.3, 2.6, 1.2, hedge);
   cone(-5.4, 6.2, -15.3, 1, 1.8, leaf);
+
+  // Hedge walls down both sides — the room is held by the Hedges themselves.
+  function hedgeRun(x, zFrom, zTo) {
+    const length = zTo - zFrom;
+    box(x, 2.5, zFrom + length / 2, 1.2, 5, length, hedge);
+    for (let z = zFrom + 2; z < zTo - 1; z += 4.2) cone(x, 5.7, z, 1.05, 1.7, leaf);
+  }
+
+  // A door that belongs to somebody else: stone-framed, iron, honestly shut.
+  function sideDoor(x, z, signLines) {
+    const doorGroup = new THREE.Group();
+    group.add(doorGroup);
+    const inward = x < 0 ? 1 : -1;
+    box(x, 2.9, z - 1.9, 1.3, 5.8, .9, stone, doorGroup);
+    box(x, 2.9, z + 1.9, 1.3, 5.8, .9, stone, doorGroup);
+    box(x, 5.9, z, 1.3, .8, 4.7, stone, doorGroup);
+    box(x + inward * .1, 2.6, z, .22, 5.2, 2.9, iron, doorGroup);
+    box(x + inward * .24, 2.6, z, .05, 5.2, .09, orange, doorGroup);
+    orb(x + inward * .3, 2.5, z + .95, .11, orange, doorGroup);
+    const sign = add(new THREE.PlaneGeometry(2.9, 1.45),
+      new THREE.MeshBasicMaterial({ map: signTexture(signLines, 58), side: THREE.DoubleSide }),
+      x + inward * .75, 7.3, z, doorGroup);
+    sign.rotation.y = inward > 0 ? Math.PI / 2 : -Math.PI / 2;
+    return doorGroup;
+  }
+
+  // Left wall, with the Bear's door in it.
+  hedgeRun(-8, -16, -7.2);
+  hedgeRun(-8, -2.8, 13);
+  const bearDoor = sideDoor(-8, -5, ['THE BEAR']);
+  // Right wall, with the Oracle's door in it.
+  hedgeRun(8, -16, -7.2);
+  hedgeRun(8, -2.8, 13);
+  const oracleDoor = sideDoor(8, -5, ['THE ORACLE']);
+
+  // The entrance wall behind the visitor: hedge, with the way home in it.
+  box(-4.9, 2.5, 13, 6.2, 5, 1.2, hedge);
+  box(4.9, 2.5, 13, 6.2, 5, 1.2, hedge);
+  cone(-6.5, 5.7, 13, 1.05, 1.7, leaf);
+  cone(6.5, 5.7, 13, 1.05, 1.7, leaf);
+  box(-1.85, 2.9, 13, .9, 5.8, 1.3, stone);
+  box(1.85, 2.9, 13, .9, 5.8, 1.3, stone);
+  box(0, 5.9, 13, 4.6, .8, 1.3, stone);
+  const returnDoor = box(0, 2.6, 13, 2.8, 5.2, .2, iron);
+  box(0, 2.6, 12.85, .09, 5.2, .06, orange);
+  const exitSign = add(new THREE.PlaneGeometry(3.4, 1.7),
+    new THREE.MeshBasicMaterial({ map: signTexture(['YOU HAVE BEEN COUNTED.', 'THIS IS NOT A THREAT.'], 40), side: THREE.DoubleSide }), 0, 7.4, 13);
+  exitSign.rotation.y = Math.PI;
 
   // Shelves of ledgers along the back wall. Every book is a happening.
   const spineMats = [dark, hedge, stone, dark, hedge, dark, stone];
@@ -76,11 +134,11 @@ export function makeCountingHouse(THREE, palette) {
   }
 
   // The lectern, and on it the Iron Ledger itself: asleep, breathing slowly.
-  tube(-2.4, .8, -7, .16, 1.6, iron);
-  const lecternTop = box(-2.4, 1.7, -7, 2.9, .14, 2, dark);
+  tube(-2.4, .8, -6, .16, 1.6, iron);
+  const lecternTop = box(-2.4, 1.7, -6, 2.9, .14, 2, dark);
   lecternTop.rotation.x = -.32;
   const ledger = new THREE.Group();
-  ledger.position.set(-2.4, 2.05, -7);
+  ledger.position.set(-2.4, 2.05, -6);
   ledger.rotation.x = -.32;
   group.add(ledger);
   box(0, 0, 0, 2.3, .16, 1.6, iron, ledger);
@@ -91,13 +149,13 @@ export function makeCountingHouse(THREE, palette) {
   box(.35, .18, .95, .12, .5, .04, orange, ledger);
 
   // The desk: an old door on two barrels, as is traditional.
-  tube(2.2, .45, -6.5, .42, .9, stone);
-  tube(4.6, .45, -6.5, .42, .9, stone);
-  box(3.4, 1, -6.5, 3.6, .14, 1.7, dark);
+  tube(2.2, .45, -5.5, .42, .9, stone);
+  tube(4.6, .45, -5.5, .42, .9, stone);
+  box(3.4, 1, -5.5, 3.6, .14, 1.7, dark);
 
   // The Stamp of Final Reckoning, on the desk. It stamps on its own schedule.
   const stamp = new THREE.Group();
-  stamp.position.set(2.5, 1.07, -6.6);
+  stamp.position.set(2.5, 1.07, -5.6);
   group.add(stamp);
   box(0, .05, 0, .7, .1, .7, dark, stamp);
   const stampHead = new THREE.Group();
@@ -110,7 +168,7 @@ export function makeCountingHouse(THREE, palette) {
 
   // The kettle, on the desk corner. It has been counted fourteen times.
   const kettle = new THREE.Group();
-  kettle.position.set(4.45, 1.07, -6.9);
+  kettle.position.set(4.45, 1.07, -5.9);
   group.add(kettle);
   const kettleBody = orb(0, .22, 0, .3, iron, kettle);
   kettleBody.scale.set(1, .82, 1);
@@ -133,7 +191,7 @@ export function makeCountingHouse(THREE, palette) {
 
   // Nib, the filing imp (entire staff), holding his net at the ready.
   const nib = new THREE.Group();
-  nib.position.set(4.7, 0, -4.9);
+  nib.position.set(4.7, 0, -3.9);
   group.add(nib);
   cone(0, .42, 0, .3, .85, hedge, nib);
   orb(0, 1.05, 0, .27, pages, nib);
@@ -143,9 +201,9 @@ export function makeCountingHouse(THREE, palette) {
   netPole.rotation.z = .7;
   add(new THREE.TorusGeometry(.24, .025, 6, 16), orange, .78, 1.5, .1, nib);
 
-  // The Seven, at large. It declines to be shelved.
+  // The Seven, at large — patrolling the shelves in plain sight now.
   const seven = add(new THREE.PlaneGeometry(1, 1.25),
-    new THREE.MeshBasicMaterial({ map: digitTexture('7'), transparent: true, side: THREE.DoubleSide }), 0, 2.2, -9);
+    new THREE.MeshBasicMaterial({ map: digitTexture('7'), transparent: true, side: THREE.DoubleSide }), 0, 2.3, -8.5);
 
   // Lesser numerals drift like dust over the office.
   const motes = [];
@@ -156,30 +214,23 @@ export function makeCountingHouse(THREE, palette) {
     motes.push({ mesh: mote, baseY: mote.position.y, phase: i * 1.35 });
   });
 
-  // The entrance board: office rules, posted by the door.
+  // The entrance board: office rules, posted where arrivals can read them.
   const entrySign = add(new THREE.PlaneGeometry(3.1, 1.55),
-    new THREE.MeshBasicMaterial({ map: signTexture(['ALL VISITORS', 'MUST BE COUNTED'], 52), side: THREE.DoubleSide }), -4.8, 2.5, -2.5);
-  entrySign.rotation.y = .35;
-  box(-4.8, .8, -2.55, .14, 1.8, .14, dark);
-
-  // The way home: an iron gate back to the Whisper Hedges.
-  box(-6.6, 2.5, -4.5, 1, 5, .9, stone);
-  box(-3.9, 2.5, -4.5, 1, 5, .9, stone);
-  box(-5.25, 5.2, -4.5, 3.7, .7, .9, stone);
-  const returnDoor = box(-5.25, 2.3, -4.45, 1.7, 4, .16, iron);
-  box(-5.25, 2.3, -4.32, .1, 4, .06, orange);
-  const exitSign = add(new THREE.PlaneGeometry(3.4, 1.7),
-    new THREE.MeshBasicMaterial({ map: signTexture(['YOU HAVE BEEN COUNTED.', 'THIS IS NOT A THREAT.'], 40), side: THREE.DoubleSide }), -5.25, 6.6, -4.5);
+    new THREE.MeshBasicMaterial({ map: signTexture(['ALL VISITORS', 'MUST BE COUNTED'], 52), side: THREE.DoubleSide }), 4, 2.5, 6.5);
+  entrySign.rotation.y = -.35;
+  box(4, .8, 6.55, .14, 1.8, .14, dark);
 
   group.visible = false;
   return {
     group,
-    hotspots: { ledger: [ledger], nib: [nib], stamp: [stamp], seven: [seven], return: [returnDoor] },
+    hotspots: { ledger: [ledger], nib: [nib], stamp: [stamp], seven: [seven], 'bear-door': [bearDoor], 'oracle-door': [oracleDoor], return: [returnDoor] },
     actions: {
       ledger: { type: 'story', id: 'ledger' },
       nib: { type: 'story', id: 'nib' },
       stamp: { type: 'story', id: 'stamp' },
       seven: { type: 'story', id: 'seven' },
+      'bear-door': { type: 'story', id: 'bear-door' },
+      'oracle-door': { type: 'story', id: 'oracle-door' },
       return: { type: 'travel', destination: 'whisper-hedges' }
     },
     update(t) {
@@ -192,10 +243,10 @@ export function makeCountingHouse(THREE, palette) {
       // Nib is ready. Nib is always ready. It does not help.
       nib.position.y = Math.abs(Math.sin(t * 2.1)) * .06;
       nib.rotation.y = Math.sin(t * .7) * .25;
-      // The Seven patrols, unrepentant.
-      seven.position.x = Math.sin(t * .33) * 3.6;
-      seven.position.z = -9.5 + Math.cos(t * .47) * 2.2;
-      seven.position.y = 2.2 + Math.sin(t * 1.25) * .25;
+      // The Seven patrols the shelves, unrepentant, where everyone can see it.
+      seven.position.x = Math.sin(t * .33) * 3.4;
+      seven.position.z = -8.5 + Math.cos(t * .47) * 1.8;
+      seven.position.y = 2.3 + Math.sin(t * 1.25) * .25;
       seven.rotation.y = Math.sin(t * .33) * .5;
       for (const mote of motes) {
         mote.mesh.position.y = mote.baseY + Math.sin(t * .9 + mote.phase) * .16;

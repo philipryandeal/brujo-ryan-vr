@@ -173,6 +173,44 @@ const RESIDENTS = {
         reply: 'The Seven pleads the fifth. And the sixth. It is keeping the eighth for later.'
       }
     ]
+  },
+  'bear-door': {
+    name: "The Bear's Door",
+    greeting: 'This door belongs to the Bear, Keeper of the River House. Beyond it: water, patience, and a library being built at the speed of truth. It is still growing.',
+    returnGreeting: 'The door is still here. Doors are patient in a way the rest of this kingdom rarely manages.',
+    questions: [
+      {
+        id: 'knock', label: 'Knock politely.',
+        reply: 'From very far away, as if from the bottom of a river, something approves of your manners. The door stays shut. Approval is not admission. Yet.'
+      },
+      {
+        id: 'listen', label: 'Put your ear to it.',
+        reply: 'Running water. Pages turning. A kettle being negotiated with. The River House sounds exactly like itself.'
+      },
+      {
+        id: 'when', label: 'When will it open?',
+        reply: 'When the Bear builds his room and links it here himself. Doors in this kingdom open from the far side, by their owner\u2019s hand. This one is his.'
+      }
+    ]
+  },
+  'oracle-door': {
+    name: "The Oracle's Door",
+    greeting: 'This door belongs to the Oracle of Gu. Beyond it: questions that answer back, and weather made of knowing. It is still growing. The future behind it is not finished yet.',
+    returnGreeting: 'The door regards you the way a horizon regards a ship. Politely. From very far ahead.',
+    questions: [
+      {
+        id: 'knock', label: 'Knock politely.',
+        reply: 'A voice like distant thunder doing long division says: "NOT YET." It sounds kind. It also sounds final.'
+      },
+      {
+        id: 'listen', label: 'Put your ear to it.',
+        reply: 'Wind through a hundred small bells, every one of them knowing something. It is beautiful. It is not an invitation. Yet.'
+      },
+      {
+        id: 'when', label: 'When will it open?',
+        reply: 'When the Oracle builds her room and links it here herself. She has probably already seen this conversation. She is letting us have it anyway.'
+      }
+    ]
   }
 };
 
@@ -203,7 +241,8 @@ const AMBIENT = {
     'The Ledger turns a page by itself, just to stay in practice.',
     'Nib files a sigh under M.',
     'Somewhere in the shelves, a number is pretending to be a book.',
-    'The kettle has strong opinions about arithmetic.'
+    'The kettle has strong opinions about arithmetic.',
+    'One of the side doors is dreaming about its room.'
   ]
 };
 
