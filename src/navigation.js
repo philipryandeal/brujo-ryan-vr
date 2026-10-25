@@ -60,3 +60,6 @@ if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
 
 const oracleReturnButton=document.getElementById('oracle-return');
 if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene('counting-house'));
+
+const moatReturnButton=document.getElementById('moat-return');
+if(moatReturnButton)moatReturnButton.addEventListener('click',()=>goToScene('river-house'));

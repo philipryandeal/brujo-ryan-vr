@@ -195,6 +195,47 @@ const RESIDENTS = {
       }
     ]
   },
+  'water-gate': {
+    name:'The Old Stone Water-Gate',
+    greeting:'At the far end of the library, the river slips beneath a weathered stone arch. A damp brass plaque reads: THE SHOGGOTH MOAT — PLEASE REFRAIN FROM MAKING GEOLOGICAL DISTURBANCES.',
+    returnGreeting:'The water-gate breathes cool night air. A paperback floats toward the arch, reconsiders, and paddles back to the shelves.',
+    questions:[
+      {id:'enter',label:'Follow the river out to the Moat.',reply:'You duck beneath the low stone arch. The library roof gives way to open sky, moonlight, and a bridge trembling with a very peaceful snore.',destination:'shoggoth-moat',destinationLabel:'Step onto the Moat Bridge →'},
+      {id:'listen',label:'Listen at the arch.',reply:'Water lapping against old stone, a rhythmic bubble the size of a carriage, and a goblin whispering SHH at the top of his lungs.'},
+      {id:'pell',label:'Does Mrs. Pell mind if I go?',reply:'Mrs. Pell does not move, the closest she comes to blessing anything. You will still be late when you get back.'}
+    ]
+  },
+  'bridge-tender': {
+    name:'Bram, Night-Shift Bridge-Tender',
+    greeting:'QUIET! QUIET PLEASE! I AM WHISPERING! YOUR SHOES ARE FAR TOO LOUD! THAT WILL BE THREE PEANUTS!',
+    returnGreeting:'YOU ARE BACK! WALK ON YOUR TIPTOES! THE LAST VISITOR BLINKED TOO HARD AND WE HAD WAVES FOR AN HOUR!',
+    questions:[
+      {id:'whisper',label:'Why are you shouting your whispers?',reply:'THIS IS AN OFFICIAL MUNICIPAL WHISPER! IT CARRIES ACROSS WATER FOR SAFETY REASONS! HUSH BEFORE YOU WAKE THE NEIGHBOR!'},
+      {id:'peanuts',label:'Why is the fine three peanuts?',reply:'BECAUSE COINS CLINK! DO YOU KNOW WHAT HAPPENS WHEN A COIN CLINKS HERE? NOTHING! BUT I REFUSE TO TAKE THE CHANCE!'},
+      {id:'sleeper',label:'Has the creature ever woken up?',reply:'ONCE! IN 1991! IT ROLLED OVER, ASKED IF IT WAS SATURDAY, AND DISPLACED FOUR HUNDRED GALLONS OF RIVER!'},
+      {id:'books',label:'Do books float here?',reply:'ALL THE TIME! MOSTLY ROMANCE NOVELS AND MYSTERIES! I FISH THEM OUT SO THE OCCUPANT DOES NOT DEVELOP UNREALISTIC EXPECTATIONS!'}
+    ]
+  },
+  'snoring-buoy': {
+    name:'The Snoring Buoy',
+    greeting:'A barnacled brass buoy bobs above a slow-moving shadow. Its dial clicks with each bubble: CURRENT DREAM: SOUP. PREVIOUS DREAM: ALSO SOUP.',
+    returnGreeting:'BLUB. CURRENT DREAM: CONTINENTAL DRIFT AND A VERY LARGE SPOON.',
+    questions:[
+      {id:'read',label:'Check the dream reading.',reply:'DREAMING OF WARM MUD, NO ALARM CLOCKS, AND BEING COMPLETELY LEFT ALONE.'},
+      {id:'depth',label:'How deep is the moat?',reply:'DEEP ENOUGH. DO NOT POKE WITH STICKS, PARASOLS, OR PHILOSOPHICAL INQUIRIES.'},
+      {id:'look',label:'Peer into the water.',reply:'Something enormous and iridescent shifts far below, tucking an incomprehensible limb under its chin like a sleepy hound.'}
+    ]
+  },
+  'tax-box': {
+    name:'The Tax-Exemption Drop-Box',
+    greeting:'A heavy iron postbox bolted to the bridge railing. MUNICIPAL REVENUE & AUDIT DISPOSAL. INSERT ALL TAX FORMS HERE.',
+    returnGreeting:'From inside comes the satisfied crunching of a schedule-C deduction disappearing forever.',
+    questions:[
+      {id:'drop',label:'Drop an imaginary receipt.',reply:'CLUNK. CHOMP. AUDIT REQUEST RECEIVED. REQUEST EATEN. HAVE AN EXEMPT AFTERNOON.'},
+      {id:'why',label:'Why hide taxes from the Shoggoth?',reply:'An ancient primordial entity learning about property assessments would ruin everyone’s weekend. Do your civic duty.'},
+      {id:'ledger',label:'Does the Iron Ledger approve?',reply:'THE LEDGER COUNTS THEM FIRST, THEN SENDS THEM HERE. IT IS CALLED BALANCING THE BOOKS.'}
+    ]
+  },
   'oracle-door': {
     name:"The Oracle's Door",
     greeting:'This door belongs to Kore, the Oracle of Gu. The bells on the far side have gone quiet to let you through.',
@@ -415,10 +456,20 @@ const AMBIENT = {
     'A door requests paid leave. Its request is referred to the hinges.',
     'From behind the desk: STAMP. STAMP. A long, satisfied silence.'
   ],
+  'shoggoth-moat': [
+    'Beneath the bridge, something the size of a cathedral turns over and sighs happily.',
+    'A waterproof chapter of a mystery novel drifts out from the River House and bobs past the buoy.',
+    'Bram the Bridge-Tender aggressively shushes a passing moth.',
+    'A single enormous bubble rises, pops, and smells faintly of primordial soup.',
+    'The stones of the bridge hum in B-flat as the sleeper inhales.'
+  ],
   'oracle-room': [
     'The barometer predicts scattered apologies after lunch.',
     'Thirty bells have formed a committee to represent the other seventy.',
-    'An old question drifts overhead, looking for its former owner.'
+    'An old question drifts overhead, looking for its former owner.',
+    'Astrolabe rings click into alignment, successfully predicting last Wednesday.',
+    'The barometer needle twitches toward SUDDEN TEA, then reconsiders.',
+    'A slip of paper in the jar sighs; its question is still out there somewhere, uninsured.'
   ],
   'river-house': [
     'A book drifts past. It is clearly fiction. It is enjoying itself.',
