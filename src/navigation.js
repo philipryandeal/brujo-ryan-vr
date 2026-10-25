@@ -6,30 +6,28 @@ const veilText = document.getElementById('scene-veil-text');
 const listeners = new Set();
 let changing = false;
 export const TRANSITION_READ_MS = 5000;
+const sceneButtonIds = new Set(Object.values(SCENES).flatMap(room => room.controls));
 
 export const currentScene = () => world.current();
 export function onSceneEnter(listener) { listeners.add(listener); }
 
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 function syncControls() {
-  const inHedges = currentScene() === 'whisper-hedges';
-  for (const id of ['goblin', 'faerie', 'gate', 'notices']) {
-    document.getElementById(id).hidden = inHedges;
+  const id = currentScene();
+  const room = SCENES[id];
+  for (const controlId of sceneButtonIds) {
+    const button = document.getElementById(controlId);
+    if (button) button.hidden = !room.controls.includes(controlId);
   }
-  for (const id of ['hedge', 'return-gate']) {
-    document.getElementById(id).hidden = !inHedges;
-  }
-  document.body.dataset.scene = currentScene();
-  document.querySelector('.subtitle').textContent = `${SCENES[currentScene()].title.toUpperCase()} · ${inHedges ? '002' : '001'}`;
+  document.body.dataset.scene = id;
+  document.querySelector('.subtitle').textContent = `${room.title.toUpperCase()} · ${room.number}`;
 }
 
 export async function goToScene(destination, {readMs = TRANSITION_READ_MS} = {}) {
   if (changing || !world.canEnter(destination)) return false;
   changing = true;
   const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  veilText.textContent = destination === 'whisper-hedges'
-    ? 'The Orange Thread unspools. Somewhere, a hedge files a complaint.'
-    : 'The thread winds home. Nettle is already blaming someone.';
+  veilText.textContent = SCENES[destination].arrivalText;
   veil.hidden = false;
   // Give the browser a frame to paint before starting the fade.
   await pause(reducedMotion ? 0 : 25);

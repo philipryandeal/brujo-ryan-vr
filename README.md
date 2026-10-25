@@ -3,6 +3,10 @@
 
 An independent, playful browser world. Scenes 001–002: **The First Threshold** and **The Whisper Hedges**.
 
+**Home:** [labyrinth.brujoryan.com](https://labyrinth.brujoryan.com) (custom domain; DNS verification may still be pending). Existing Railway address remains available.
+
+**Want to add a room?** Begin with [The Labyrinth Scene Standard](SCENE_STANDARD.md), then copy [`src/scenes/scene-template.js`](src/scenes/scene-template.js). Creators may submit a scene card without writing code. Ryan reviews every proposed passage; no contributor pushes directly to production.
+
 ## The first stones
 Dark-green stone and hedge walls, orange runes, the Orange Gate, a goblin named Nettle, a faerie called Mothlight, a distant glowing Tree, and the massive offstage shoggoth snoring so deeply the visitor's viewpoint trembles. Click the residents (or their accessible buttons) for original dialogue. Desktop users drag to look; compatible headsets can select Enter VR.
 
@@ -34,6 +38,8 @@ Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks J
 
 **Possible future passages, not built yet:** Doors That Remember, Wishing Well, Shoggoth Moat, Bridge of Roots, Living Tree. Future scenes should follow the `src/scenes/whisper-hedges.js` contract and register only real adjacent exits in `src/scene-manager.js`.
 
+The new `src/scenes/stage-runtime.js` handles click targets generically, using each stage's `{group, hotspots, actions, update}` contract. `src/scene-manager.js` provides backstage titles, passages, controls, and five-second transition text. The navigation engine no longer needs per-scene branches for existing controls or curtain text. The steward integrates each reviewed new scene; [the standard](SCENE_STANDARD.md) spells out responsibilities and safety checks.
+
 ## Deploy when ready
-**Railway only.** Create a separate Railway service from this repo with `npm start` and eventually use a dedicated subdomain of brujoryan.com. Do not replace the existing apex site or its DNS. Branches and PRs before merging; Ryan reviews.
+**Railway only.** The repository already has its own Railway production service and custom subdomain. Do not replace the existing apex site or its DNS. Branches and PRs before merging; Ryan reviews.
 

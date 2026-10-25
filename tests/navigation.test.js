@@ -32,11 +32,13 @@ test('entering hedges swaps the available physical exits and permits return',asy
   const seen=[];
   navigation.onSceneEnter(id=>seen.push(id));
   assert.equal(await navigation.goToScene('whisper-hedges',{readMs:0}),true);
+  assert.equal(elements.get('scene-veil-text').textContent,'The Orange Thread unspools. Somewhere, a hedge files a complaint.');
   assert.equal(elements.get('hedge').hidden,false);
   assert.equal(elements.get('gate').hidden,true);
   assert.equal(elements.get('return-gate').hidden,false);
   assert.match(subtitle.textContent,/WHISPER HEDGES/);
   assert.equal(await navigation.goToScene('threshold',{readMs:0}),true);
+  assert.equal(elements.get('scene-veil-text').textContent,'The thread winds home. Nettle is already blaming someone.');
   assert.deepEqual(seen,['whisper-hedges','threshold']);
   assert.equal(elements.get('scene-veil').hidden,true);
   assert.equal(elements.get('gate').hidden,false);
