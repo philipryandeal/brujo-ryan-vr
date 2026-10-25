@@ -7,7 +7,7 @@ import {createStageRuntime} from './scenes/stage-runtime.js';
 import {makeWhisperHedges} from './scenes/whisper-hedges.js';
 
 const stage=document.getElementById('stage');
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x303636);scene.fog=new THREE.FogExp2(0x303636,.017);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x476f95);scene.fog=new THREE.FogExp2(0x476f95,.017);
 const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,.1,160);camera.position.set(0,1.65,10);camera.lookAt(0,2,-10);
 const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
 renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.xr.enabled=true;

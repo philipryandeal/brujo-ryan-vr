@@ -24,7 +24,7 @@ The First Threshold now offers branching, authored conversations, a rotating gob
 **Controls:** Cross the Threshold, click the gate (or **Approach the Gate**), ask if you may pass, and choose **Cross the Orange Gate** within its conversation. Then interact with the Hedge and return through the glowing doorway. Use resident or noticeboard buttons, select replies, and close dialogues with Escape or Close. In 3D, drag to look and use WASD/arrow keys to walk. No direct-entry shortcut, map, or fast-travel menu.
 
 ## Canon and boundaries
-- **The official palette (Ryan's ruling, Oct 25, 2026)**: letters `#FFFFFF`, orange `#FF5E1F`, light green `#495A58`, dark green `#303636`, road `#7D6B57` — preserve it exactly. The yellowish faerie-light `#B9F3A4` stays by Ryan's word.
+- **The official palette (Ryan's ruling, Oct 25, 2026)**: letters `#FFFFFF`, orange `#FF5E1F`, light green `#495A58`, dark green `#303636`, road `#7D6B57`, sky `#476F95` — preserve it exactly. The yellowish faerie-light `#B9F3A4` stays by Ryan's word.
 - Existing brujoryan.com stays untouched. This is a separate repo and experience.
 - No accounts, tracking, database, or AI-provider keys. Resident dialogue is authored fiction.
 - The eventual Poto Mitan / Living Tree heart retains ten stations and twenty-two Temple-authored roads, without Da'at.

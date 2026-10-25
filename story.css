@@ -1,5 +1,5 @@
 /* Story layer: readable on desktops, phones, and browsers without WebGL. */
-#stage{background:radial-gradient(circle at 50% 38%,#495A58,#303636 72%)}
+#stage{background:radial-gradient(circle at 50% 38%,#476f95,#303636 72%)}
 .choices{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:16px 0;max-height:35vh;overflow:auto}
 .choices button{text-align:left;background:#495A58;color:#ffffff;font-weight:600;padding:10px 12px}
 .dialogue{top:50%;transform:translate(-50%,-50%);max-height:calc(100dvh - 110px);overflow:auto;z-index:4}
