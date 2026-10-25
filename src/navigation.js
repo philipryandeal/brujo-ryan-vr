@@ -50,4 +50,6 @@ const countingGateButton = document.getElementById('counting-gate');
 if (countingGateButton) countingGateButton.addEventListener('click', () => goToScene('counting-house'));
 const countingReturnButton = document.getElementById('counting-return');
 if (countingReturnButton) countingReturnButton.addEventListener('click', () => goToScene('whisper-hedges'));
+const riverReturnButton = document.getElementById('river-return');
+if (riverReturnButton) riverReturnButton.addEventListener('click', () => goToScene('counting-house'));
 syncControls();

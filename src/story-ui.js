@@ -62,7 +62,7 @@ export function openStory(id, newVisit = true) {
     run: () => {
       const reply = kingdom.answer(id, choice.id);
       showPanel(reply, [
-        ...(reply.destination ? [{label:'Cross the Orange Gate →',run:()=>goToScene(reply.destination)}] : []),
+        ...(reply.destination ? [{label:reply.destinationLabel || 'Cross the Orange Gate →',run:()=>goToScene(reply.destination)}] : []),
         { label: 'Ask another question', run: () => openStory(id, false) },
         { label: 'Leave them to it', run: closeStory }
       ]);
@@ -87,7 +87,8 @@ document.getElementById('goblin').addEventListener('click', () => openStory('gob
 document.getElementById('faerie').addEventListener('click', () => openStory('faerie'));
 document.getElementById('gate').addEventListener('click', () => openStory('gate'));
 document.getElementById('hedge').addEventListener('click', () => openStory('hedge'));
-for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door']) {
+for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door',
+  'quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket']) {
   const button = document.getElementById(residentId);
   if (button) button.addEventListener('click', () => openStory(residentId));
 }

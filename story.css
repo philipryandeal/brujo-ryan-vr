@@ -17,4 +17,5 @@ body.text-mode #stage:after{content:'The stones are quiet today. The goblins can
 .scene-veil p{position:relative;max-width:600px;padding:22px;background:#303636eb;border:1px solid #FF5E1F;text-align:center;font:italic clamp(19px,3vw,26px)/1.5 Georgia,serif}
 body.text-mode[data-scene="whisper-hedges"] #stage:after{content:'The hedges rustle, gossip, and complain about their working conditions.'}
 body.text-mode[data-scene="counting-house"] #stage:after{content:'The Counting House is open. Everything is being written down.'}
+body.text-mode[data-scene="river-house"] #stage:after{content:'A river runs through a library. Somebody is shushing it.'}
 @media(prefers-reduced-motion:reduce){.scene-veil{transition:none}}
