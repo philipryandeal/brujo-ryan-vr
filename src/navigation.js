@@ -57,3 +57,6 @@ const entry=document.getElementById('department-door');
 if(entry)entry.addEventListener('click',()=>goToScene('unnecessary-doors'));
 const exit=document.getElementById('office-return');
 if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
+
+const oracleReturnButton=document.getElementById('oracle-return');
+if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene('counting-house'));

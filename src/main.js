@@ -8,6 +8,7 @@ import {makeWhisperHedges} from './scenes/whisper-hedges.js';
 import {makeCountingHouse} from './scenes/counting-house.js';
 import {makeRiverHouse} from './scenes/river-house.js';
 import {makeUnnecessaryDoors} from './scenes/unnecessary-doors.js';
+import {makeOracleRoom} from './scenes/oracle-room.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x476f95);scene.fog=new THREE.FogExp2(0x476f95,.017);
@@ -70,6 +71,7 @@ const whisperHedges=makeWhisperHedges(THREE,V);scene.add(whisperHedges.group);
 const countingHouse=makeCountingHouse(THREE,V);scene.add(countingHouse.group);
 const riverHouse=makeRiverHouse(THREE,V);scene.add(riverHouse.group);
 const unnecessaryDoors=makeUnnecessaryDoors(THREE,V);scene.add(unnecessaryDoors.group);
+const oracleRoom=makeOracleRoom(THREE,V);scene.add(oracleRoom.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
 // metadata in scene-manager.js; the interaction and navigation engines stay put.
@@ -88,7 +90,8 @@ const stages=createStageRuntime({
   'whisper-hedges':whisperHedges,
   'counting-house':countingHouse,
   'river-house':riverHouse,
-  'unnecessary-doors':unnecessaryDoors
+  'unnecessary-doors':unnecessaryDoors,
+  'oracle-room':oracleRoom
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
 onSceneEnter(id=>{
