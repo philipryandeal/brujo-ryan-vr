@@ -12,7 +12,7 @@ export function onSceneEnter(listener) { listeners.add(listener); }
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 function syncControls() {
   const inHedges = currentScene() === 'whisper-hedges';
-  for (const id of ['goblin', 'faerie', 'gate', 'notices', 'enter-gate']) {
+  for (const id of ['goblin', 'faerie', 'gate', 'notices']) {
     document.getElementById(id).hidden = inHedges;
   }
   for (const id of ['hedge', 'return-gate']) {
@@ -45,6 +45,5 @@ export async function goToScene(destination) {
   return true;
 }
 
-document.getElementById('enter-gate').addEventListener('click', () => goToScene('whisper-hedges'));
 document.getElementById('return-gate').addEventListener('click', () => goToScene('threshold'));
 syncControls();

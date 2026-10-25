@@ -15,7 +15,7 @@ The goblins keep this kingdom, but they do not exist solely to help visitors. Ne
 
 The First Threshold now offers branching, authored conversations, a rotating goblin noticeboard, return-visit greetings within the open page, and idle whispers that suggest life beyond the visible path. All of this runs locally without accounts, analytics, an AI API, or server-side storage. A lightweight text-story mode remains usable if WebGL is unavailable. See [KINGDOM.md](KINGDOM.md) for the creative rules and how to add residents.
 
-**Controls:** Cross the Threshold, talk to the gate or choose **Enter the Orange Gate**, then interact with the Hedge and return through the gate. Use resident or noticeboard buttons, select replies, and close dialogues with Escape or Close. In 3D, drag to look and use WASD/arrow keys to walk. Only adjacent doorways are offered; there is no map or fast-travel menu.
+**Controls:** Cross the Threshold, click the gate (or **Approach the Gate**), ask if you may pass, and choose **Cross the Orange Gate** within its conversation. Then interact with the Hedge and return through the glowing doorway. Use resident or noticeboard buttons, select replies, and close dialogues with Escape or Close. In 3D, drag to look and use WASD/arrow keys to walk. No direct-entry shortcut, map, or fast-travel menu.
 
 ## Canon and boundaries
 - **Light green, dark green, construction orange**: preserve the Labyrinth palette.
