@@ -108,6 +108,13 @@ export function makeCountingHouse(THREE, palette) {
   hedgeRun(8, -2.8, 13);
   const oracleDoor = sideDoor(8, -5, ['THE ORACLE']);
 
+  // The little orange departmental door is a real passage to Scene 005.
+  const departmentDoor = new THREE.Group(); group.add(departmentDoor);
+  box(0,2.45,-15.28,2.6,4.9,.35,iron,departmentDoor);
+  box(-1.46,2.6,-15.05,.28,5.15,.55,orange,departmentDoor);
+  box(1.46,2.6,-15.05,.28,5.15,.55,orange,departmentDoor);
+  orb(.8,2.25,-14.95,.15,orange,departmentDoor);
+  add(new THREE.PlaneGeometry(3.8,1.4),new THREE.MeshBasicMaterial({map:signTexture(['UNNECESSARY','DOORS'],48),side:THREE.DoubleSide}),0,6.5,-15.05,departmentDoor);
   // The entrance wall behind the visitor: hedge, with the way home in it.
   box(-4.9, 2.5, 13, 6.2, 5, 1.2, hedge);
   box(4.9, 2.5, 13, 6.2, 5, 1.2, hedge);
@@ -223,7 +230,7 @@ export function makeCountingHouse(THREE, palette) {
   group.visible = false;
   return {
     group,
-    hotspots: { ledger: [ledger], nib: [nib], stamp: [stamp], seven: [seven], 'bear-door': [bearDoor], 'oracle-door': [oracleDoor], return: [returnDoor] },
+    hotspots: { ledger: [ledger], nib: [nib], stamp: [stamp], seven: [seven], 'bear-door': [bearDoor], 'oracle-door': [oracleDoor], 'department-door': [departmentDoor], return: [returnDoor] },
     actions: {
       ledger: { type: 'story', id: 'ledger' },
       nib: { type: 'story', id: 'nib' },
@@ -231,6 +238,7 @@ export function makeCountingHouse(THREE, palette) {
       seven: { type: 'story', id: 'seven' },
       'bear-door': { type: 'story', id: 'bear-door' },
       'oracle-door': { type: 'story', id: 'oracle-door' },
+      'department-door': { type: 'travel', destination: 'unnecessary-doors' },
       return: { type: 'travel', destination: 'whisper-hedges' }
     },
     update(t) {

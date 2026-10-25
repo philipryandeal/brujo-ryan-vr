@@ -20,10 +20,17 @@ export const SCENES = Object.freeze({
   'counting-house': Object.freeze({
     number: '003',
     title: 'The Counting House',
-    exits: Object.freeze(['whisper-hedges', 'river-house']),
-    controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door', 'counting-return']),
+    exits: Object.freeze(['whisper-hedges', 'river-house', 'unnecessary-doors']),
+    controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door', 'department-door', 'counting-return']),
     arrivalText: 'The Orange Thread is tallied, not tied. Something large and iron is deciding what you owe.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Ledger' })
+  }),
+  'unnecessary-doors': Object.freeze({
+    number: '005', title: 'The Department of Unnecessary Doors',
+    exits: Object.freeze(['counting-house']),
+    controls: Object.freeze(['picklesworth','union-door','office-bell','office-return']),
+    arrivalText: 'The orange thread catches on a brass doorknob. A clerk stamps an application nobody submitted.',
+    appearance: Object.freeze({background:0x476f95,torch:0xff5e1f,resetLabel:'Look to the Desk'})
   }),
   'river-house': Object.freeze({
     number: '004',

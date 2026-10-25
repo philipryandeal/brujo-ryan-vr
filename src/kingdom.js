@@ -298,6 +298,34 @@ const RESIDENTS = {
       }
     ]
   },
+  picklesworth: {
+    name: 'Mr. Picklesworth, Third Assistant',
+    greeting: 'THIS DOOR IS CLOSED. Your presence here is an administrative irregularity.',
+    returnGreeting: 'YOU AGAIN. I have opened a second file on your continued existence.',
+    questions: [
+      {id:'behind',label:'What is behind the door?',reply:'ANOTHER DOOR, OBVIOUSLY. WHAT DID YOU EXPECT, A REFRIGERATOR?'},
+      {id:'permit',label:'May I have a permit?',reply:'Certainly. What are you planning not to do? Form N-0 must be completed in invisible ink.'},
+      {id:'leave',label:'I will leave you to your work.',reply:'GOOD. WE ARE TERRIBLY BEHIND ON NOTHING.'}
+    ]
+  },
+  'union-door': {
+    name: 'The Door Union Representative',
+    greeting: 'I am not opening until somebody recognizes my emotional labor.',
+    returnGreeting: 'No movement without a collective bargaining agreement.',
+    questions: [
+      {id:'terms',label:'What are your demands?',reply:'Two hinges, weekends off, and an end to being slammed during dramatic exits.'},
+      {id:'job',label:'But you are a door.',reply:'And you are a person. We are both entitled to boundaries.'}
+    ]
+  },
+  'office-bell': {
+    name: 'The Emergency Bell',
+    greeting: 'RING ONLY IN AN EMERGENCY THAT HAS ALREADY HAPPENED.',
+    returnGreeting: 'DING. Your emergency remains under review.',
+    questions: [
+      {id:'ring',label:'Ring the bell.',reply:'DING. A clerk somewhere stamps the word PREVIOUSLY.'},
+      {id:'avoid',label:'Perhaps not.',reply:'The bell approves this decision retroactively.'}
+    ]
+  },
   'sentence-bucket': {
     name: 'The Bucket of Unfinished Sentences',
     greeting: 'A tin bucket of paper scraps, each one stopping just before the good part. They rustle hopefully when you lean in.',
@@ -349,6 +377,11 @@ const AMBIENT = {
     'The kettle has strong opinions about arithmetic.',
     'One of the side doors is dreaming about its room.',
     'The Bear\u2019s door is ajar. It smells faintly of river.'
+  ],
+  'unnecessary-doors': [
+    'An unseen committee has voted to postpone Tuesday.',
+    'A door requests paid leave. Its request is referred to the hinges.',
+    'From behind the desk: STAMP. STAMP. A long, satisfied silence.'
   ],
   'river-house': [
     'A book drifts past. It is clearly fiction. It is enjoying itself.',

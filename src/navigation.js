@@ -53,3 +53,7 @@ if (countingReturnButton) countingReturnButton.addEventListener('click', () => g
 const riverReturnButton = document.getElementById('river-return');
 if (riverReturnButton) riverReturnButton.addEventListener('click', () => goToScene('counting-house'));
 syncControls();
+const entry=document.getElementById('department-door');
+if(entry)entry.addEventListener('click',()=>goToScene('unnecessary-doors'));
+const exit=document.getElementById('office-return');
+if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
