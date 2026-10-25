@@ -22,9 +22,9 @@ export function makeOracleRoom(THREE, palette) {
     mesh.rotation.y=rotation;return mesh;
   }
   // Circular platform in the twilight, with an orange meridian.
-  cyl(0,-.32,-2,11,11,.65,stone);
-  cyl(0,.02,-2,10.7,10.7,.09,dark);
-  box(0,.1,-2,.14,.04,18,orange);
+  cyl(0,-.32,-2,12.8,12.8,.65,stone);
+  cyl(0,.02,-2,12.5,12.5,.09,dark);
+  box(0,.1,-2,.14,.04,22,orange);
   for(let i=0;i<10;i++){
     const a=i*Math.PI/5,x=Math.cos(a)*9,z=-2+Math.sin(a)*9;
     cyl(x,2.2,z,.48,.58,4.4,hedge);
@@ -65,14 +65,15 @@ export function makeOracleRoom(THREE, palette) {
     box(x,2.35+(i%3)*.13,z,.035,1.1,.035,brass,bells);
     add(new THREE.ConeGeometry(.15,.33,7),i%5===0?orange:brass,x,1.72+(i%3)*.13,z,bells);
   }
-  // Return arch stands on the south rim, immediately discoverable by button.
-  const returnDoor=new THREE.Group();returnDoor.position.set(0,0,7.6);group.add(returnDoor);
+  // Exit stands behind the arrival viewpoint, rather than blocking the Observatory.
+  // Visitors see Kore and the astrolabe first; turn around or use the return button.
+  const returnDoor=new THREE.Group();returnDoor.position.set(0,0,9.6);group.add(returnDoor);
   box(-1.8,2.5,0,.4,5,.7,hedge,returnDoor);
   box(1.8,2.5,0,.4,5,.7,hedge,returnDoor);
   box(0,5,0,4,.45,.7,orange,returnDoor);
   box(0,2.35,0,3.15,4.7,.2,dark,returnDoor);
   orb(1,2.2,-.16,.14,orange,returnDoor);
-  const exitSign=sign(['DOOR OF','COUNTED STEPS'],3.5,1.25,0,6.05,7.45,Math.PI);
+  const exitSign=sign(['DOOR OF','COUNTED STEPS'],3.5,1.25,0,6.05,9.45,0);
   group.visible=false;
   return {
     group,
