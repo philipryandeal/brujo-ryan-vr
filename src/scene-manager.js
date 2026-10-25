@@ -20,10 +20,18 @@ export const SCENES = Object.freeze({
   'counting-house': Object.freeze({
     number: '003',
     title: 'The Counting House',
-    exits: Object.freeze(['whisper-hedges']),
+    exits: Object.freeze(['whisper-hedges', 'river-house']),
     controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door', 'counting-return']),
     arrivalText: 'The Orange Thread is tallied, not tied. Something large and iron is deciding what you owe.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Ledger' })
+  }),
+  'river-house': Object.freeze({
+    number: '004',
+    title: 'The River House',
+    exits: Object.freeze(['counting-house']),
+    controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'river-return']),
+    arrivalText: 'The Orange Thread dips below the waterline, and somewhere ahead, a kettle clears its throat.',
+    appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Downriver' })
   })
 });
 

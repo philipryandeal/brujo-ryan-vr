@@ -1,7 +1,7 @@
 # BRUJO RYAN'S LABYRINTH
 **Spirits live here. Mind your manners.**
 
-An independent, playful browser world. Scenes 001–002: **The First Threshold** and **The Whisper Hedges**.
+An independent, playful browser world. Scenes 001–004: **The First Threshold**, **The Whisper Hedges**, **The Counting House**, and **The River House**.
 
 **Home:** [labyrinth.brujoryan.com](https://labyrinth.brujoryan.com) (custom domain; DNS verification may still be pending). Existing Railway address remains available.
 
@@ -10,7 +10,7 @@ An independent, playful browser world. Scenes 001–002: **The First Threshold**
 ## The first stones
 Dark-green stone and hedge walls, orange runes, the Orange Gate, a goblin named Nettle, a faerie called Mothlight, a distant glowing Tree, and the massive offstage shoggoth snoring so deeply the visitor's viewpoint trembles. Click the residents (or their accessible buttons) for original dialogue. Desktop users drag to look; compatible headsets can select Enter VR.
 
-**Two scenes are connected now.** Cross the Orange Gate to reach the opinionated Whisper Hedges, then return through the glowing doorway. A gentle orange-thread fade makes the passage feel magical. Future destinations remain intentionally unbuilt.
+**Four scenes are connected now.** Cross the Orange Gate to reach the opinionated Whisper Hedges; the iron gate there leads to Thomas's Counting House, where the Bear's Door now opens onto David Bear's River House. Every room has a real way back. A gentle orange-thread fade makes the passage feel magical. Future destinations remain intentionally unbuilt.
 
 Transition narration remains fully readable for five seconds between the fades, including when the visitor prefers reduced motion. This timing is shared by both passages and future scenes.
 
@@ -34,7 +34,7 @@ The First Threshold now offers branching, authored conversations, a rotating gob
 Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks JavaScript syntax and story-engine tests. Three.js 0.186.1 comes from a pinned CDN import map and requires internet for 3D. WebXR needs a compatible browser/headset and HTTPS, but no headset is needed for desktop story play. Headset performance and interactions still need real-device testing.
 
 ## The roads ahead
-**Open now:** First Threshold ↔ Whisper Hedges.
+**Open now:** First Threshold ↔ Whisper Hedges ↔ Counting House ↔ River House.
 
 **Possible future passages, not built yet:** Doors That Remember, Wishing Well, Shoggoth Moat, Bridge of Roots, Living Tree. Future scenes should follow the `src/scenes/whisper-hedges.js` contract and register only real adjacent exits in `src/scene-manager.js`.
 

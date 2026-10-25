@@ -7,6 +7,7 @@ function makeStages() {
   const goblin = { parent: null };
   const portal = { parent: null };
   const ledger = { parent: null };
+  const otter = { parent: null };
   return {
     threshold: {
       group: { visible: true },
@@ -24,6 +25,12 @@ function makeStages() {
       group: { visible: false },
       hotspots: { ledger: [ledger] },
       actions: { ledger: { type: 'story', id: 'ledger' } },
+      update() {}
+    },
+    'river-house': {
+      group: { visible: false },
+      hotspots: { otter: [otter] },
+      actions: { otter: { type: 'story', id: 'quillon' } },
       update() {}
     }
   };

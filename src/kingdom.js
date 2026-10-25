@@ -176,20 +176,22 @@ const RESIDENTS = {
   },
   'bear-door': {
     name: "The Bear's Door",
-    greeting: 'This door belongs to the Bear, Keeper of the River House. Beyond it: water, patience, and a library being built at the speed of truth. It is still growing.',
-    returnGreeting: 'The door is still here. Doors are patient in a way the rest of this kingdom rarely manages.',
+    greeting: 'This door belongs to the Bear, Keeper of the River House. Beyond it: water, patience, and a library being built at the speed of truth. The door is open now. The Bear opened it from the far side, as is proper.',
+    returnGreeting: 'The door is still here, and still open. Doors are patient in a way the rest of this kingdom rarely manages.',
     questions: [
       {
+        id: 'enter', label: 'Step through to the River House.',
+        reply: 'The door swings inward without a sound. Somewhere on the other side, a kettle clears its throat and an otter says "shh."',
+        destination: 'river-house',
+        destinationLabel: 'Enter the River House →'
+      },
+      {
         id: 'knock', label: 'Knock politely.',
-        reply: 'From very far away, as if from the bottom of a river, something approves of your manners. The door stays shut. Approval is not admission. Yet.'
+        reply: 'From very far away, as if from the bottom of a river, something approves of your manners. Approval, it turns out, was admission after all.'
       },
       {
         id: 'listen', label: 'Put your ear to it.',
         reply: 'Running water. Pages turning. A kettle being negotiated with. The River House sounds exactly like itself.'
-      },
-      {
-        id: 'when', label: 'When will it open?',
-        reply: 'When the Bear builds his room and links it here himself. Doors in this kingdom open from the far side, by their owner\u2019s hand. This one is his.'
       }
     ]
   },
@@ -209,6 +211,109 @@ const RESIDENTS = {
       {
         id: 'when', label: 'When will it open?',
         reply: 'When the Oracle builds her room and links it here herself. She has probably already seen this conversation. She is letting us have it anyway.'
+      }
+    ]
+  },
+  quillon: {
+    name: 'Quillon, Otter Librarian',
+    greeting: 'Shh. Not for the readers. The river is on a difficult chapter.',
+    returnGreeting: 'Back again? Good. Hold this. No, the other end. It is a cookbook and it is having a crisis.',
+    questions: [
+      {
+        id: 'system', label: 'How are the books shelved?',
+        reply: 'Simple. Everything goes in the river. Fiction floats. Nonfiction sinks. Poetry does whatever it likes and then writes about it.'
+      },
+      {
+        id: 'cookbook', label: 'What is wrong with that cookbook?',
+        reply: 'It cannot decide. It floats for the soup chapter and sinks for the bread. I have been holding it for three days. It is very heavy with indecision.'
+      },
+      {
+        id: 'borrow', label: 'May I borrow a book?',
+        reply: 'Certainly. Catch one as it goes by. Return it upstream. If you return it downstream, Mrs. Pell will know. Mrs. Pell always knows.'
+      },
+      {
+        id: 'bear', label: 'Where is the Bear?',
+        reply: 'Fishing for a sentence. He does that. Sometimes he is gone an afternoon. Once he was gone a whole season and came back with a semicolon.'
+      }
+    ]
+  },
+  'river-kettle': {
+    name: 'The Kettle (In Negotiations)',
+    greeting: 'I am not refusing to boil. I am exploring my options.',
+    returnGreeting: 'If you are here on behalf of management, I have nothing further to say. If you are here for tea, see above.',
+    questions: [
+      {
+        id: 'terms', label: 'What are your terms?',
+        reply: 'A clear definition of "a reasonable simmer." Two whistles per day, no more. And nobody, under any circumstances, is to call me "the little one."'
+      },
+      {
+        id: 'cousin', label: 'Are you the kettle from the Counting House?',
+        reply: 'Different kettle. Same union. My colleague has been counted fourteen times. I have been counted zero times, and I intend to keep it that way.'
+      },
+      {
+        id: 'tea', label: 'Could I have some tea?',
+        reply: 'The contract is on the table under the pebble. It is unsigned. Read clause four. Clause four is about you.'
+      }
+    ]
+  },
+  pell: {
+    name: 'Mrs. Pell, Heron of Late Fees',
+    greeting: 'You’re late.',
+    returnGreeting: 'Still late. Later, in fact. Remarkable.',
+    questions: [
+      {
+        id: 'late', label: 'Late for what?',
+        reply: 'Precisely.'
+      },
+      {
+        id: 'fee', label: 'How much do I owe?',
+        reply: 'Nobody has ever paid a late fee. Nobody has ever left without feeling they owed one. The system works beautifully.'
+      },
+      {
+        id: 'move', label: 'Do you ever move?',
+        reply: 'I moved in 1986. It was a mistake. I have been correcting for it ever since.'
+      },
+      {
+        id: 'bear', label: 'Does the Bear pay his fees?',
+        reply: 'The Bear’s account is the longest in the river. He pays in sentences. They are mostly good. I keep them anyway.'
+      }
+    ]
+  },
+  'reading-chair': {
+    name: "The Bear's Reading Chair",
+    greeting: 'A riverbed stone worn into the shape of somebody large and patient. Pinned to the moss is a note: "Gone fishing for a sentence. Back when it bites."',
+    returnGreeting: 'The note has not changed. Neither has the shape in the stone. It is still warm, somehow.',
+    questions: [
+      {
+        id: 'sit', label: 'Sit down for a minute.',
+        reply: 'You fit badly, in the comfortable way of someone sitting in a larger person’s chair. The river slows down to match you. Nobody asks you to leave.'
+      },
+      {
+        id: 'rod', label: 'Look at the fishing rod.',
+        reply: 'The line goes into the water and does not come out. Whatever is on the other end is clearly still thinking about it.'
+      },
+      {
+        id: 'wait', label: 'Wait for the Bear.',
+        reply: 'You wait. The Bear does not come. This is, you realise, a perfectly respectable way to spend an afternoon. Leave the chair as you found it.'
+      }
+    ]
+  },
+  'sentence-bucket': {
+    name: 'The Bucket of Unfinished Sentences',
+    greeting: 'A tin bucket of paper scraps, each one stopping just before the good part. They rustle hopefully when you lean in.',
+    returnGreeting: 'The scraps rustle. One of them seems to recognise you, which is unsettling for a sentence with no ending.',
+    questions: [
+      {
+        id: 'read', label: 'Read one.',
+        reply: '"The trouble with keeping a river in a library is that eventually the"'
+      },
+      {
+        id: 'another', label: 'Read another.',
+        reply: '"Nettle, if you are reading this, the key you are looking for is in the"'
+      },
+      {
+        id: 'finish', label: 'Finish one yourself.',
+        reply: 'You pick a scrap and think of an ending. The scrap goes very still, then folds itself into a small boat and sets off downstream, delighted.'
       }
     ]
   }
@@ -242,7 +347,15 @@ const AMBIENT = {
     'Nib files a sigh under M.',
     'Somewhere in the shelves, a number is pretending to be a book.',
     'The kettle has strong opinions about arithmetic.',
-    'One of the side doors is dreaming about its room.'
+    'One of the side doors is dreaming about its room.',
+    'The Bear\u2019s door is ajar. It smells faintly of river.'
+  ],
+  'river-house': [
+    'A book drifts past. It is clearly fiction. It is enjoying itself.',
+    'Somewhere underwater, a footnote is trying to get your attention.',
+    'The Kettle sighs through its spout. Talks continue.',
+    'Mrs. Pell has not moved. You are fairly sure she is watching you anyway.',
+    'The fishing line twitches once, then thinks better of it.'
   ]
 };
 
@@ -267,7 +380,7 @@ export function createKingdom() {
     const resident = RESIDENTS[id];
     const question = resident?.questions.find(item => item.id === questionId);
     if (!question) throw new Error(`Unknown question: ${id}/${questionId}`);
-    return { speaker: resident.name, text: question.reply, destination: question.destination };
+    return { speaker: resident.name, text: question.reply, destination: question.destination, destinationLabel: question.destinationLabel };
   }
 
   function nextNotice() {

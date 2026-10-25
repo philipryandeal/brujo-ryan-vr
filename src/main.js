@@ -6,6 +6,7 @@ import {SCENES} from './scene-manager.js';
 import {createStageRuntime} from './scenes/stage-runtime.js';
 import {makeWhisperHedges} from './scenes/whisper-hedges.js';
 import {makeCountingHouse} from './scenes/counting-house.js';
+import {makeRiverHouse} from './scenes/river-house.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x476f95);scene.fog=new THREE.FogExp2(0x476f95,.017);
@@ -66,6 +67,7 @@ for(const item of [...scene.children])if(!item.isLight)thresholdGroup.add(item);
 scene.add(thresholdGroup);
 const whisperHedges=makeWhisperHedges(THREE,V);scene.add(whisperHedges.group);
 const countingHouse=makeCountingHouse(THREE,V);scene.add(countingHouse.group);
+const riverHouse=makeRiverHouse(THREE,V);scene.add(riverHouse.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
 // metadata in scene-manager.js; the interaction and navigation engines stay put.
@@ -82,7 +84,8 @@ const stages=createStageRuntime({
     update(){}
   },
   'whisper-hedges':whisperHedges,
-  'counting-house':countingHouse
+  'counting-house':countingHouse,
+  'river-house':riverHouse
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
 onSceneEnter(id=>{

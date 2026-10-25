@@ -26,6 +26,9 @@
 | The Hedge | Acting receptionist | Refuses appointments while standing beneath a welcome sign |
 | The Iron Ledger | Chief Accountant | Counts everything so it is not lost; has stamped the kettle fourteen times |
 | Nib | Filing imp (entire staff) | Files everything under M; is hunting an escaped Seven with a net |
+| Quillon | Otter Librarian (River House) | Shelves books in the river: fiction floats, nonfiction sinks |
+| The Kettle | In negotiations (River House) | Will not boil without a signed contract; different kettle, same union |
+| Mrs. Pell | Heron of Late Fees (River House) | Has not moved in forty years; you are always late |
 
 Biscuit and Moldy currently exist through noticeboard lore; they do not yet have 3D figures. Their future arrival should feel like meeting someone who has always lived here.
 
