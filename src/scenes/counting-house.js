@@ -94,7 +94,7 @@ export function makeCountingHouse(THREE, palette) {
     orb(x + inward * .3, 2.5, z + .95, .11, orange, doorGroup);
     const sign = add(new THREE.PlaneGeometry(2.9, 1.45),
       new THREE.MeshBasicMaterial({ map: signTexture(signLines, 58), side: THREE.DoubleSide }),
-      x + inward * .75, 7.3, z, doorGroup);
+      x + inward * .75, 6.85, z, doorGroup);
     sign.rotation.y = inward > 0 ? Math.PI / 2 : -Math.PI / 2;
     return doorGroup;
   }
@@ -134,11 +134,11 @@ export function makeCountingHouse(THREE, palette) {
   }
 
   // The lectern, and on it the Iron Ledger itself: asleep, breathing slowly.
-  tube(-2.4, .8, -6, .16, 1.6, iron);
-  const lecternTop = box(-2.4, 1.7, -6, 2.9, .14, 2, dark);
+  tube(-4.6, .8, -6.5, .16, 1.6, iron);
+  const lecternTop = box(-4.6, 1.7, -6.5, 2.9, .14, 2, dark);
   lecternTop.rotation.x = -.32;
   const ledger = new THREE.Group();
-  ledger.position.set(-2.4, 2.05, -6);
+  ledger.position.set(-4.6, 2.05, -6.5);
   ledger.rotation.x = -.32;
   group.add(ledger);
   box(0, 0, 0, 2.3, .16, 1.6, iron, ledger);
@@ -191,7 +191,7 @@ export function makeCountingHouse(THREE, palette) {
 
   // Nib, the filing imp (entire staff), holding his net at the ready.
   const nib = new THREE.Group();
-  nib.position.set(4.7, 0, -3.9);
+  nib.position.set(-2, 0, -4);
   group.add(nib);
   cone(0, .42, 0, .3, .85, hedge, nib);
   orb(0, 1.05, 0, .27, pages, nib);
