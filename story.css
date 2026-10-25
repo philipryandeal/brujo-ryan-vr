@@ -1,9 +1,9 @@
 /* Story layer: readable on desktops, phones, and browsers without WebGL. */
 #stage{background:radial-gradient(circle at 50% 38%,#476f95,#303636 72%)}
 .choices{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:16px 0;max-height:35vh;overflow:auto}
-.choices button{text-align:left;background:#495A58;color:#ffffff;font-weight:600;padding:10px 12px}
+.choices button{text-align:left;background:#FF5E1F;color:#ffffff;font-weight:600;padding:10px 12px}
 .dialogue{top:50%;transform:translate(-50%,-50%);max-height:calc(100dvh - 110px);overflow:auto;z-index:4}
-.dialogue #dismiss{border-color:#495A58;background:transparent;font-weight:500}
+.dialogue #dismiss{border-color:#FF5E1F;background:#FF5E1F;font-weight:500}
 .dialogue #dismiss:hover{background:#303636}
 #hint{z-index:1;max-width:min(80vw,500px);color:#ffffff}
 body.text-mode #stage:after{content:'The stones are quiet today. The goblins can still be consulted below.';position:absolute;top:32%;left:50%;transform:translateX(-50%);width:min(80vw,460px);color:#ffffff;text-align:center;font:italic 20px/1.5 Georgia,serif;opacity:.8;pointer-events:none}
