@@ -39,11 +39,17 @@ export const SCENES = Object.freeze({
     arrivalText:'A hundred small bells agree to stop talking at once; the air smells of ozone, old almanacs, and a Tuesday that has not happened yet.',
     appearance:Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look to the Astrolabe'})
   }),
+  'shoggoth-moat': Object.freeze({
+    number:'007',title:'The Shoggoth Moat',exits:Object.freeze(['river-house']),
+    controls:Object.freeze(['bridge-tender','snoring-buoy','tax-box','moat-return']),
+    arrivalText:'The low stone arch gives way to open night; moonlight silvers the water, the bridge sways with a slow six-second breath, and someone very small whispers at you to mind your shoes.',
+    appearance:Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look Along the Bridge'})
+  }),
   'river-house': Object.freeze({
     number: '004',
     title: 'The River House',
-    exits: Object.freeze(['counting-house']),
-    controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'river-return']),
+    exits: Object.freeze(['counting-house','shoggoth-moat']),
+    controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'water-gate', 'river-return']),
     arrivalText: 'The Orange Thread dips below the waterline, and somewhere ahead, a kettle clears its throat.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Downriver' })
   })
