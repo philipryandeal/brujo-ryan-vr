@@ -13,16 +13,16 @@ const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-per
 renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.xr.enabled=true;
 renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;
 stage.appendChild(renderer.domElement);renderer.shadowMap.enabled=false;
-const V={dark:0x303636,stone:0x303636,hedge:0x495a58,light:0xb9f3a4,orange:0xff5e1f,deep:0x303636};
+const V={dark:0x303636,stone:0x303636,road:0x7d6b57,hedge:0x495a58,light:0xb9f3a4,orange:0xff5e1f,deep:0x303636};
 const mat=(color,extra={})=>new THREE.MeshStandardMaterial({color,...extra});
-const stone=mat(V.stone,{roughness:.95}),dark=mat(V.dark),hedge=mat(V.hedge,{emissive:V.hedge,emissiveIntensity:.38}),orange=mat(V.orange,{emissive:V.orange,emissiveIntensity:1.2}),light=mat(V.light,{emissive:0xb9f3a4,emissiveIntensity:.4}),black=mat(V.deep);
+const stone=mat(V.stone,{roughness:.95}),road=mat(V.road,{roughness:1}),dark=mat(V.dark),hedge=mat(V.hedge,{emissive:V.hedge,emissiveIntensity:.38}),orange=mat(V.orange,{emissive:V.orange,emissiveIntensity:1.2}),light=mat(V.light,{emissive:0xb9f3a4,emissiveIntensity:.4}),black=mat(V.deep);
 scene.add(new THREE.HemisphereLight(V.light,0x303636,2.3));const moon=new THREE.DirectionalLight(0xb9f3a4,2);moon.position.set(-9,19,4);scene.add(moon);
 const torch=new THREE.PointLight(V.orange,70,29);torch.position.set(0,5,-9);scene.add(torch);
 function box(x,y,z,w,h,d,m){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);scene.add(o);return o}
 function orb(x,y,z,r,m){const o=new THREE.Mesh(new THREE.SphereGeometry(r,12,10),m);o.position.set(x,y,z);scene.add(o);return o}
 function cone(x,y,z,r,h,m){const o=new THREE.Mesh(new THREE.ConeGeometry(r,h,7),m);o.position.set(x,y,z);scene.add(o);return o}
 function tube(x,y,z,r,h,m){const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,8),m);o.position.set(x,y,z);scene.add(o);return o}
-box(0,-.22,-10,36,.45,55,stone);
+box(0,-.22,-10,36,.45,55,road);
 for(let i=0;i<17;i++){const z=9-i*2.4;box(-7,2,z,1,4.3,2.1,hedge);box(7,2,z,1,4.3,2.1,hedge);if(i%3===0){cone(-7,5,z,1.3,2.7,light);cone(7,5,z,1.3,2.7,light)}}
 for(let i=0;i<12;i++){const z=7-i*2.4;box(-2.5,0.02,z,.18,.04,.9,orange);box(2.5,.02,z,.18,.04,.9,orange)}
 // The first gate: closed until future world scenes exist.
