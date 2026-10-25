@@ -6,6 +6,7 @@ import { createStageRuntime } from '../src/scenes/stage-runtime.js';
 function makeStages() {
   const goblin = { parent: null };
   const portal = { parent: null };
+  const ledger = { parent: null };
   return {
     threshold: {
       group: { visible: true },
@@ -17,6 +18,12 @@ function makeStages() {
       group: { visible: false },
       hotspots: { portal: [portal] },
       actions: { portal: { type: 'travel', destination: 'threshold' } },
+      update() {}
+    },
+    'counting-house': {
+      group: { visible: false },
+      hotspots: { ledger: [ledger] },
+      actions: { ledger: { type: 'story', id: 'ledger' } },
       update() {}
     }
   };

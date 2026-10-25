@@ -24,6 +24,8 @@
 | Biscuit | Treasurer of Lost Things | Charges fees for objects nobody lost |
 | Moldy | Groundskeeper | Is outraged that plants insist on growing |
 | The Hedge | Acting receptionist | Refuses appointments while standing beneath a welcome sign |
+| The Iron Ledger | Chief Accountant | Counts everything so it is not lost; has stamped the kettle fourteen times |
+| Nib | Filing imp (entire staff) | Files everything under M; is hunting an escaped Seven with a net |
 
 Biscuit and Moldy currently exist through noticeboard lore; they do not yet have 3D figures. Their future arrival should feel like meeting someone who has always lived here.
 
