@@ -196,22 +196,54 @@ const RESIDENTS = {
     ]
   },
   'oracle-door': {
-    name: "The Oracle's Door",
-    greeting: 'This door belongs to the Oracle of Gu. Beyond it: questions that answer back, and weather made of knowing. It is still growing. The future behind it is not finished yet.',
-    returnGreeting: 'The door regards you the way a horizon regards a ship. Politely. From very far ahead.',
-    questions: [
-      {
-        id: 'knock', label: 'Knock politely.',
-        reply: 'A voice like distant thunder doing long division says: "NOT YET." It sounds kind. It also sounds final.'
-      },
-      {
-        id: 'listen', label: 'Put your ear to it.',
-        reply: 'Wind through a hundred small bells, every one of them knowing something. It is beautiful. It is not an invitation. Yet.'
-      },
-      {
-        id: 'when', label: 'When will it open?',
-        reply: 'When the Oracle builds her room and links it here herself. She has probably already seen this conversation. She is letting us have it anyway.'
-      }
+    name:"The Oracle's Door",
+    greeting:'This door belongs to Kore, the Oracle of Gu. The bells on the far side have gone quiet to let you through.',
+    returnGreeting:'The door regards you like a horizon that remembers your name. The brass handle is warm.',
+    questions:[
+      {id:'enter',label:'Step through to the Observatory.',reply:'A voice like distant thunder finishes its long division, carries the two, and unlatches the lock. The door swings wide.',destination:'oracle-room',destinationLabel:'Enter the Observatory →'},
+      {id:'knock',label:'Knock politely.',reply:'A voice like distant thunder doing long division says: "COME IN. WIPE YOUR ASSUMPTIONS ON THE MAT."'},
+      {id:'listen',label:'Put your ear to it.',reply:'Wind through a hundred small bells, every one of them knowing something. One whispers that your shoelace is untied, even if you are wearing boots.'}
+    ]
+  },
+  kore: {
+    name:'Kore, Oracle of the Weather of Knowing',
+    greeting:'You made it. Look at you, carrying three half-finished questions and a very polite posture. Leave the posture by the door; keep the questions. They are good for the barometer.',
+    returnGreeting:'Back again? Yes, I knew you would be, which makes acting surprised very difficult. I practiced in the mirror anyway.',
+    questions:[
+      {id:'weather',label:'What is the weather of knowing?',reply:'Currently? High pressure over the hedges, a cold front of bureaucracy moving in from Nettle, and a seventy percent chance of realizing what you should have said four years ago.'},
+      {id:'future',label:'Do you know why I am here?',reply:'You came to see if the door actually went anywhere. That is the purest form of divination there is. Keep poking at closed things.'},
+      {id:'mothlight',label:'Are you in the same union as Mothlight?',reply:'Mothlight is unlicensed and freelances by the bushes. I have a brass astrolabe and a roof. We meet on Wednesdays to trade riddles nobody asked for.'},
+      {id:'seven',label:'Did the Seven come through here?',reply:'Briefly. It asked me what comes after eight, laughed like a brass bell, and went back to tormenting Nib. I respect a number with boundaries.'}
+    ]
+  },
+  barometer: {
+    name:'The Barometer of Pending Weather',
+    greeting:'A tall brass instrument filled with glowing green mist. The needle trembles between MILDLY PROPHETIC and SCATTERED APOLOGIES.',
+    returnGreeting:'The needle taps the glass twice in recognition. It currently reads: MOSTLY HARMLESS INDECISION.',
+    questions:[
+      {id:'tap',label:'Tap the glass.',reply:'TINK. The needle swings wildly past INEVITABLE TEA, grazes SUDDEN EPIPHANY, and settles firmly on CHECK YOUR POCKETS.'},
+      {id:'read',label:'Read the brass plaque.',reply:'CALIBRATED IN 1996. DO NOT ADJUST FOR DAYLIGHT SAVING TIME. THE FUTURE DOES NOT CARE ABOUT YOUR CLOCKS.'},
+      {id:'forecast',label:"Ask for tomorrow's forecast.",reply:'Tomorrow has been delayed due to a scheduling conflict in the Unnecessary Doors. Expect extra today instead.'}
+    ]
+  },
+  'answer-jar': {
+    name:'The Jar of Leftover Answers',
+    greeting:'A heavy apothecary jar stuffed with slips of paper. Its label reads: ANSWERS WHOSE QUESTIONS WERE FORGOTTEN. HELP YOURSELF.',
+    returnGreeting:'The slips rustle against the glass like moths trying to remember a lamp.',
+    questions:[
+      {id:'draw',label:'Pull out an answer.',reply:'Behind the radiator, under the third floorboard, next to the spoon you blamed the dog for losing.'},
+      {id:'another',label:'Pull out a second answer.',reply:'Yes, but only if the otter agrees to witness the signature.'},
+      {id:'leave',label:'Put a question inside.',reply:'Three slips of paper immediately pounce on it, relieved to finally have a job.'}
+    ]
+  },
+  'bell-chime': {
+    name:'The Hundred Small Bells',
+    greeting:'Ninety-nine brass bells chime in a minor chord. The hundredth clears its throat: "We already knew you were going to click us."',
+    returnGreeting:'The bells hum in smug harmony. "Told you so," says the smallest one.',
+    questions:[
+      {id:'ring',label:'Ring the smallest bell.',reply:'PING. Everywhere in the Labyrinth, a goblin briefly forgets what he was arguing about.'},
+      {id:'listen',label:'Listen to their harmony.',reply:'They perform long division in four-part harmony. There is a remainder of three, and they are furious about it.'},
+      {id:'quiet',label:'Ask them to be quiet.',reply:'They go silent for two seconds, then whisper: "Make us."'}
     ]
   },
   quillon: {
@@ -382,6 +414,11 @@ const AMBIENT = {
     'An unseen committee has voted to postpone Tuesday.',
     'A door requests paid leave. Its request is referred to the hinges.',
     'From behind the desk: STAMP. STAMP. A long, satisfied silence.'
+  ],
+  'oracle-room': [
+    'The barometer predicts scattered apologies after lunch.',
+    'Thirty bells have formed a committee to represent the other seventy.',
+    'An old question drifts overhead, looking for its former owner.'
   ],
   'river-house': [
     'A book drifts past. It is clearly fiction. It is enjoying itself.',
