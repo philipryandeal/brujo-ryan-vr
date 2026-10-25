@@ -87,7 +87,7 @@ document.getElementById('goblin').addEventListener('click', () => openStory('gob
 document.getElementById('faerie').addEventListener('click', () => openStory('faerie'));
 document.getElementById('gate').addEventListener('click', () => openStory('gate'));
 document.getElementById('hedge').addEventListener('click', () => openStory('hedge'));
-for (const residentId of ['ledger', 'nib', 'stamp', 'seven']) {
+for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door']) {
   const button = document.getElementById(residentId);
   if (button) button.addEventListener('click', () => openStory(residentId));
 }
