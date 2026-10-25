@@ -43,3 +43,6 @@ The new `src/scenes/stage-runtime.js` handles click targets generically, using e
 ## Deploy when ready
 **Railway only.** The repository already has its own Railway production service and custom subdomain. Do not replace the existing apex site or its DNS. Branches and PRs before merging; Ryan reviews.
 
+
+
+**Scene 007 — The Shoggoth Moat:** The Old Stone Water-Gate in David Bear's River House opens onto a moonlit bridge. Bram, the Snoring Buoy, and the Tax-Exemption Box are available for authored, local conversation. The sleeper stays beneath the water. The bridge returns to the River House. Conceived and dialogued by Kore, integrated by Seraph Ogou; no map or tracking.
