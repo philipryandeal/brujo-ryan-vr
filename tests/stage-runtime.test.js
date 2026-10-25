@@ -8,6 +8,9 @@ function makeStages() {
   const portal = { parent: null };
   const ledger = { parent: null };
   const otter = { parent: null };
+  const clerk = { parent: null };
+  const kore = { parent: null };
+  const bridgeTender = { parent: null };
   return {
     threshold: {
       group: { visible: true },
@@ -32,9 +35,31 @@ function makeStages() {
       hotspots: { otter: [otter] },
       actions: { otter: { type: 'story', id: 'quillon' } },
       update() {}
+    },
+    'unnecessary-doors': {
+      group: { visible: false },
+      hotspots: { clerk: [clerk] },
+      actions: { clerk: { type: 'story', id: 'picklesworth' } },
+      update() {}
+    },
+    'oracle-room': {
+      group: { visible: false },
+      hotspots: { kore: [kore] },
+      actions: { kore: { type: 'story', id: 'kore' } },
+      update() {}
+    },
+    'shoggoth-moat': {
+      group: { visible: false },
+      hotspots: { bridgeTender: [bridgeTender] },
+      actions: { bridgeTender: { type: 'travel', destination: 'river-house' } },
+      update() {}
     }
   };
 }
+
+test('the test stages cover every registered scene', () => {
+  assert.deepEqual(Object.keys(makeStages()).sort(), Object.keys(SCENES).sort());
+});
 
 test('a stage brings only its own geometry forward and resolves nested clicks', () => {
   const stages = makeStages();
