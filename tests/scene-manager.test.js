@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createSceneManager, SCENES} from '../src/scene-manager.js';
+import { readFileSync } from 'node:fs';
+import {createSceneManager, SCENES, validateSceneRegistry} from '../src/scene-manager.js';
 
 test('only discovered adjacent thresholds can be crossed', () => {
   const world=createSceneManager();
@@ -17,4 +18,34 @@ test('only discovered adjacent thresholds can be crossed', () => {
 
 test('scene registry contains no map or unbuilt destinations', () => {
   assert.deepEqual(Object.keys(SCENES).sort(),['threshold','whisper-hedges']);
+  assert.equal(validateSceneRegistry(), true);
+  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002']);
+});
+
+test('new contributions cannot strand visitors or create duplicate scene numbers', () => {
+  const example = (number, exits) => ({
+    number, title:'Example', exits, controls:['gate'],
+    arrivalText:'A peculiar curtain falls.',
+    appearance:{background:0x123b29,torch:0xff6900,resetLabel:'Look Ahead'}
+  });
+  assert.throws(() => validateSceneRegistry({
+    threshold:example('001',['new-place']),
+    'new-place':example('002',[])
+  }), /No return passage/);
+  assert.throws(() => validateSceneRegistry({
+    threshold:example('001',['new-place']),
+    'new-place':example('001',['threshold'])
+  }), /duplicate scene number/);
+  assert.throws(() => validateSceneRegistry({
+    threshold:example('001',['unbuilt'])
+  }), /Unbuilt destination/);
+});
+
+test('every registered scene control has a real accessible HTML button', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  for (const room of Object.values(SCENES)) {
+    for (const id of room.controls) {
+      assert.match(html, new RegExp(`<button\\s+id="${id}"(?:\\s|>)`), `Missing button for ${id}`);
+    }
+  }
 });

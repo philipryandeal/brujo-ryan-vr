@@ -1,5 +1,6 @@
 import { createKingdom } from './kingdom.js';
 import { currentScene, onSceneEnter, goToScene } from './navigation.js';
+import { SCENES } from './scene-manager.js';
 
 const kingdom = createKingdom();
 const dialogue = document.getElementById('dialogue');
@@ -32,7 +33,10 @@ export function registerWorldStart(callback) {
 function closeStory() {
   dialogue.hidden = true;
   if (lastTrigger && lastTrigger.getClientRects().length) lastTrigger.focus();
-  else document.getElementById(currentScene() === 'whisper-hedges' ? 'hedge' : 'gate').focus();
+  else {
+    const control = SCENES[currentScene()].controls.find(id => !document.getElementById(id)?.hidden);
+    if (control) document.getElementById(control).focus();
+  }
 }
 
 function showPanel(entry, actions = []) {

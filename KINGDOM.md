@@ -29,10 +29,12 @@ Biscuit and Moldy currently exist through noticeboard lore; they do not yet have
 
 ## How to extend the foundation
 
+Read [SCENE_STANDARD.md](SCENE_STANDARD.md) first. It is the Guild's common creative and technical agreement, including an example scene card for non-coders and the `src/scenes/scene-template.js` module.
+
 1. Add authored resident greetings and questions in `src/kingdom.js`. Keep replies short enough to read in a scene; make the joke character-specific.
-2. Add new 3D scenes as separate modules like `src/scenes/whisper-hedges.js`, exporting `{ group, hotspots, update }`. Add visible residents and accessible buttons. Do not make clicking a tiny mesh the only interaction.
+2. Add new 3D scenes as separate modules like `src/scenes/whisper-hedges.js`, exporting `{ group, hotspots, actions, update }`. Define each clickable object's action inside its scene. Add visible residents and accessible buttons. Do not make clicking a tiny mesh the only interaction.
 3. Add incidental world notices and ambient lines in `src/kingdom.js`; avoid notices that imply a real visitor is being monitored.
-4. Register actual adjacent exits in `src/scene-manager.js` and connect them through `src/navigation.js`. The transition is a reusable green-mist/orange-thread curtain. Never provide a map or routes to unbuilt rooms.
+4. The integration steward registers real adjacent exits and presentation metadata in `src/scene-manager.js`, then includes the stage in `createStageRuntime` in `src/main.js`. The generic navigation and hotspot engines handle scene switching and interactions. The transition is a reusable green-mist/orange-thread curtain. Never provide a map or routes to unbuilt rooms.
 5. Run `npm run check`, verify desktop 3D and text-only mode, and review changes via pull request before merging into `main`.
 
 ## Technical and privacy boundaries

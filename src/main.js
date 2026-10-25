@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import {VRButton} from 'three/addons/webxr/VRButton.js';
 import {openStory, openNotices, registerWorldStart} from './story-ui.js';
 import {currentScene, onSceneEnter, goToScene} from './navigation.js';
+import {SCENES} from './scene-manager.js';
+import {createStageRuntime} from './scenes/stage-runtime.js';
 import {makeWhisperHedges} from './scenes/whisper-hedges.js';
 
 const stage=document.getElementById('stage');
@@ -62,22 +64,48 @@ const thresholdGroup=new THREE.Group();
 for(const item of [...scene.children])if(!item.isLight)thresholdGroup.add(item);
 scene.add(thresholdGroup);
 const whisperHedges=makeWhisperHedges(THREE,V);scene.add(whisperHedges.group);
-const thresholdResidents=[goblin,faerie,gate,noticeBoard];
-const hedgeResidents=[...whisperHedges.hotspots.hedge,...whisperHedges.hotspots.return];
+// Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
+// Once a new scene is reviewed, the steward registers its stage here and its
+// metadata in scene-manager.js; the interaction and navigation engines stay put.
+const stages=createStageRuntime({
+  threshold: {
+    group:thresholdGroup,
+    hotspots:{goblin:[goblin],faerie:[faerie],gate:[gate],notices:[noticeBoard]},
+    actions:{
+      goblin:{type:'story',id:'goblin'},
+      faerie:{type:'story',id:'faerie'},
+      gate:{type:'story',id:'gate'},
+      notices:{type:'notices'}
+    },
+    update(){}
+  },
+  'whisper-hedges':whisperHedges
+},SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
 onSceneEnter(id=>{
-  thresholdGroup.visible=id==='threshold';
-  whisperHedges.group.visible=id==='whisper-hedges';
-  scene.background=new THREE.Color(id==='threshold'?0x0d281c:0x143421);
-  torch.color.setHex(id==='threshold'?V.orange:V.light);
+  stages.show(id);
+  scene.background.setHex(SCENES[id].appearance.background);
+  torch.color.setHex(SCENES[id].appearance.torch);
   camera.position.set(0,1.65,10);yaw=0;pitch=0;camera.rotation.set(0,0,0);camera.lookAt(0,2,-10);
-  document.getElementById('reset').textContent=id==='threshold'?'Look to Gate':'Look Ahead';
+  document.getElementById('reset').textContent=SCENES[id].appearance.resetLabel;
 });
-function say(which){openStory(which)}
 let yaw=0,pitch=0,dragging=false,lastX=0,lastY=0,moved=false;const canvas=renderer.domElement;
 canvas.addEventListener('pointerdown',e=>{dragging=true;moved=false;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!dragging||renderer.xr.isPresenting)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;yaw-=dx*.004;pitch=Math.max(-.95,Math.min(.95,pitch-dy*.004));camera.rotation.set(pitch,yaw,0,'YXZ')});
-canvas.addEventListener('pointerup',e=>{dragging=false;if(moved||renderer.xr.isPresenting)return;mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(currentScene()==='threshold'?thresholdResidents:hedgeResidents,true);if(hits.length){const item=hits[0].object;if(currentScene()==='whisper-hedges'){if(whisperHedges.hotspots.return.includes(item))goToScene('threshold');else say('hedge')}else if(goblin.children.includes(item))say('goblin');else if(faerie.children.includes(item))say('faerie');else if(item===noticeBoard)openNotices();else say('gate')}});
+canvas.addEventListener('pointerup',e=>{
+  dragging=false;
+  if(moved||renderer.xr.isPresenting)return;
+  mouse.x=e.clientX/innerWidth*2-1;
+  mouse.y=-(e.clientY/innerHeight)*2+1;
+  raycaster.setFromCamera(mouse,camera);
+  const id=currentScene();
+  const hits=raycaster.intersectObjects(stages.roots(id),true);
+  if(!hits.length)return;
+  const action=stages.actionFor(id,hits[0].object);
+  if(action?.type==='story')openStory(action.id);
+  else if(action?.type==='notices')openNotices();
+  else if(action?.type==='travel')goToScene(action.destination);
+});
 document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.position.set(0,1.65,10);camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
 const keys=new Set();
 addEventListener('keydown',e=>{
@@ -120,7 +148,7 @@ for(const s of sprites)s.mesh.position.y=s.y+Math.sin(elapsed*1.2+s.phase)*.18;
 if(started&&currentScene()==='threshold'&&elapsed-lastSnore>17){lastSnore=elapsed;snore()}
 if(shaking>0){shaking-=dt;if(!renderer.xr.isPresenting){camera.position.y=1.65+Math.sin(elapsed*28)*.035*Math.max(0,shaking)/2.7}}else camera.position.y=1.65;
 torch.intensity=60+Math.sin(elapsed*2)*9;
-whisperHedges.update(elapsed);
+stages.update(currentScene(),elapsed);
 renderer.render(scene,camera)});
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
 

@@ -1,5 +1,4 @@
-// Scene 002 contract: return {group, hotspots, update}. Future scenes can
-// follow this same small shape without changing the narrative engine.
+// Scene 002 contract: {group, hotspots, actions, update}.
 export function makeWhisperHedges(THREE, palette) {
   const group = new THREE.Group();
   const material = (color, opts = {}) => new THREE.MeshStandardMaterial({color, ...opts});
@@ -68,6 +67,10 @@ export function makeWhisperHedges(THREE, palette) {
   return {
     group,
     hotspots: {hedge:[...hedgeFace.children,sign],return:[returnDoor,returnHandle]},
+    actions: {
+      hedge: {type:'story',id:'hedge'},
+      return: {type:'travel',destination:'threshold'}
+    },
     update(t) {
       hedgeFace.rotation.y=Math.sin(t*.9)*.06;
       mouth.scale.y=.65+Math.abs(Math.sin(t*1.4))*.7;
