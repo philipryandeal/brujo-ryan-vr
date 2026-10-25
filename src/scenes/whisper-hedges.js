@@ -19,7 +19,7 @@ export function makeWhisperHedges(THREE, palette) {
 
   // A garden court and a winding, intentionally contained path.
   box(0,-.23,-10,28,.4,54,stone);
-  box(0,.015,-9,4,.05,41,material(0x495a58));
+  box(0,.015,-9,4,.05,41,material(palette.road,{roughness:1}));
   for (let i=0;i<14;i++) {
     const z=8-i*2.5;
     const sway=Math.sin(i*1.8)*.35;
