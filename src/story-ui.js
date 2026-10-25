@@ -88,7 +88,8 @@ document.getElementById('faerie').addEventListener('click', () => openStory('fae
 document.getElementById('gate').addEventListener('click', () => openStory('gate'));
 document.getElementById('hedge').addEventListener('click', () => openStory('hedge'));
 for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door',
-  'quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket']) {
+  'quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket',
+  'picklesworth', 'union-door', 'office-bell']) {
   const button = document.getElementById(residentId);
   if (button) button.addEventListener('click', () => openStory(residentId));
 }
