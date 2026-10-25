@@ -98,7 +98,7 @@ onSceneEnter(id=>{
   stages.show(id);
   scene.background.setHex(SCENES[id].appearance.background);
   torch.color.setHex(SCENES[id].appearance.torch);
-  camera.position.set(0,1.65,10);yaw=0;pitch=0;camera.rotation.set(0,0,0);camera.lookAt(0,2,-10);
+  camera.position.set(0,1.65,id==='oracle-room'?6.5:10);yaw=0;pitch=0;camera.rotation.set(0,0,0);camera.lookAt(0,2,-10);
   document.getElementById('reset').textContent=SCENES[id].appearance.resetLabel;
 });
 let yaw=0,pitch=0,dragging=false,lastX=0,lastY=0,moved=false;const canvas=renderer.domElement;
@@ -118,7 +118,7 @@ canvas.addEventListener('pointerup',e=>{
   else if(action?.type==='notices')openNotices();
   else if(action?.type==='travel')goToScene(action.destination);
 });
-document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.position.set(0,1.65,10);camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
+document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.position.set(0,1.65,currentScene()==='oracle-room'?6.5:10);camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
 const keys=new Set();
 addEventListener('keydown',e=>{
  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
