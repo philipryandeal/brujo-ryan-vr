@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import {VRButton} from 'three/addons/webxr/VRButton.js';
 import {openStory, openNotices, registerWorldStart} from './story-ui.js';
+import {currentScene, onSceneEnter, goToScene} from './navigation.js';
+import {makeWhisperHedges} from './scenes/whisper-hedges.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x0d281c);scene.fog=new THREE.FogExp2(0x0d281c,.017);
@@ -55,12 +57,27 @@ tube(0,1,-23,.36,3.5,stone);cone(0,5.5,-23,2,5,light);orb(0,6,-23,.48,orange);
 // Tiny floating sprites
 const sprites=[];for(let i=0;i<48;i++){let x=Math.sin(i*31.13)*7,z=-2-(i*13%22),y=1.2+i%5;
 const s=orb(x,y,z,.038+(i%3)*.02,i%3===0?orange:light);sprites.push({mesh:s,y,phase:i*.8})}
-const residents=[goblin,faerie,gate,noticeBoard];const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
+// Scene 001 becomes one stage set; scene 002 follows a reusable scene contract.
+const thresholdGroup=new THREE.Group();
+for(const item of [...scene.children])if(!item.isLight)thresholdGroup.add(item);
+scene.add(thresholdGroup);
+const whisperHedges=makeWhisperHedges(THREE,V);scene.add(whisperHedges.group);
+const thresholdResidents=[goblin,faerie,gate,noticeBoard];
+const hedgeResidents=[...whisperHedges.hotspots.hedge,...whisperHedges.hotspots.return];
+const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
+onSceneEnter(id=>{
+  thresholdGroup.visible=id==='threshold';
+  whisperHedges.group.visible=id==='whisper-hedges';
+  scene.background=new THREE.Color(id==='threshold'?0x0d281c:0x143421);
+  torch.color.setHex(id==='threshold'?V.orange:V.light);
+  camera.position.set(0,1.65,10);yaw=0;pitch=0;camera.rotation.set(0,0,0);camera.lookAt(0,2,-10);
+  document.getElementById('reset').textContent=id==='threshold'?'Look to Gate':'Look Ahead';
+});
 function say(which){openStory(which)}
 let yaw=0,pitch=0,dragging=false,lastX=0,lastY=0,moved=false;const canvas=renderer.domElement;
 canvas.addEventListener('pointerdown',e=>{dragging=true;moved=false;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!dragging||renderer.xr.isPresenting)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;yaw-=dx*.004;pitch=Math.max(-.95,Math.min(.95,pitch-dy*.004));camera.rotation.set(pitch,yaw,0,'YXZ')});
-canvas.addEventListener('pointerup',e=>{dragging=false;if(moved||renderer.xr.isPresenting)return;mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(residents,true);if(hits.length){const item=hits[0].object;if(goblin.children.includes(item))say('goblin');else if(faerie.children.includes(item))say('faerie');else if(item===noticeBoard)openNotices();else say('gate')}});
+canvas.addEventListener('pointerup',e=>{dragging=false;if(moved||renderer.xr.isPresenting)return;mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(currentScene()==='threshold'?thresholdResidents:hedgeResidents,true);if(hits.length){const item=hits[0].object;if(currentScene()==='whisper-hedges'){if(whisperHedges.hotspots.return.includes(item))goToScene('threshold');else say('hedge')}else if(goblin.children.includes(item))say('goblin');else if(faerie.children.includes(item))say('faerie');else if(item===noticeBoard)openNotices();else say('gate')}});
 document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;camera.position.set(0,1.65,10);camera.rotation.set(0,0,0);camera.lookAt(0,2,-10)};
 const keys=new Set();
 addEventListener('keydown',e=>{
@@ -100,9 +117,10 @@ const clock=new THREE.Clock();let elapsed=0,lastSnore=0,shaking=0;
 renderer.setAnimationLoop(()=>{const dt=Math.min(clock.getDelta(),.1);elapsed+=dt;walk(dt);
 faerie.position.y=2.5+Math.sin(elapsed*1.7)*.22;goblin.rotation.y=Math.sin(elapsed*.65)*.12;
 for(const s of sprites)s.mesh.position.y=s.y+Math.sin(elapsed*1.2+s.phase)*.18;
-if(started&&elapsed-lastSnore>17){lastSnore=elapsed;snore()}
+if(started&&currentScene()==='threshold'&&elapsed-lastSnore>17){lastSnore=elapsed;snore()}
 if(shaking>0){shaking-=dt;if(!renderer.xr.isPresenting){camera.position.y=1.65+Math.sin(elapsed*28)*.035*Math.max(0,shaking)/2.7}}else camera.position.y=1.65;
 torch.intensity=60+Math.sin(elapsed*2)*9;
+whisperHedges.update(elapsed);
 renderer.render(scene,camera)});
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
 

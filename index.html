@@ -27,6 +27,10 @@
     </div>
   </section>
 
+  <div id="scene-veil" class="scene-veil" hidden role="status" aria-live="polite">
+    <p id="scene-veil-text"></p>
+  </div>
+
   <aside id="dialogue" class="dialogue" hidden aria-live="polite">
     <p id="speaker"></p>
     <p id="speech"></p>
@@ -39,6 +43,9 @@
     <button id="faerie">Ask the Faerie</button>
     <button id="gate">Approach the Gate</button>
     <button id="notices">Goblin Notices</button>
+    <button id="enter-gate">Enter the Orange Gate →</button>
+    <button id="hedge" hidden>Consult the Hedge</button>
+    <button id="return-gate" hidden>← Return Through the Gate</button>
     <button id="sound">Sound: On</button>
     <button id="reset">Look to Gate</button>
   </nav>
@@ -54,6 +61,7 @@
   }
   </script>
   <script type="module" src="./src/story-ui.js"></script>
+  <script type="module" src="./src/navigation.js"></script>
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>

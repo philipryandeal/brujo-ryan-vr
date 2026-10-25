@@ -1,4 +1,5 @@
 import { createKingdom } from './kingdom.js';
+import { currentScene, onSceneEnter, goToScene } from './navigation.js';
 
 const kingdom = createKingdom();
 const dialogue = document.getElementById('dialogue');
@@ -25,12 +26,13 @@ let onWorldStart = () => {};
 
 export function registerWorldStart(callback) {
   onWorldStart = callback;
+  if (started) onWorldStart();
 }
 
 function closeStory() {
   dialogue.hidden = true;
   if (lastTrigger && lastTrigger.getClientRects().length) lastTrigger.focus();
-  else document.getElementById('gate').focus();
+  else document.getElementById(currentScene() === 'whisper-hedges' ? 'hedge' : 'gate').focus();
 }
 
 function showPanel(entry, actions = []) {
@@ -54,7 +56,9 @@ export function openStory(id, newVisit = true) {
   showPanel(entry, entry.choices.map(choice => ({
     label: choice.label,
     run: () => {
-      showPanel(kingdom.answer(id, choice.id), [
+      const reply = kingdom.answer(id, choice.id);
+      showPanel(reply, [
+        ...(reply.destination ? [{label:'Cross the Orange Gate →',run:()=>goToScene(reply.destination)}] : []),
         { label: 'Ask another question', run: () => openStory(id, false) },
         { label: 'Leave them to it', run: closeStory }
       ]);
@@ -78,6 +82,7 @@ document.getElementById('dismiss').addEventListener('click', closeStory);
 document.getElementById('goblin').addEventListener('click', () => openStory('goblin'));
 document.getElementById('faerie').addEventListener('click', () => openStory('faerie'));
 document.getElementById('gate').addEventListener('click', () => openStory('gate'));
+document.getElementById('hedge').addEventListener('click', () => openStory('hedge'));
 document.getElementById('notices').addEventListener('click', openNotices);
 document.getElementById('begin').addEventListener('click', () => {
   if (started) return;
@@ -87,11 +92,16 @@ document.getElementById('begin').addEventListener('click', () => {
   threshold.style.display = 'none';
   document.querySelector('.controls').hidden = false;
   hint.hidden = false;
-  hint.textContent = kingdom.nextAmbient();
+  hint.textContent = kingdom.nextAmbient(currentScene());
   onWorldStart();
   openStory('gate');
   // The kingdom goes about its business even when the visitor does nothing.
-  setInterval(() => { hint.textContent = kingdom.nextAmbient(); }, 14000);
+  setInterval(() => { hint.textContent = kingdom.nextAmbient(currentScene()); }, 14000);
+});
+onSceneEnter(sceneId => {
+  dialogue.hidden = true;
+  hint.textContent = kingdom.nextAmbient(sceneId);
+  if (sceneId === 'whisper-hedges') openStory('hedge');
 });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !dialogue.hidden) {
