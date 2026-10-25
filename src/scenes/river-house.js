@@ -261,6 +261,13 @@ export function makeRiverHouse(THREE, palette) {
   welcome.rotation.y = -.5;
   box(5.8, .9, 9.55, .14, 1.9, .14, dark);
 
+  // Kore's old water-gate: a small arch at the far end of the river.
+  const waterGate = new THREE.Group();group.add(waterGate);
+  box(-2.9,2.4,-15.1,.65,4.8,.65,stone,waterGate);
+  box(2.9,2.4,-15.1,.65,4.8,.65,stone,waterGate);
+  box(0,5,-15.1,6.2,.7,.75,stone,waterGate);
+  const gatePanel=box(0,2.4,-15.05,5,4.7,.2,dark,waterGate);
+  const gateSign=sign(['THE SHOGGOTH MOAT','PLEASE REFRAIN FROM DISTURBANCES'],4.7,1.45,0,6,-14.9,30);
   group.visible = false;
   return {
     group,
@@ -270,7 +277,7 @@ export function makeRiverHouse(THREE, palette) {
       pell: [pell],
       'reading-chair': [chair],
       'sentence-bucket': [bucket],
-      return: [returnDoor]
+      'water-gate': [waterGate,gateSign], return: [returnDoor]
     },
     actions: {
       quillon: { type: 'story', id: 'quillon' },
@@ -278,6 +285,7 @@ export function makeRiverHouse(THREE, palette) {
       pell: { type: 'story', id: 'pell' },
       'reading-chair': { type: 'story', id: 'reading-chair' },
       'sentence-bucket': { type: 'story', id: 'sentence-bucket' },
+      'water-gate': {type:'story',id:'water-gate'},
       return: { type: 'travel', destination: 'counting-house' }
     },
     update(t) {
