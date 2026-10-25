@@ -94,14 +94,12 @@ document.getElementById('begin').addEventListener('click', () => {
   hint.hidden = false;
   hint.textContent = kingdom.nextAmbient(currentScene());
   onWorldStart();
-  openStory('gate');
   // The kingdom goes about its business even when the visitor does nothing.
   setInterval(() => { hint.textContent = kingdom.nextAmbient(currentScene()); }, 14000);
 });
 onSceneEnter(sceneId => {
   dialogue.hidden = true;
   hint.textContent = kingdom.nextAmbient(sceneId);
-  if (sceneId === 'whisper-hedges') openStory('hedge');
 });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !dialogue.hidden) {
