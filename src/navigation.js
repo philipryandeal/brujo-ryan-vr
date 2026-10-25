@@ -34,11 +34,7 @@ export async function goToScene(destination, {readMs = TRANSITION_READ_MS} = {})
   veil.classList.add('visible');
   await pause(reducedMotion ? 0 : 650);
   world.enter(destination);
-  const entry=document.getElementById('department-door');
-if(entry)entry.addEventListener('click',()=>goToScene('unnecessary-doors'));
-const exit=document.getElementById('office-return');
-if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
-syncControls();
+  syncControls();
   for (const listener of listeners) listener(currentScene());
   // Reading time is independent of animation preferences: the words matter.
   await pause(readMs);
@@ -57,3 +53,7 @@ if (countingReturnButton) countingReturnButton.addEventListener('click', () => g
 const riverReturnButton = document.getElementById('river-return');
 if (riverReturnButton) riverReturnButton.addEventListener('click', () => goToScene('counting-house'));
 syncControls();
+const entry=document.getElementById('department-door');
+if(entry)entry.addEventListener('click',()=>goToScene('unnecessary-doors'));
+const exit=document.getElementById('office-return');
+if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
