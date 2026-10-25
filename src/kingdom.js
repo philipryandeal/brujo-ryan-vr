@@ -49,7 +49,7 @@ const RESIDENTS = {
   },
   gate: {
     name: 'The Orange Gate',
-    greeting: 'The deeper passages are still growing. The Tree is waiting beyond them. You may linger here.',
+    greeting: 'The Whisper Hedges are open, and the roads beyond lead to stranger places. The Tree is still waiting farther in. You may wander through, or linger here.',
     returnGreeting: 'Still here? Excellent. A threshold is a perfectly respectable place to spend an afternoon.',
     questions: [
       {
