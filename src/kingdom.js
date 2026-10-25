@@ -86,7 +86,91 @@ const RESIDENTS = {
       },
       {
         id: 'doors', label: 'Where do these paths lead?',
-        reply: 'Places with very poor signage. For the moment, the Orange Gate will take you back. New paths are still growing.'
+        reply: 'Places with very poor signage. The Orange Gate takes you back to the Threshold \u2014 and the iron gate at the end of the path leads to the Counting House. Mind you stand still while you are counted.'
+      }
+    ]
+  },
+  ledger: {
+    name: 'The Iron Ledger, Chief Accountant',
+    greeting: 'Ah. A guest. State your business \u2014 if you have no business, one will be issued to you. Kindly stand still while you are counted. \u2026One. The books are pleased.',
+    returnGreeting: 'Back again? Your page was kept. It says here: "Pleasant. Owes one afternoon." We are in no hurry to collect.',
+    questions: [
+      {
+        id: 'owe', label: 'What do I owe?',
+        reply: 'One pleasant afternoon, payable by staying. Small debts are the load-bearing kind. The whole Labyrinth runs on them.'
+      },
+      {
+        id: 'sign', label: 'May I sign the guest column?',
+        reply: 'You may. Everyone signs. The goblins sign in green ink, with titles invented in the queue. Biscuit is currently Undefeated. It is canon now.'
+      },
+      {
+        id: 'count', label: 'What do you count?',
+        reply: 'Everything that happens, so it is not lost. Tolls, arguments, weather, kettles. If it is not written down, the Labyrinth forgets it by Thursday.'
+      },
+      {
+        id: 'seven', label: 'What is that Seven doing?',
+        reply: 'Being at large. Do not mention it where the filing staff can hear. There have been incidents. There is a net.'
+      }
+    ]
+  },
+  nib: {
+    name: 'Nib, Filing Imp (Entire Staff)',
+    greeting: 'No time! No time! Mind the Seven \u2014 it is loose again, and it knows what it did.',
+    returnGreeting: 'You! Wonderful! Hold this net. No \u2014 that end. Actually, just stand there and look official.',
+    questions: [
+      {
+        id: 'system', label: 'How does the filing work?',
+        reply: 'Perfectly. Everything under M. For Miscellaneous. Tea? M. Treaties? M. Last Tuesday? Filed under M before it even happened.'
+      },
+      {
+        id: 'seven', label: 'Tell me about the Seven.',
+        reply: 'I had a system once. A beautiful system. The Seven ate it. Now it just floats there, declining to comment. It knows things, that Seven.'
+      },
+      {
+        id: 'paper', label: 'Are you eating blotting paper?',
+        reply: 'It is a filing technique. Very advanced. You would not understand. It tastes like Tuesdays.'
+      },
+      {
+        id: 'help', label: 'Can I help catch it?',
+        reply: 'Walk up slowly and say something official. It respects confidence and fears nothing else. It hates official. Be official.'
+      }
+    ]
+  },
+  stamp: {
+    name: 'The Stamp of Final Reckoning',
+    greeting: 'APPROACH. STATE YOUR PURPOSE. OR DO NOT. YOU WILL BE COUNTED EITHER WAY.',
+    returnGreeting: 'RETURNING ITEM. PREVIOUSLY COUNTED. THE STAMP REMEMBERS. THE STAMP ALWAYS REMEMBERS.',
+    questions: [
+      {
+        id: 'counted', label: 'What does COUNTED mean?',
+        reply: 'IT MEANS YOU HAPPENED. IT IS THE HIGHEST HONOR THIS OFFICE BESTOWS. THE KETTLE HAS BEEN COUNTED FOURTEEN TIMES AND WILL NOT LET ANYONE FORGET IT.'
+      },
+      {
+        id: 'stampme', label: 'Stamp me, then.',
+        reply: 'REQUEST NOTED. REQUEST APPROVED. *CLANG.* \u2026YOU ARE COUNTED. CARRY IT WITH DIGNITY. EVERYONE DOES. EVENTUALLY.'
+      },
+      {
+        id: 'job', label: 'Who gave you this job?',
+        reply: 'THE LEDGER INKED ME IN A MOMENT OF WEAKNESS. THERE WAS NO OTHER APPLICANT. THERE WAS NO APPLICATION. I AM SELF-EMPLOYED.'
+      }
+    ]
+  },
+  seven: {
+    name: 'The Seven (At Large)',
+    greeting: 'The Seven declines to comment.',
+    returnGreeting: 'The Seven also declines to comment on its previous declining.',
+    questions: [
+      {
+        id: 'why', label: 'Why did you escape?',
+        reply: 'The Seven has no statement at this time.'
+      },
+      {
+        id: 'back', label: 'Will you go back in the book?',
+        reply: 'The Seven will take the matter under advisement.'
+      },
+      {
+        id: 'know', label: 'What do you know?',
+        reply: 'The Seven pleads the fifth. And the sixth. It is keeping the eighth for later.'
       }
     ]
   }
@@ -114,6 +198,12 @@ const AMBIENT = {
     'Somewhere among the leaves, Moldy loses an argument with a rake.',
     'A flower turns its head to watch you, then pretends it was stretching.',
     'The Labyrinth continues its business, with or without an audience.'
+  ],
+  'counting-house': [
+    'The Ledger turns a page by itself, just to stay in practice.',
+    'Nib files a sigh under M.',
+    'Somewhere in the shelves, a number is pretending to be a book.',
+    'The kettle has strong opinions about arithmetic.'
   ]
 };
 

@@ -17,9 +17,9 @@ test('only discovered adjacent thresholds can be crossed', () => {
 });
 
 test('scene registry contains no map or unbuilt destinations', () => {
-  assert.deepEqual(Object.keys(SCENES).sort(),['threshold','whisper-hedges']);
+  assert.deepEqual(Object.keys(SCENES).sort(),['counting-house','threshold','whisper-hedges']);
   assert.equal(validateSceneRegistry(), true);
-  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002']);
+  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002', '003']);
 });
 
 test('new contributions cannot strand visitors or create duplicate scene numbers', () => {

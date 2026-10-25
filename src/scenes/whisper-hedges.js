@@ -63,13 +63,33 @@ export function makeWhisperHedges(THREE, palette) {
   brush.fillText('HEDGE VISITS',256,108);brush.fillText('BY APPOINTMENT',256,176);
   const sign=add(new THREE.PlaneGeometry(3.5,1.75),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(signCanvas),side:THREE.DoubleSide}),0,4.6,-10);
 
+  // The iron gate at the end of the path: the Counting House.
+  const countingGate = new THREE.Group();
+  group.add(countingGate);
+  function gatePart(geometry, mat, x, y, z) {
+    const mesh = new THREE.Mesh(geometry, mat); mesh.position.set(x, y, z); countingGate.add(mesh); return mesh;
+  }
+  gatePart(new THREE.BoxGeometry(1, 5, 1), stone, -1.7, 2.5, -17);
+  gatePart(new THREE.BoxGeometry(1, 5, 1), stone, 1.7, 2.5, -17);
+  gatePart(new THREE.BoxGeometry(4.4, .8, 1), stone, 0, 5.2, -17);
+  gatePart(new THREE.BoxGeometry(2.5, 4, .18), deep, 0, 2, -17);
+  gatePart(new THREE.BoxGeometry(.09, 4, .06), orange, 0, 2, -16.88);
+  const gateCanvas = document.createElement('canvas'); gateCanvas.width = 512; gateCanvas.height = 128;
+  const gbrush = gateCanvas.getContext('2d');
+  gbrush.fillStyle = '#303636'; gbrush.fillRect(0, 0, 512, 128);
+  gbrush.strokeStyle = '#FF5E1F'; gbrush.lineWidth = 8; gbrush.strokeRect(6, 6, 500, 116);
+  gbrush.fillStyle = '#ffffff'; gbrush.textAlign = 'center'; gbrush.font = 'bold 52px Georgia';
+  gbrush.fillText('THE COUNTING HOUSE', 256, 82);
+  gatePart(new THREE.PlaneGeometry(3.4, .85), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(gateCanvas), side: THREE.DoubleSide }), 0, 6.2, -17);
+
   group.visible=false;
   return {
     group,
-    hotspots: {hedge:[...hedgeFace.children,sign],return:[returnDoor,returnHandle]},
+    hotspots: {hedge:[...hedgeFace.children,sign],return:[returnDoor,returnHandle],'counting-gate':[countingGate]},
     actions: {
       hedge: {type:'story',id:'hedge'},
-      return: {type:'travel',destination:'threshold'}
+      return: {type:'travel',destination:'threshold'},
+      'counting-gate': {type:'travel',destination:'counting-house'}
     },
     update(t) {
       hedgeFace.rotation.y=Math.sin(t*.9)*.06;

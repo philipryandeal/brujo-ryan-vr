@@ -12,10 +12,18 @@ export const SCENES = Object.freeze({
   'whisper-hedges': Object.freeze({
     number: '002',
     title: 'The Whisper Hedges',
-    exits: Object.freeze(['threshold']),
-    controls: Object.freeze(['hedge', 'return-gate']),
+    exits: Object.freeze(['threshold', 'counting-house']),
+    controls: Object.freeze(['hedge', 'return-gate', 'counting-gate']),
     arrivalText: 'The Orange Thread unspools. Somewhere, a hedge files a complaint.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Ahead' })
+  }),
+  'counting-house': Object.freeze({
+    number: '003',
+    title: 'The Counting House',
+    exits: Object.freeze(['whisper-hedges']),
+    controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'counting-return']),
+    arrivalText: 'The Orange Thread is tallied, not tied. Something large and iron is deciding what you owe.',
+    appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Ledger' })
   })
 });
 

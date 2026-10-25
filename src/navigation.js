@@ -46,4 +46,8 @@ export async function goToScene(destination, {readMs = TRANSITION_READ_MS} = {})
 }
 
 document.getElementById('return-gate').addEventListener('click', () => goToScene('threshold'));
+const countingGateButton = document.getElementById('counting-gate');
+if (countingGateButton) countingGateButton.addEventListener('click', () => goToScene('counting-house'));
+const countingReturnButton = document.getElementById('counting-return');
+if (countingReturnButton) countingReturnButton.addEventListener('click', () => goToScene('whisper-hedges'));
 syncControls();
