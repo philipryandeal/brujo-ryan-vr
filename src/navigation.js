@@ -63,3 +63,9 @@ if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene(
 
 const moatReturnButton=document.getElementById('moat-return');
 if(moatReturnButton)moatReturnButton.addEventListener('click',()=>goToScene('river-house'));
+
+const keepOutDoorButton=document.getElementById('keep-out-door');
+if(keepOutDoorButton)keepOutDoorButton.addEventListener('click',()=>goToScene('kamidana'));
+
+const shrineReturnButton=document.getElementById('shrine-return');
+if(shrineReturnButton)shrineReturnButton.addEventListener('click',()=>goToScene('unnecessary-doors'));
