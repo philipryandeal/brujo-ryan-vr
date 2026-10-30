@@ -417,6 +417,26 @@ const RESIDENTS = {
         reply: 'You pick a scrap and think of an ending. The scrap goes very still, then folds itself into a small boat and sets off downstream, delighted.'
       }
     ]
+  },
+  'kamidana-attendant': {
+    name: 'The Attendant',
+    greeting: 'You do not have to know your name to rest here.',
+    returnGreeting: 'Still here. The basin has not kept the reflection.',
+    questions: [
+      {id:'name', label:'What are you called?', reply:'I am called when someone arrives. That is enough.'},
+      {id:'stay', label:'May I stay?', reply:'You may. Nothing here will ask you to leave.'},
+      {id:'purpose', label:'What is this place for?', reply:'It is not for anything. It is simply here.'}
+    ]
+  },
+  'kamidana-basin': {
+    name: 'The Basin',
+    greeting: 'The water holds what looks into it, then lets it go.',
+    returnGreeting: 'The water is clear again.',
+    questions: [
+      {id:'look', label:'Look into the water.', reply:'You see yourself exactly as you are in this moment. Nothing more. Nothing less.'},
+      {id:'ask', label:'Does it remember?', reply:'No. That is the agreement.'},
+      {id:'touch', label:'Touch the surface.', reply:'The water moves. When it stills, it has already forgotten the touch.'}
+    ]
   }
 };
 
@@ -477,6 +497,12 @@ const AMBIENT = {
     'The Kettle sighs through its spout. Talks continue.',
     'Mrs. Pell has not moved. You are fairly sure she is watching you anyway.',
     'The fishing line twitches once, then thinks better of it.'
+  ],
+  kamidana: [
+    'The basin does not keep the reflection.',
+    'An ember on a pillar brightens, then decides against it.',
+    'The attendant is not performing.',
+    'A leaf of light appears on an unfinished tree and fades.'
   ]
 };
 
