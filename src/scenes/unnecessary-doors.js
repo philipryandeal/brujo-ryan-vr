@@ -18,20 +18,23 @@ export function makeUnnecessaryDoors(THREE, palette) {
     lines.forEach((line,i)=>ctx.fillText(line,256,100+i*51,475));
     return add(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas),side:THREE.DoubleSide}),x,y,z);
   }
-  // A compact interior, with the room deliberately busy before anyone visits.
   box(0,-.22,-1,19,.44,26,road);
   box(-9,3,-1,.7,6,26,green);box(9,3,-1,.7,6,26,green);
   box(0,3,-14,19,6,.65,stone);
   box(0,6,-1,19,.28,26,dark);
-  // Seventeen doors at the back are all out of order; none pretend to navigate.
-  for(let i=0;i<7;i++){
+  // Far-left door is marked KEEP OUT and leads to the Kamidana.
+  const keepOutDoor=new THREE.Group();keepOutDoor.position.set(-7.35,0,-13.45);group.add(keepOutDoor);
+  box(0,2.45,0,1.65,4.75,.25,iron,keepOutDoor);
+  box(0,4.65,.25,1.25,.12,.15,orange,keepOutDoor);
+  sphere(.54,2.2,.25,.095,orange,keepOutDoor);
+  sign(['KEEP','OUT'],1.8,1.1,-7.35,5.1,-13.1);
+  for(let i=1;i<7;i++){
     const x=-7.35+i*2.45;
     box(x,2.45,-13.45,1.65,4.75,.25,iron);
     box(x,4.65,-13.2,1.25,.12,.15,orange);
     sphere(x+.54,2.2,-13.2,.095,orange);
   }
   sign(['DEPARTMENT OF','UNNECESSARY DOORS'],5.6,2.15,0,5.8,-12.96);
-  // Desk, paperwork, and the tiny bureaucrat who believes he runs the place.
   box(0,1.05,-5.8,5.5,2.1,2.4,dark);
   box(0,2.17,-5.8,5.9,.17,2.6,stone);
   for(let i=0;i<12;i++)box(-2.15+(i%3)*.12,2.28+i*.055,-5.8,1.28,.045,.83,paper);
@@ -46,13 +49,11 @@ export function makeUnnecessaryDoors(THREE, palette) {
   add(new THREE.ConeGeometry(.35,.9,6),dark,0,1.62,0,picklesworth);
   const bell=sphere(-1.25,2.35,-4.9,.3,orange);
   box(-1.25,2.25,-4.9,.77,.09,.7,iron);
-  // A union door standing on its own, openly refusing to function as a passage.
   const unionDoor=new THREE.Group();unionDoor.position.set(5.8,0,-7.3);group.add(unionDoor);
   box(0,2.35,0,2.3,4.7,.28,green,unionDoor);
   box(0,4.6,.16,2.25,.16,.15,orange,unionDoor);
   sphere(.72,2.2,.22,.14,orange,unionDoor);
   sign(['DOOR UNION','ON STRIKE'],2.6,1.3,5.8,5.7,-7.08);
-  // Physical exit faces the visitor. A paired accessible control is provided.
   const returnDoor=box(0,2.35,10.85,3.2,4.7,.3,iron);
   box(-1.78,2.5,10.85,.35,5.2,.5,orange);
   box(1.78,2.5,10.85,.35,5.2,.5,orange);
@@ -62,12 +63,13 @@ export function makeUnnecessaryDoors(THREE, palette) {
   group.visible=false;
   return {
     group,
-    hotspots:{picklesworth:[picklesworth], 'union-door':[unionDoor], 'office-bell':[bell], 'office-return':[returnDoor,exitSign]},
+    hotspots:{picklesworth:[picklesworth], 'union-door':[unionDoor], 'office-bell':[bell], 'office-return':[returnDoor,exitSign], 'keep-out-door':[keepOutDoor]},
     actions:{
       picklesworth:{type:'story',id:'picklesworth'},
       'union-door':{type:'story',id:'union-door'},
       'office-bell':{type:'story',id:'office-bell'},
-      'office-return':{type:'travel',destination:'counting-house'}
+      'office-return':{type:'travel',destination:'counting-house'},
+      'keep-out-door':{type:'travel',destination:'kamidana'}
     },
     update(t){picklesworth.rotation.y=Math.sin(t*.65)*.12;}
   };
