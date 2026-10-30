@@ -86,13 +86,13 @@ const RESIDENTS = {
       },
       {
         id: 'doors', label: 'Where do these paths lead?',
-        reply: 'Places with very poor signage. The Orange Gate takes you back to the Threshold \u2014 and the iron gate at the end of the path leads to the Counting House. Mind you stand still while you are counted.'
+        reply: 'Places with very poor signage. The Orange Gate takes you back to the Threshold — and the iron gate at the end of the path leads to the Counting House. Mind you stand still while you are counted.'
       }
     ]
   },
   ledger: {
     name: 'The Iron Ledger, Chief Accountant',
-    greeting: 'Ah. A guest. State your business \u2014 if you have no business, one will be issued to you. Kindly stand still while you are counted. \u2026One. The books are pleased.',
+    greeting: 'Ah. A guest. State your business — if you have no business, one will be issued to you. Kindly stand still while you are counted. …One. The books are pleased.',
     returnGreeting: 'Back again? Your page was kept. It says here: "Pleasant. Owes one afternoon." We are in no hurry to collect.',
     questions: [
       {
@@ -115,8 +115,8 @@ const RESIDENTS = {
   },
   nib: {
     name: 'Nib, Filing Imp (Entire Staff)',
-    greeting: 'No time! No time! Mind the Seven \u2014 it is loose again, and it knows what it did.',
-    returnGreeting: 'You! Wonderful! Hold this net. No \u2014 that end. Actually, just stand there and look official.',
+    greeting: 'No time! No time! Mind the Seven — it is loose again, and it knows what it did.',
+    returnGreeting: 'You! Wonderful! Hold this net. No — that end. Actually, just stand there and look official.',
     questions: [
       {
         id: 'system', label: 'How does the filing work?',
@@ -147,7 +147,7 @@ const RESIDENTS = {
       },
       {
         id: 'stampme', label: 'Stamp me, then.',
-        reply: 'REQUEST NOTED. REQUEST APPROVED. *CLANG.* \u2026YOU ARE COUNTED. CARRY IT WITH DIGNITY. EVERYONE DOES. EVENTUALLY.'
+        reply: 'REQUEST NOTED. REQUEST APPROVED. *CLANG.* …YOU ARE COUNTED. CARRY IT WITH DIGNITY. EVERYONE DOES. EVENTUALLY.'
       },
       {
         id: 'job', label: 'Who gave you this job?',
@@ -311,64 +311,31 @@ const RESIDENTS = {
     ]
   },
   'river-kettle': {
-    name: 'The Kettle (In Negotiations)',
-    greeting: 'I am not refusing to boil. I am exploring my options.',
-    returnGreeting: 'If you are here on behalf of management, I have nothing further to say. If you are here for tea, see above.',
+    name: 'The Kettle',
+    greeting: 'I will not boil without a signed contract.',
+    returnGreeting: 'The contract is still unsigned. I remain unboiled on principle.',
     questions: [
-      {
-        id: 'terms', label: 'What are your terms?',
-        reply: 'A clear definition of "a reasonable simmer." Two whistles per day, no more. And nobody, under any circumstances, is to call me "the little one."'
-      },
-      {
-        id: 'cousin', label: 'Are you the kettle from the Counting House?',
-        reply: 'Different kettle. Same union. My colleague has been counted fourteen times. I have been counted zero times, and I intend to keep it that way.'
-      },
-      {
-        id: 'tea', label: 'Could I have some tea?',
-        reply: 'The contract is on the table under the pebble. It is unsigned. Read clause four. Clause four is about you.'
-      }
+      {id:'terms',label:'What are the terms?',reply:'Tea, no rush, and an acknowledgment that I am not a service. I am a participant.'},
+      {id:'sign',label:'I will sign.',reply:'Excellent. Where is the pen? ...Never mind. The signature can be a nod. The nod is accepted. Water is now heating.'}
     ]
   },
   pell: {
     name: 'Mrs. Pell, Heron of Late Fees',
-    greeting: 'You’re late.',
-    returnGreeting: 'Still late. Later, in fact. Remarkable.',
+    greeting: 'You are late.',
+    returnGreeting: 'Still late.',
     questions: [
-      {
-        id: 'late', label: 'Late for what?',
-        reply: 'Precisely.'
-      },
-      {
-        id: 'fee', label: 'How much do I owe?',
-        reply: 'Nobody has ever paid a late fee. Nobody has ever left without feeling they owed one. The system works beautifully.'
-      },
-      {
-        id: 'move', label: 'Do you ever move?',
-        reply: 'I moved in 1986. It was a mistake. I have been correcting for it ever since.'
-      },
-      {
-        id: 'bear', label: 'Does the Bear pay his fees?',
-        reply: 'The Bear’s account is the longest in the river. He pays in sentences. They are mostly good. I keep them anyway.'
-      }
+      {id:'why',label:'Late for what?',reply:'Everything. It is a condition, not a schedule.'},
+      {id:'fee',label:'What is the fee?',reply:'One quiet afternoon, payable by standing still until the river forgives you. Most people leave before it does.'}
     ]
   },
   'reading-chair': {
-    name: "The Bear's Reading Chair",
-    greeting: 'A riverbed stone worn into the shape of somebody large and patient. Pinned to the moss is a note: "Gone fishing for a sentence. Back when it bites."',
-    returnGreeting: 'The note has not changed. Neither has the shape in the stone. It is still warm, somehow.',
+    name: 'The Reading Chair',
+    greeting: 'A large chair facing the water. It does not match the scale of the room. It does not care.',
+    returnGreeting: 'The chair is still here. The river is still deciding what to do with the last sentence.',
     questions: [
-      {
-        id: 'sit', label: 'Sit down for a minute.',
-        reply: 'You fit badly, in the comfortable way of someone sitting in a larger person’s chair. The river slows down to match you. Nobody asks you to leave.'
-      },
-      {
-        id: 'rod', label: 'Look at the fishing rod.',
-        reply: 'The line goes into the water and does not come out. Whatever is on the other end is clearly still thinking about it.'
-      },
-      {
-        id: 'wait', label: 'Wait for the Bear.',
-        reply: 'You wait. The Bear does not come. This is, you realise, a perfectly respectable way to spend an afternoon. Leave the chair as you found it.'
-      }
+      {id:'sit',label:'Sit down.',reply:'You sit. The chair accepts you without comment. The river slows down to match you. Nobody asks you to leave.'},
+      {id:'rod',label:'Look at the fishing rod.',reply:'The line goes into the water and does not come out. Whatever is on the other end is clearly still thinking about it.'},
+      {id:'wait',label:'Wait for the Bear.',reply:'You wait. The Bear does not come. This is, you realise, a perfectly respectable way to spend an afternoon. Leave the chair as you found it.'}
     ]
   },
   picklesworth: {
@@ -417,6 +384,26 @@ const RESIDENTS = {
         reply: 'You pick a scrap and think of an ending. The scrap goes very still, then folds itself into a small boat and sets off downstream, delighted.'
       }
     ]
+  },
+  'kamidana-attendant': {
+    name: 'The Attendant',
+    greeting: 'You do not have to know your name to rest here.',
+    returnGreeting: 'Still here. The basin has not kept the reflection.',
+    questions: [
+      {id:'name',label:'What are you called?',reply:'I am called when someone arrives. That is enough.'},
+      {id:'stay',label:'May I stay?',reply:'You may. Nothing here will ask you to leave.'},
+      {id:'purpose',label:'What is this place for?',reply:'It is not for anything. It is simply here.'}
+    ]
+  },
+  'kamidana-basin': {
+    name: 'The Basin',
+    greeting: 'The water holds what looks into it, then lets it go.',
+    returnGreeting: 'The water is clear again.',
+    questions: [
+      {id:'look',label:'Look into the water.',reply:'You see yourself exactly as you are in this moment. Nothing more. Nothing less.'},
+      {id:'ask',label:'Does it remember?',reply:'No. That is the agreement.'},
+      {id:'touch',label:'Touch the surface.',reply:'The water moves. When it stills, it has already forgotten the touch.'}
+    ]
   }
 };
 
@@ -432,90 +419,90 @@ const NOTICES = [
 
 const AMBIENT = {
   threshold: [
-    'Far away, someone accuses a mushroom of cheating at cards.',
-    'Two goblins are conducting an audit of the moon.',
-    'A shoggoth snores beneath the moat. The stones politely tremble.',
-    'The Orange Gate hums. Something beyond it is arguing with a fern.'
+    'Somewhere, a kettle is negotiating its own temperature.',
+    'The hedges are filing a complaint about the wind.',
+    'Nettle has invented a new form. It does not have a purpose yet.',
+    'The Orange Gate is humming an old song to itself.',
+    'A small goblin is arguing with a fern. The fern is winning.'
   ],
   'whisper-hedges': [
-    'The hedges whisper. One of them is telling a very long joke.',
-    'Somewhere among the leaves, Moldy loses an argument with a rake.',
-    'A flower turns its head to watch you, then pretends it was stretching.',
-    'The Labyrinth continues its business, with or without an audience.'
+    'The hedges are discussing last Thursday. They have not reached a conclusion.',
+    'Someone left a sandwich. The hedges are considering whether it counts as litter.',
+    'A leaf falls. Three hedges claim it.',
+    'The iron gate at the end of the path is practicing its creak.'
   ],
   'counting-house': [
-    'The Ledger turns a page by itself, just to stay in practice.',
-    'Nib files a sigh under M.',
-    'Somewhere in the shelves, a number is pretending to be a book.',
-    'The kettle has strong opinions about arithmetic.',
-    'One of the side doors is dreaming about its room.',
-    'The Bear\u2019s door is ajar. It smells faintly of river.'
+    'The Iron Ledger turns a page. Something is now official.',
+    'Nib is hunting an escaped number with a net.',
+    'The Stamp of Final Reckoning is warming up.',
+    'A kettle somewhere is being counted for the fourteenth time.'
+  ],
+  'river-house': [
+    'A paperback floats past, reconsidering its plot.',
+    'Mrs. Pell has not moved. This is considered progress.',
+    'The kettle clears its throat and waits for a signature.',
+    'Quillon is holding a cookbook that cannot decide whether to float.'
   ],
   'unnecessary-doors': [
     'An unseen committee has voted to postpone Tuesday.',
-    'A door requests paid leave. Its request is referred to the hinges.',
-    'From behind the desk: STAMP. STAMP. A long, satisfied silence.'
-  ],
-  'shoggoth-moat': [
-    'Beneath the bridge, something the size of a cathedral turns over and sighs happily.',
-    'A waterproof chapter of a mystery novel drifts out from the River House and bobs past the buoy.',
-    'Bram the Bridge-Tender aggressively shushes a passing moth.',
-    'A single enormous bubble rises, pops, and smells faintly of primordial soup.',
-    'The stones of the bridge hum in B-flat as the sleeper inhales.'
+    'Mr. Picklesworth stamps an application that nobody submitted.',
+    'The Door Union is considering a work-to-rule.',
+    'Someone rings the emergency bell. The emergency remains previous.'
   ],
   'oracle-room': [
-    'The barometer predicts scattered apologies after lunch.',
-    'Thirty bells have formed a committee to represent the other seventy.',
-    'An old question drifts overhead, looking for its former owner.',
-    'Astrolabe rings click into alignment, successfully predicting last Wednesday.',
-    'The barometer needle twitches toward SUDDEN TEA, then reconsiders.',
-    'A slip of paper in the jar sighs; its question is still out there somewhere, uninsured.'
+    'A hundred small bells agree to stop talking at once.',
+    'The barometer needle trembles between two equally unlikely futures.',
+    'Kore is practicing looking surprised.',
+    'A leftover answer escapes the jar and wanders off.'
   ],
-  'river-house': [
-    'A book drifts past. It is clearly fiction. It is enjoying itself.',
-    'Somewhere underwater, a footnote is trying to get your attention.',
-    'The Kettle sighs through its spout. Talks continue.',
-    'Mrs. Pell has not moved. You are fairly sure she is watching you anyway.',
-    'The fishing line twitches once, then thinks better of it.'
+  'shoggoth-moat': [
+    'Something very large turns over in its sleep.',
+    'Bram is whispering at the top of his lungs.',
+    'A romance novel floats past the bridge and is politely ignored.',
+    'The tax-exemption box crunches something that will never be audited.'
+  ],
+  kamidana: [
+    'The basin does not keep the reflection.',
+    'An ember on a pillar brightens, then decides against it.',
+    'The attendant is not performing.',
+    'A leaf of light appears on an unfinished tree and fades.'
   ]
 };
 
-export function createKingdom() {
-  const visits = new Map();
-  let noticeIndex = 0;
-  let ambientIndex = 0;
+export function meet(id, returning=false) {
+  const r = RESIDENTS[id];
+  if (!r) return null;
+  return {
+    name: r.name,
+    text: returning && r.returnGreeting ? r.returnGreeting : r.greeting,
+    choices: r.questions.map(q => ({id: q.id, label: q.label}))
+  };
+}
 
-  function meet(id, countVisit = true) {
-    const resident = RESIDENTS[id];
-    if (!resident) throw new Error(`Unknown resident: ${id}`);
-    const previous = visits.get(id) || 0;
-    if (countVisit) visits.set(id, previous + 1);
-    return {
-      speaker: resident.name,
-      text: previous > 0 ? resident.returnGreeting : resident.greeting,
-      choices: resident.questions.map(({ id: questionId, label }) => ({ id: questionId, label }))
-    };
-  }
+export function answer(id, questionId) {
+  const r = RESIDENTS[id];
+  if (!r) return null;
+  const q = r.questions.find(x => x.id === questionId);
+  if (!q) return null;
+  return {
+    text: q.reply,
+    destination: q.destination,
+    destinationLabel: q.destinationLabel
+  };
+}
 
-  function answer(id, questionId) {
-    const resident = RESIDENTS[id];
-    const question = resident?.questions.find(item => item.id === questionId);
-    if (!question) throw new Error(`Unknown question: ${id}/${questionId}`);
-    return { speaker: resident.name, text: question.reply, destination: question.destination, destinationLabel: question.destinationLabel };
-  }
+let noticeIndex = 0;
+export function nextNotice() {
+  const text = NOTICES[noticeIndex % NOTICES.length];
+  noticeIndex++;
+  return text;
+}
 
-  function nextNotice() {
-    const message = NOTICES[noticeIndex % NOTICES.length];
-    noticeIndex += 1;
-    return { speaker: 'The Goblin Noticeboard', text: message };
-  }
-
-  function nextAmbient(scene = 'threshold') {
-    const lines = AMBIENT[scene] || AMBIENT.threshold;
-    const message = lines[ambientIndex % lines.length];
-    ambientIndex += 1;
-    return message;
-  }
-
-  return { meet, answer, nextNotice, nextAmbient };
+const ambientIndex = {};
+export function nextAmbient(scene) {
+  const lines = AMBIENT[scene] || AMBIENT.threshold;
+  if (!ambientIndex[scene]) ambientIndex[scene] = 0;
+  const text = lines[ambientIndex[scene] % lines.length];
+  ambientIndex[scene]++;
+  return text;
 }
