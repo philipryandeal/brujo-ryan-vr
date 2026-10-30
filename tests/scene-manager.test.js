@@ -17,9 +17,9 @@ test('only discovered adjacent thresholds can be crossed', () => {
 });
 
 test('scene registry contains no map or unbuilt destinations', () => {
-  assert.deepEqual(Object.keys(SCENES).sort(),['counting-house','oracle-room','river-house','shoggoth-moat','threshold','unnecessary-doors','whisper-hedges']);
+  assert.deepEqual(Object.keys(SCENES).sort(),['counting-house','kamidana','oracle-room','river-house','shoggoth-moat','threshold','unnecessary-doors','whisper-hedges']);
   assert.equal(validateSceneRegistry(), true);
-  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002', '003', '005', '006', '007', '004']);
+  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002', '003', '005', '006', '007', '008', '004']);
 });
 
 test('new contributions cannot strand visitors or create duplicate scene numbers', () => {
@@ -45,7 +45,7 @@ test('every registered scene control has a real accessible HTML button', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   for (const room of Object.values(SCENES)) {
     for (const id of room.controls) {
-      assert.match(html, new RegExp(`<button\\s+id="${id}"(?:\\s|>)`), `Missing button for ${id}`);
+      assert.match(html, new RegExp(`<button\\s+id=\"${id}\"(?:\\s|>)`), `Missing button for ${id}`);
     }
   }
 });

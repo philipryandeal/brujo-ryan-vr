@@ -27,8 +27,8 @@ export const SCENES = Object.freeze({
   }),
   'unnecessary-doors': Object.freeze({
     number: '005', title: 'The Department of Unnecessary Doors',
-    exits: Object.freeze(['counting-house']),
-    controls: Object.freeze(['picklesworth','union-door','office-bell','office-return']),
+    exits: Object.freeze(['counting-house', 'kamidana']),
+    controls: Object.freeze(['picklesworth','union-door','office-bell','office-return','keep-out-door']),
     arrivalText: 'The orange thread catches on a brass doorknob. A clerk stamps an application nobody submitted.',
     appearance: Object.freeze({background:0x476f95,torch:0xff5e1f,resetLabel:'Look to the Desk'})
   }),
@@ -44,6 +44,14 @@ export const SCENES = Object.freeze({
     controls:Object.freeze(['bridge-tender','snoring-buoy','tax-box','moat-return']),
     arrivalText:'The low stone arch gives way to open night; moonlight silvers the water, the bridge sways with a slow six-second breath, and someone very small whispers at you to mind your shoes.',
     appearance:Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look Along the Bridge'})
+  }),
+  'kamidana': Object.freeze({
+    number: '008',
+    title: 'The Kamidana',
+    exits: Object.freeze(['unnecessary-doors']),
+    controls: Object.freeze(['attendant', 'basin', 'shrine-return']),
+    arrivalText: 'The orange thread thins to a single ember. The air here does not ask your name.',
+    appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Basin' })
   }),
   'river-house': Object.freeze({
     number: '004',
