@@ -506,3 +506,5 @@ export function nextAmbient(scene) {
   ambientIndex[scene]++;
   return text;
 }
+
+// Dialogue for the Kamidana added 2026-10-29.
