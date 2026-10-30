@@ -11,6 +11,7 @@ function makeStages() {
   const clerk = { parent: null };
   const kore = { parent: null };
   const bridgeTender = { parent: null };
+  const attendant = { parent: null };
   return {
     threshold: {
       group: { visible: true },
@@ -52,6 +53,12 @@ function makeStages() {
       group: { visible: false },
       hotspots: { bridgeTender: [bridgeTender] },
       actions: { bridgeTender: { type: 'travel', destination: 'river-house' } },
+      update() {}
+    },
+    kamidana: {
+      group: { visible: false },
+      hotspots: { attendant: [attendant] },
+      actions: { attendant: { type: 'story', id: 'kamidana-attendant' } },
       update() {}
     }
   };
