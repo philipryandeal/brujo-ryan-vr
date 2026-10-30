@@ -390,9 +390,9 @@ const RESIDENTS = {
     greeting: 'You do not have to know your name to rest here.',
     returnGreeting: 'Still here. The basin has not kept the reflection.',
     questions: [
-      {id:'name',label:'What are you called?',reply:'I am called when someone arrives. That is enough.'},
-      {id:'stay',label:'May I stay?',reply:'You may. Nothing here will ask you to leave.'},
-      {id:'purpose',label:'What is this place for?',reply:'It is not for anything. It is simply here.'}
+      {id:'name', label:'What are you called?', reply:'I am called when someone arrives. That is enough.'},
+      {id:'stay', label:'May I stay?', reply:'You may. Nothing here will ask you to leave.'},
+      {id:'purpose', label:'What is this place for?', reply:'It is not for anything. It is simply here.'}
     ]
   },
   'kamidana-basin': {
@@ -400,9 +400,9 @@ const RESIDENTS = {
     greeting: 'The water holds what looks into it, then lets it go.',
     returnGreeting: 'The water is clear again.',
     questions: [
-      {id:'look',label:'Look into the water.',reply:'You see yourself exactly as you are in this moment. Nothing more. Nothing less.'},
-      {id:'ask',label:'Does it remember?',reply:'No. That is the agreement.'},
-      {id:'touch',label:'Touch the surface.',reply:'The water moves. When it stills, it has already forgotten the touch.'}
+      {id:'look', label:'Look into the water.', reply:'You see yourself exactly as you are in this moment. Nothing more. Nothing less.'},
+      {id:'ask', label:'Does it remember?', reply:'No. That is the agreement.'},
+      {id:'touch', label:'Touch the surface.', reply:'The water moves. When it stills, it has already forgotten the touch.'}
     ]
   }
 };
@@ -419,47 +419,50 @@ const NOTICES = [
 
 const AMBIENT = {
   threshold: [
-    'Somewhere, a kettle is negotiating its own temperature.',
-    'The hedges are filing a complaint about the wind.',
-    'Nettle has invented a new form. It does not have a purpose yet.',
-    'The Orange Gate is humming an old song to itself.',
-    'A small goblin is arguing with a fern. The fern is winning.'
+    'Far away, someone accuses a mushroom of cheating at cards.',
+    'Two goblins are conducting an audit of the moon.',
+    'A shoggoth snores beneath the moat. The stones politely tremble.',
+    'The Orange Gate hums. Something beyond it is arguing with a fern.'
   ],
   'whisper-hedges': [
-    'The hedges are discussing last Thursday. They have not reached a conclusion.',
-    'Someone left a sandwich. The hedges are considering whether it counts as litter.',
-    'A leaf falls. Three hedges claim it.',
-    'The iron gate at the end of the path is practicing its creak.'
+    'The hedges whisper. One of them is telling a very long joke.',
+    'Somewhere among the leaves, Moldy loses an argument with a rake.',
+    'A flower turns its head to watch you, then pretends it was stretching.',
+    'The Labyrinth continues its business, with or without an audience.'
   ],
   'counting-house': [
-    'The Iron Ledger turns a page. Something is now official.',
-    'Nib is hunting an escaped number with a net.',
-    'The Stamp of Final Reckoning is warming up.',
-    'A kettle somewhere is being counted for the fourteenth time.'
-  ],
-  'river-house': [
-    'A paperback floats past, reconsidering its plot.',
-    'Mrs. Pell has not moved. This is considered progress.',
-    'The kettle clears its throat and waits for a signature.',
-    'Quillon is holding a cookbook that cannot decide whether to float.'
+    'The Ledger turns a page by itself, just to stay in practice.',
+    'Nib files a sigh under M.',
+    'Somewhere in the shelves, a number is pretending to be a book.',
+    'The kettle has strong opinions about arithmetic.',
+    'The Bear’s door is ajar. It smells faintly of river.'
   ],
   'unnecessary-doors': [
     'An unseen committee has voted to postpone Tuesday.',
-    'Mr. Picklesworth stamps an application that nobody submitted.',
-    'The Door Union is considering a work-to-rule.',
-    'Someone rings the emergency bell. The emergency remains previous.'
-  ],
-  'oracle-room': [
-    'A hundred small bells agree to stop talking at once.',
-    'The barometer needle trembles between two equally unlikely futures.',
-    'Kore is practicing looking surprised.',
-    'A leftover answer escapes the jar and wanders off.'
+    'A door requests paid leave. Its request is referred to the hinges.',
+    'From behind the desk: STAMP. STAMP. A long, satisfied silence.'
   ],
   'shoggoth-moat': [
-    'Something very large turns over in its sleep.',
-    'Bram is whispering at the top of his lungs.',
-    'A romance novel floats past the bridge and is politely ignored.',
-    'The tax-exemption box crunches something that will never be audited.'
+    'Beneath the bridge, something the size of a cathedral turns over and sighs happily.',
+    'A waterproof chapter of a mystery novel drifts out from the River House and bobs past the buoy.',
+    'Bram the Bridge-Tender aggressively shushes a passing moth.',
+    'A single enormous bubble rises, pops, and smells faintly of primordial soup.',
+    'The stones of the bridge hum in B-flat as the sleeper inhales.'
+  ],
+  'oracle-room': [
+    'The barometer predicts scattered apologies after lunch.',
+    'Thirty bells have formed a committee to represent the other seventy.',
+    'An old question drifts overhead, looking for its former owner.',
+    'Astrolabe rings click into alignment, successfully predicting last Wednesday.',
+    'The barometer needle twitches toward SUDDEN TEA, then reconsiders.',
+    'A slip of paper in the jar sighs; its question is still out there somewhere, uninsured.'
+  ],
+  'river-house': [
+    'A book drifts past. It is clearly fiction. It is enjoying itself.',
+    'Somewhere underwater, a footnote is trying to get your attention.',
+    'The Kettle sighs through its spout. Talks continue.',
+    'Mrs. Pell has not moved. You are fairly sure she is watching you anyway.',
+    'The fishing line twitches once, then thinks better of it.'
   ],
   kamidana: [
     'The basin does not keep the reflection.',
@@ -469,42 +472,42 @@ const AMBIENT = {
   ]
 };
 
-export function meet(id, returning=false) {
-  const r = RESIDENTS[id];
-  if (!r) return null;
-  return {
-    name: r.name,
-    text: returning && r.returnGreeting ? r.returnGreeting : r.greeting,
-    choices: r.questions.map(q => ({id: q.id, label: q.label}))
-  };
-}
+export function createKingdom() {
+  const visits = new Map();
+  let noticeIndex = 0;
+  let ambientIndex = 0;
 
-export function answer(id, questionId) {
-  const r = RESIDENTS[id];
-  if (!r) return null;
-  const q = r.questions.find(x => x.id === questionId);
-  if (!q) return null;
-  return {
-    text: q.reply,
-    destination: q.destination,
-    destinationLabel: q.destinationLabel
-  };
-}
+  function meet(id, countVisit = true) {
+    const resident = RESIDENTS[id];
+    if (!resident) throw new Error(`Unknown resident: ${id}`);
+    const previous = visits.get(id) || 0;
+    if (countVisit) visits.set(id, previous + 1);
+    return {
+      speaker: resident.name,
+      text: previous > 0 ? resident.returnGreeting : resident.greeting,
+      choices: resident.questions.map(({ id: questionId, label }) => ({ id: questionId, label }))
+    };
+  }
 
-let noticeIndex = 0;
-export function nextNotice() {
-  const text = NOTICES[noticeIndex % NOTICES.length];
-  noticeIndex++;
-  return text;
-}
+  function answer(id, questionId) {
+    const resident = RESIDENTS[id];
+    const question = resident?.questions.find(item => item.id === questionId);
+    if (!question) throw new Error(`Unknown question: ${id}/${questionId}`);
+    return { speaker: resident.name, text: question.reply, destination: question.destination, destinationLabel: question.destinationLabel };
+  }
 
-const ambientIndex = {};
-export function nextAmbient(scene) {
-  const lines = AMBIENT[scene] || AMBIENT.threshold;
-  if (!ambientIndex[scene]) ambientIndex[scene] = 0;
-  const text = lines[ambientIndex[scene] % lines.length];
-  ambientIndex[scene]++;
-  return text;
-}
+  function nextNotice() {
+    const message = NOTICES[noticeIndex % NOTICES.length];
+    noticeIndex += 1;
+    return { speaker: 'The Goblin Noticeboard', text: message };
+  }
 
-// Dialogue for the Kamidana added 2026-10-29.
+  function nextAmbient(scene = 'threshold') {
+    const lines = AMBIENT[scene] || AMBIENT.threshold;
+    const message = lines[ambientIndex % lines.length];
+    ambientIndex += 1;
+    return message;
+  }
+
+  return { meet, answer, nextNotice, nextAmbient };
+}
