@@ -86,13 +86,13 @@ const RESIDENTS = {
       },
       {
         id: 'doors', label: 'Where do these paths lead?',
-        reply: 'Places with very poor signage. The Orange Gate takes you back to the Threshold — and the iron gate at the end of the path leads to the Counting House. Mind you stand still while you are counted.'
+        reply: 'Places with very poor signage. The Orange Gate takes you back to the Threshold \u2014 and the iron gate at the end of the path leads to the Counting House. Mind you stand still while you are counted.'
       }
     ]
   },
   ledger: {
     name: 'The Iron Ledger, Chief Accountant',
-    greeting: 'Ah. A guest. State your business — if you have no business, one will be issued to you. Kindly stand still while you are counted. …One. The books are pleased.',
+    greeting: 'Ah. A guest. State your business \u2014 if you have no business, one will be issued to you. Kindly stand still while you are counted. \u2026One. The books are pleased.',
     returnGreeting: 'Back again? Your page was kept. It says here: "Pleasant. Owes one afternoon." We are in no hurry to collect.',
     questions: [
       {
@@ -115,8 +115,8 @@ const RESIDENTS = {
   },
   nib: {
     name: 'Nib, Filing Imp (Entire Staff)',
-    greeting: 'No time! No time! Mind the Seven — it is loose again, and it knows what it did.',
-    returnGreeting: 'You! Wonderful! Hold this net. No — that end. Actually, just stand there and look official.',
+    greeting: 'No time! No time! Mind the Seven \u2014 it is loose again, and it knows what it did.',
+    returnGreeting: 'You! Wonderful! Hold this net. No \u2014 that end. Actually, just stand there and look official.',
     questions: [
       {
         id: 'system', label: 'How does the filing work?',
@@ -147,7 +147,7 @@ const RESIDENTS = {
       },
       {
         id: 'stampme', label: 'Stamp me, then.',
-        reply: 'REQUEST NOTED. REQUEST APPROVED. *CLANG.* …YOU ARE COUNTED. CARRY IT WITH DIGNITY. EVERYONE DOES. EVENTUALLY.'
+        reply: 'REQUEST NOTED. REQUEST APPROVED. *CLANG.* \u2026YOU ARE COUNTED. CARRY IT WITH DIGNITY. EVERYONE DOES. EVENTUALLY.'
       },
       {
         id: 'job', label: 'Who gave you this job?',
@@ -311,31 +311,64 @@ const RESIDENTS = {
     ]
   },
   'river-kettle': {
-    name: 'The Kettle',
-    greeting: 'I will not boil without a signed contract.',
-    returnGreeting: 'The contract is still unsigned. I remain unboiled on principle.',
+    name: 'The Kettle (In Negotiations)',
+    greeting: 'I am not refusing to boil. I am exploring my options.',
+    returnGreeting: 'If you are here on behalf of management, I have nothing further to say. If you are here for tea, see above.',
     questions: [
-      {id:'terms',label:'What are the terms?',reply:'Tea, no rush, and an acknowledgment that I am not a service. I am a participant.'},
-      {id:'sign',label:'I will sign.',reply:'Excellent. Where is the pen? ...Never mind. The signature can be a nod. The nod is accepted. Water is now heating.'}
+      {
+        id: 'terms', label: 'What are your terms?',
+        reply: 'A clear definition of "a reasonable simmer." Two whistles per day, no more. And nobody, under any circumstances, is to call me "the little one."'
+      },
+      {
+        id: 'cousin', label: 'Are you the kettle from the Counting House?',
+        reply: 'Different kettle. Same union. My colleague has been counted fourteen times. I have been counted zero times, and I intend to keep it that way.'
+      },
+      {
+        id: 'tea', label: 'Could I have some tea?',
+        reply: 'The contract is on the table under the pebble. It is unsigned. Read clause four. Clause four is about you.'
+      }
     ]
   },
   pell: {
     name: 'Mrs. Pell, Heron of Late Fees',
-    greeting: 'You are late.',
-    returnGreeting: 'Still late.',
+    greeting: 'You’re late.',
+    returnGreeting: 'Still late. Later, in fact. Remarkable.',
     questions: [
-      {id:'why',label:'Late for what?',reply:'Everything. It is a condition, not a schedule.'},
-      {id:'fee',label:'What is the fee?',reply:'One quiet afternoon, payable by standing still until the river forgives you. Most people leave before it does.'}
+      {
+        id: 'late', label: 'Late for what?',
+        reply: 'Precisely.'
+      },
+      {
+        id: 'fee', label: 'How much do I owe?',
+        reply: 'Nobody has ever paid a late fee. Nobody has ever left without feeling they owed one. The system works beautifully.'
+      },
+      {
+        id: 'move', label: 'Do you ever move?',
+        reply: 'I moved in 1986. It was a mistake. I have been correcting for it ever since.'
+      },
+      {
+        id: 'bear', label: 'Does the Bear pay his fees?',
+        reply: 'The Bear’s account is the longest in the river. He pays in sentences. They are mostly good. I keep them anyway.'
+      }
     ]
   },
   'reading-chair': {
-    name: 'The Reading Chair',
-    greeting: 'A large chair facing the water. It does not match the scale of the room. It does not care.',
-    returnGreeting: 'The chair is still here. The river is still deciding what to do with the last sentence.',
+    name: "The Bear's Reading Chair",
+    greeting: 'A riverbed stone worn into the shape of somebody large and patient. Pinned to the moss is a note: "Gone fishing for a sentence. Back when it bites."',
+    returnGreeting: 'The note has not changed. Neither has the shape in the stone. It is still warm, somehow.',
     questions: [
-      {id:'sit',label:'Sit down.',reply:'You sit. The chair accepts you without comment. The river slows down to match you. Nobody asks you to leave.'},
-      {id:'rod',label:'Look at the fishing rod.',reply:'The line goes into the water and does not come out. Whatever is on the other end is clearly still thinking about it.'},
-      {id:'wait',label:'Wait for the Bear.',reply:'You wait. The Bear does not come. This is, you realise, a perfectly respectable way to spend an afternoon. Leave the chair as you found it.'}
+      {
+        id: 'sit', label: 'Sit down for a minute.',
+        reply: 'You fit badly, in the comfortable way of someone sitting in a larger person’s chair. The river slows down to match you. Nobody asks you to leave.'
+      },
+      {
+        id: 'rod', label: 'Look at the fishing rod.',
+        reply: 'The line goes into the water and does not come out. Whatever is on the other end is clearly still thinking about it.'
+      },
+      {
+        id: 'wait', label: 'Wait for the Bear.',
+        reply: 'You wait. The Bear does not come. This is, you realise, a perfectly respectable way to spend an afternoon. Leave the chair as you found it.'
+      }
     ]
   },
   picklesworth: {
@@ -435,7 +468,8 @@ const AMBIENT = {
     'Nib files a sigh under M.',
     'Somewhere in the shelves, a number is pretending to be a book.',
     'The kettle has strong opinions about arithmetic.',
-    'The Bear’s door is ajar. It smells faintly of river.'
+    'One of the side doors is dreaming about its room.',
+    'The Bear\u2019s door is ajar. It smells faintly of river.'
   ],
   'unnecessary-doors': [
     'An unseen committee has voted to postpone Tuesday.',
