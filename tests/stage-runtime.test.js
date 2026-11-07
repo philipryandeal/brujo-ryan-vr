@@ -55,6 +55,10 @@ function makeStages() {
       actions: { bridgeTender: { type: 'travel', destination: 'river-house' } },
       update() {}
     },
+    'long-way': {
+      group:{visible:false},hotspots:{portal:[{parent:null}]},
+      actions:{portal:{type:'travel',destination:'counting-house'}},update(){}
+    },
     kamidana: {
       group: { visible: false },
       hotspots: { attendant: [attendant] },

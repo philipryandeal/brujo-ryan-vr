@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import {makeLongWay} from './scenes/long-way.js';
+import {constrainWalk} from './walk-bounds.js';
 import {VRButton} from 'three/addons/webxr/VRButton.js';
 import {openStory, openNotices, registerWorldStart} from './story-ui.js';
 import {currentScene, onSceneEnter, goToScene} from './navigation.js';
@@ -76,6 +78,7 @@ const unnecessaryDoors=makeUnnecessaryDoors(THREE,V);scene.add(unnecessaryDoors.
 const oracleRoom=makeOracleRoom(THREE,V);scene.add(oracleRoom.group);
 const shoggothMoat=makeShoggothMoat(THREE,V);scene.add(shoggothMoat.group);
 const kamidana=makeKamidana(THREE,V);scene.add(kamidana.group);
+const longWay=makeLongWay(THREE,V);scene.add(longWay.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
 // metadata in scene-manager.js; the interaction and navigation engines stay put.
@@ -97,6 +100,7 @@ const stages=createStageRuntime({
   'unnecessary-doors':unnecessaryDoors,
   'oracle-room':oracleRoom,
   'shoggoth-moat':shoggothMoat,
+  'long-way':longWay,
   kamidana:kamidana
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
@@ -147,8 +151,8 @@ function walk(dt){
  const speed=3.7*dt;
  const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*speed;
  const dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*speed;
- camera.position.x=THREE.MathUtils.clamp(camera.position.x+dx,-5.9,5.9);
- camera.position.z=THREE.MathUtils.clamp(camera.position.z+dz,-11.3,11.5);
+ const next=constrainWalk(currentScene(),camera.position,dx,dz);
+ camera.position.x=next.x;camera.position.z=next.z;
 }
 let audio=null,soundEnabled=true,started=false;
 function makeAudio(){if(audio)return;const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;const ctx=new AudioContext(),master=ctx.createGain();master.gain.value=.13;master.connect(ctx.destination);audio={ctx,master};}

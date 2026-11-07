@@ -174,6 +174,25 @@ const RESIDENTS = {
       }
     ]
   },
+  'distance-keeper': {
+    name:'Sedge, Keeper of Distances',
+    greeting:'A goblin in enormous walking boots is unrolling a measuring tape. It is marked in afternoons. He is measuring the wall again; apparently it grew impatient overnight.',
+    returnGreeting:'Sedge has measured the same afternoon twice and is refusing to pay overtime.',
+    questions:[
+      {id:'work',label:'What are you measuring?',reply:'Personal space. The doors were borrowing it from each other. Very poor hinge etiquette.'},
+      {id:'boots',label:'Why such enormous boots?',reply:'These are my short-distance boots. The long-distance pair are still on their way here.'},
+      {id:'rest',label:'May I linger?',reply:'Please do. A corridor without lingering is just a queue with architectural ambitions.'}
+    ]
+  },
+  'borrowed-mile': {
+    name:'The Borrowed Mile',
+    greeting:'A brass spool holds a length of orange thread. Its label reads: ONE MILE, FOLDED FOR DOMESTIC USE. RETURN WITHOUT KNOTS.',
+    returnGreeting:'The mile has settled more comfortably onto its spool.',
+    questions:[
+      {id:'read',label:'Read the small print.',reply:'Distance is provided for atmosphere only. No visitor is required to walk a mile, produce a receipt, or become a better person.'},
+      {id:'listen',label:'Listen to the spool.',reply:'A faraway footstep. A pause. Another footstep. Whoever borrowed the other end has stopped to admire something.'}
+    ]
+  },
   'bear-door': {
     name: "The Bear's Door",
     greeting: 'This door belongs to the Bear, Keeper of the River House. Beyond it: water, patience, and a library being built at the speed of truth. The door is open now. The Bear opened it from the far side, as is proper.',
@@ -463,13 +482,18 @@ const AMBIENT = {
     'A flower turns its head to watch you, then pretends it was stretching.',
     'The Labyrinth continues its business, with or without an audience.'
   ],
+  'long-way': [
+    'A paper boat makes a very small voyage along the left-hand gutter.',
+    'Beyond the old wall, a bell tries a note and decides to save it for later.',
+    'Sedge measures an afternoon, frowns, and gives it a little more room.'
+  ],
   'counting-house': [
     'The Ledger turns a page by itself, just to stay in practice.',
     'Nib files a sigh under M.',
     'Somewhere in the shelves, a number is pretending to be a book.',
     'The kettle has strong opinions about arithmetic.',
     'One of the side doors is dreaming about its room.',
-    'The Bear\u2019s door is ajar. It smells faintly of river.'
+    'A side passage carries the distant smell of river, with a little room to breathe.'
   ],
   'unnecessary-doors': [
     'An unseen committee has voted to postpone Tuesday.',

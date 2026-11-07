@@ -92,7 +92,7 @@ for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracl
   'picklesworth', 'union-door', 'office-bell',
   'kore', 'barometer', 'answer-jar', 'bell-chime',
   'water-gate', 'bridge-tender', 'snoring-buoy', 'tax-box',
-  'attendant', 'basin']) {
+  'attendant', 'basin', 'distance-keeper', 'borrowed-mile']) {
   const button = document.getElementById(residentId);
   if (button) button.addEventListener('click', () => openStory(residentId));
 }

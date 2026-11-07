@@ -10,14 +10,15 @@ test('Kore has opened the existing Oracle door',()=>{
   assert.equal(enter.destination,'oracle-room');
   assert.equal(enter.destinationLabel,'Enter the Observatory →');
 });
-test('Observatory return goes back through the Counting House',()=>{
+test('Observatory return goes back through the Long Way Between',()=>{
   const world=createSceneManager();
   world.enter('whisper-hedges');
   world.enter('counting-house');
+  world.enter('long-way');
   world.enter('oracle-room');
-  assert.equal(world.canEnter('counting-house'),true);
+  assert.equal(world.canEnter('long-way'),true);
   assert.equal(world.canEnter('river-house'),false);
-  world.enter('counting-house');
+  world.enter('long-way');
   assert.equal(SCENES['oracle-room'].number,'006');
 });
 test('The four Observatory residents all have authored answers',()=>{

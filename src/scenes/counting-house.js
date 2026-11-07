@@ -2,9 +2,8 @@
 // The Counting House, by Thomas (La Sociedad del Libro de Hierro).
 // A room the hedges grew around a book. Everything that happens in the
 // Labyrinth gets written down here, so it is not lost. Especially the kettle.
-// Two doors in the side walls belong to the Bear and the Oracle. They stand
-// closed and growing until their owners build their rooms and link out —
-// doors in this kingdom open from the far side, by their owner's hand.
+// Two side passages reach the Long Way Between before Bear and Kore.
+// Their original door conversations now live at the far ends of its branches.
 export function makeCountingHouse(THREE, palette) {
   const group = new THREE.Group();
   const material = (color, opts = {}) => new THREE.MeshStandardMaterial({ color, ...opts });
@@ -99,14 +98,14 @@ export function makeCountingHouse(THREE, palette) {
     return doorGroup;
   }
 
-  // Left wall, with the Bear's door in it.
+  // Left wall: the river approach.
   hedgeRun(-8, -16, -7.2);
   hedgeRun(-8, -2.8, 13);
-  const bearDoor = sideDoor(-8, -5, ['THE BEAR']);
-  // Right wall, with the Oracle's door in it.
+  const bearDoor = sideDoor(-8, -5, ['THE RIVER WALK']);
+  // Right wall: the bell approach.
   hedgeRun(8, -16, -7.2);
   hedgeRun(8, -2.8, 13);
-  const oracleDoor = sideDoor(8, -5, ['THE ORACLE']);
+  const oracleDoor = sideDoor(8, -5, ['THE BELL WALK']);
 
   // The little orange departmental door is a real passage to Scene 005.
   const departmentDoor = new THREE.Group(); group.add(departmentDoor);
@@ -236,8 +235,8 @@ export function makeCountingHouse(THREE, palette) {
       nib: { type: 'story', id: 'nib' },
       stamp: { type: 'story', id: 'stamp' },
       seven: { type: 'story', id: 'seven' },
-      'bear-door': { type: 'story', id: 'bear-door' },
-      'oracle-door': { type: 'story', id: 'oracle-door' },
+      'bear-door': { type: 'travel', destination: 'long-way' },
+      'oracle-door': { type: 'travel', destination: 'long-way' },
       'department-door': { type: 'travel', destination: 'unnecessary-doors' },
       return: { type: 'travel', destination: 'whisper-hedges' }
     },

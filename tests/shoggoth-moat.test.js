@@ -10,7 +10,7 @@ test('River House water-gate reaches the real Shoggoth Moat',()=>{
  assert.ok(SCENES['river-house'].exits.includes('shoggoth-moat'));
 });
 test('Moat has a reciprocal return without exposing unrelated shortcuts',()=>{
- const w=createSceneManager();w.enter('whisper-hedges');w.enter('counting-house');w.enter('river-house');w.enter('shoggoth-moat');
+ const w=createSceneManager();w.enter('whisper-hedges');w.enter('counting-house');w.enter('long-way');w.enter('river-house');w.enter('shoggoth-moat');
  assert.equal(w.canEnter('river-house'),true);assert.equal(w.canEnter('counting-house'),false);
  w.enter('river-house');assert.equal(validateSceneRegistry(),true);
 });

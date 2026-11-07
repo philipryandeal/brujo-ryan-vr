@@ -73,7 +73,7 @@ export function makeOracleRoom(THREE, palette) {
   box(0,5,0,4,.45,.7,orange,returnDoor);
   box(0,2.35,0,3.15,4.7,.2,dark,returnDoor);
   orb(1,2.2,-.16,.14,orange,returnDoor);
-  const exitSign=sign(['DOOR OF','COUNTED STEPS'],3.5,1.25,0,6.05,9.45,0);
+  const exitSign=sign(['THE LONG','WAY BETWEEN'],3.5,1.25,0,6.05,9.45,0);
   group.visible=false;
   return {
     group,
@@ -83,7 +83,7 @@ export function makeOracleRoom(THREE, palette) {
       barometer:{type:'story',id:'barometer'},
       'answer-jar':{type:'story',id:'answer-jar'},
       'bell-chime':{type:'story',id:'bell-chime'},
-      'oracle-return':{type:'travel',destination:'counting-house'}
+      'oracle-return':{type:'travel',destination:'long-way'}
     },
     update(t){astrolabe.rotation.y=t*.055;astrolabe.rotation.z=Math.sin(t*.25)*.07;needle.rotation.z=.35+Math.sin(t*.5)*.28;bells.rotation.y=Math.sin(t*.12)*.055;}
   };

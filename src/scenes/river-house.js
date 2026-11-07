@@ -3,7 +3,7 @@
 // A slow green river runs straight through the middle of a library. The shelves
 // stand in the water. Books that float are fiction; books that sink are
 // nonfiction. The Bear is not home. He has gone fishing for a sentence.
-// The way in is the Bear's Door in the Counting House; the way out is the same door.
+// The way in is the Bear's Door in the Long Way Between; the way out is the same door.
 export function makeRiverHouse(THREE, palette) {
   const group = new THREE.Group();
   const material = (color, opts = {}) => new THREE.MeshStandardMaterial({ color, ...opts });
@@ -246,7 +246,7 @@ export function makeRiverHouse(THREE, palette) {
     scraps.push({ scrap, phase: i * 1.1 });
   }
 
-  // The Bear's Door, from this side: the way back to the Counting House.
+  // The Bear's Door, from this side: the way back to the Long Way Between.
   box(-1.85, 2.9, 13, .9, 5.8, 1.3, stone);
   box(1.85, 2.9, 13, .9, 5.8, 1.3, stone);
   box(0, 5.9, 13, 4.6, .8, 1.3, stone);
@@ -286,7 +286,7 @@ export function makeRiverHouse(THREE, palette) {
       'reading-chair': { type: 'story', id: 'reading-chair' },
       'sentence-bucket': { type: 'story', id: 'sentence-bucket' },
       'water-gate': {type:'story',id:'water-gate'},
-      return: { type: 'travel', destination: 'counting-house' }
+      return: { type: 'travel', destination: 'long-way' }
     },
     update(t) {
       // Fiction floats downstream, then politely starts again upstream.
