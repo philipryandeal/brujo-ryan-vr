@@ -20,8 +20,8 @@ export const SCENES = Object.freeze({
   'counting-house': Object.freeze({
     number: '003',
     title: 'The Counting House',
-    exits: Object.freeze(['whisper-hedges', 'river-house', 'unnecessary-doors', 'oracle-room']),
-    controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracle-door', 'department-door', 'counting-return']),
+    exits: Object.freeze(['whisper-hedges', 'long-way', 'unnecessary-doors']),
+    controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'long-way-entry', 'department-door', 'counting-return']),
     arrivalText: 'The Orange Thread is tallied, not tied. Something large and iron is deciding what you owe.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Ledger' })
   }),
@@ -34,7 +34,7 @@ export const SCENES = Object.freeze({
   }),
   'oracle-room': Object.freeze({
     number:'006', title:'The Observatory of Second Tuesdays',
-    exits:Object.freeze(['counting-house']),
+    exits:Object.freeze(['long-way']),
     controls:Object.freeze(['kore','barometer','answer-jar','bell-chime','oracle-return']),
     arrivalText:'A hundred small bells agree to stop talking at once; the air smells of ozone, old almanacs, and a Tuesday that has not happened yet.',
     appearance:Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look to the Astrolabe'})
@@ -53,10 +53,17 @@ export const SCENES = Object.freeze({
     arrivalText: 'The orange thread thins to a single ember. The air here does not ask your name.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Basin' })
   }),
+  'long-way': Object.freeze({
+    number: '009', title: 'The Long Way Between',
+    exits: Object.freeze(['counting-house', 'river-house', 'oracle-room']),
+    controls: Object.freeze(['distance-keeper', 'borrowed-mile', 'bear-door', 'oracle-door', 'long-way-return']),
+    arrivalText: 'The Orange Thread splits around a very old wall: river-cool air to one side, a patient ringing to the other. Someone has finally left room between the doors.',
+    appearance: Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look Along the Thread'})
+  }),
   'river-house': Object.freeze({
     number: '004',
     title: 'The River House',
-    exits: Object.freeze(['counting-house','shoggoth-moat']),
+    exits: Object.freeze(['long-way','shoggoth-moat']),
     controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'water-gate', 'river-return']),
     arrivalText: 'The Orange Thread dips below the waterline, and somewhere ahead, a kettle clears its throat.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Downriver' })

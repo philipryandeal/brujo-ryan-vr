@@ -9,7 +9,7 @@ const fakeElement = () => ({
   addEventListener(event, fn){this.handlers.set(event,fn);},
   classList:{add(){},remove(){}}
 });
-const ids=['scene-veil','scene-veil-text','goblin','faerie','gate','notices','hedge','return-gate'];
+const ids=['scene-veil','scene-veil-text','goblin','faerie','gate','notices','hedge','return-gate','long-way-entry','long-way-return','bear-door','oracle-door','distance-keeper','borrowed-mile','oracle-return','river-return'];
 const elements=new Map(ids.map(id=>[id,fakeElement()]));
 const subtitle=fakeElement();
 globalThis.document={
@@ -42,4 +42,25 @@ test('entering hedges swaps the available physical exits and permits return',asy
   assert.deepEqual(seen,['whisper-hedges','threshold']);
   assert.equal(elements.get('scene-veil').hidden,true);
   assert.equal(elements.get('gate').hidden,false);
+});
+
+
+test('connector controls and both companion returns follow the new physical passages',async()=>{
+  await navigation.goToScene('whisper-hedges',{readMs:0});
+  await navigation.goToScene('counting-house',{readMs:0});
+  assert.equal(elements.get('long-way-entry').hidden,false);
+  assert.equal(elements.get('bear-door').hidden,true);
+  assert.equal(await navigation.goToScene('river-house',{readMs:0}),false);
+  await navigation.goToScene('long-way',{readMs:0});
+  assert.equal(elements.get('long-way-entry').hidden,true);
+  assert.equal(elements.get('distance-keeper').hidden,false);
+  assert.equal(elements.get('bear-door').hidden,false);
+  for(const room of ['river-house','oracle-room']){
+    assert.equal(await navigation.goToScene(room,{readMs:0}),true);
+    assert.equal(await navigation.goToScene('counting-house',{readMs:0}),false);
+    assert.equal(await navigation.goToScene('long-way',{readMs:0}),true);
+  }
+  assert.equal(await navigation.goToScene('counting-house',{readMs:0}),true);
+  assert.equal(elements.get('distance-keeper').hidden,true);
+  assert.equal(navigation.TRANSITION_READ_MS,5000);
 });

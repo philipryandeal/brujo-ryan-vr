@@ -51,7 +51,7 @@ if (countingGateButton) countingGateButton.addEventListener('click', () => goToS
 const countingReturnButton = document.getElementById('counting-return');
 if (countingReturnButton) countingReturnButton.addEventListener('click', () => goToScene('whisper-hedges'));
 const riverReturnButton = document.getElementById('river-return');
-if (riverReturnButton) riverReturnButton.addEventListener('click', () => goToScene('counting-house'));
+if (riverReturnButton) riverReturnButton.addEventListener('click', () => goToScene('long-way'));
 syncControls();
 const entry=document.getElementById('department-door');
 if(entry)entry.addEventListener('click',()=>goToScene('unnecessary-doors'));
@@ -59,7 +59,7 @@ const exit=document.getElementById('office-return');
 if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
 
 const oracleReturnButton=document.getElementById('oracle-return');
-if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene('counting-house'));
+if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene('long-way'));
 
 const moatReturnButton=document.getElementById('moat-return');
 if(moatReturnButton)moatReturnButton.addEventListener('click',()=>goToScene('river-house'));
@@ -69,3 +69,8 @@ if(keepOutDoorButton)keepOutDoorButton.addEventListener('click',()=>goToScene('k
 
 const shrineReturnButton=document.getElementById('shrine-return');
 if(shrineReturnButton)shrineReturnButton.addEventListener('click',()=>goToScene('unnecessary-doors'));
+
+for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house']]) {
+  const button=document.getElementById(id);
+  if(button)button.addEventListener('click',()=>goToScene(destination));
+}

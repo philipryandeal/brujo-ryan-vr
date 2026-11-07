@@ -9,15 +9,16 @@ test('the Bear opened his door from the far side, and it leads somewhere real', 
   assert.match(door.text, /open now/);
   const enter = world.answer('bear-door', 'enter');
   assert.equal(enter.destination, 'river-house');
-  assert.ok(SCENES['counting-house'].exits.includes('river-house'));
+  assert.ok(SCENES['long-way'].exits.includes('river-house'));
 });
 
 test('the River House has a way home', () => {
   const route = createSceneManager();
   route.enter('whisper-hedges');
   route.enter('counting-house');
+  route.enter('long-way');
   route.enter('river-house');
-  assert.equal(route.canEnter('counting-house'), true);
+  assert.equal(route.canEnter('long-way'), true);
   assert.equal(route.canEnter('threshold'), false);
 });
 
