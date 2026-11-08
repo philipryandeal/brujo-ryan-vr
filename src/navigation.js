@@ -70,7 +70,7 @@ if(keepOutDoorButton)keepOutDoorButton.addEventListener('click',()=>goToScene('k
 const shrineReturnButton=document.getElementById('shrine-return');
 if(shrineReturnButton)shrineReturnButton.addEventListener('click',()=>goToScene('unnecessary-doors'));
 
-for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house']]) {
+for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house'],['key-lodge-entry','questionable-keys'],['key-lodge-return','threshold']]) {
   const button=document.getElementById(id);
   if(button)button.addEventListener('click',()=>goToScene(destination));
 }

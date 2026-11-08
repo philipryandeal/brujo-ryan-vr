@@ -21,6 +21,10 @@ const RESIDENTS = {
       {
         id: 'brujo', label: 'Who is the Brujo?',
         reply: 'An old fellow with coffee somewhere in the woods. Is he in charge? Nobody has managed to make him attend a staff meeting.'
+      },
+      {
+        id: 'lodge', label: 'Is that your door?',
+        reply: 'That is the Lodge of Questionable Keys. I am on duty, which means I am not in it. You may look, provided you do not reshelve the keys. They have a union now, and I refuse to learn the details.'
       }
     ]
   },
@@ -456,6 +460,36 @@ const RESIDENTS = {
       {id:'ask', label:'Does it remember?', reply:'No. That is the agreement.'},
       {id:'touch', label:'Touch the surface.', reply:'The water moves. When it stills, it has already forgotten the touch.'}
     ]
+  },
+  'duty-coat': {
+    name: "Nettle's Duty Coat",
+    greeting: 'He left me in charge. I have no pockets, no authority, and several opinions.',
+    returnGreeting: 'Still here. He said he would only be a minute. The hedges have heard that one.',
+    questions: [
+      {id:'where', label:'Where is Nettle?', reply:'On duty, of course. The Threshold does not watch itself. I am the official indoor representative, which is a title I gave myself just now.'},
+      {id:'borrow', label:'May I borrow the coat?', reply:'Absolutely not. It is not the coat that is questionable. It is the keys. I am merely wool with tenure.'},
+      {id:'job', label:'What do you do here?', reply:'I hold the shape of a goblin who is not presently in it. It is skilled work. The shoulders have to mean it.'}
+    ]
+  },
+  'key-board': {
+    name: 'The Board of Questionable Keys',
+    greeting: 'A wall of keys shivers politely, like a choir waiting for the downbeat. One of them clears its throat.',
+    returnGreeting: 'The same key clears its throat again. It has prepared a second remark, in case you missed the first.',
+    questions: [
+      {id:'open', label:'Do any of these open something?', reply:'Several open nothing at all, and they are very proud of it. The rest are between assignments. None of them lead somewhere that has not been built. Nettle is a terror about that.'},
+      {id:'take', label:'May I take a key?', reply:'Take the brass one with no teeth. It opens absolutely nothing, but it looks extremely official. Keep it away from Biscuit.'},
+      {id:'lost', label:'Is Nettle missing a key?', reply:'Permanently. He posted a reward: a slightly less important key. The missing one has not claimed it. Professional courtesy.'}
+    ]
+  },
+  'permit-stamp': {
+    name: 'The Personal Permit Stamp',
+    greeting: 'A wooden stamp sits on a pile of blank forms, vibrating with unearned importance.',
+    returnGreeting: 'The stamp has already invented a new form for your return visit. It is blank. That is the official style.',
+    questions: [
+      {id:'stamp', label:'Stamp something.', reply:'THUNK. The nearest chair is hereby permitted to remain a chair through the end of the fiscal afternoon. The chair looks relieved.'},
+      {id:'forms', label:'What are all these forms?', reply:'Permits for things that have not asked for them. A hedge requested nothing and received three. Nettle calls this being proactive.'},
+      {id:'visitor', label:'Do I need a permit?', reply:'You needed one to ask that. Fortunately I have just issued it, retroactively, in invisible ink. Try not to lose it. The ink is very good at being lost.'}
+    ]
   }
 };
 
@@ -474,7 +508,8 @@ const AMBIENT = {
     'Far away, someone accuses a mushroom of cheating at cards.',
     'Two goblins are conducting an audit of the moon.',
     'A shoggoth snores beneath the moat. The stones politely tremble.',
-    'The Orange Gate hums. Something beyond it is arguing with a fern.'
+    'The Orange Gate hums. Something beyond it is arguing with a fern.',
+    'Behind the booth, a small door practices looking official.'
   ],
   'whisper-hedges': [
     'The hedges whisper. One of them is telling a very long joke.',
@@ -527,6 +562,12 @@ const AMBIENT = {
     'An ember on a pillar brightens, then decides against it.',
     'The attendant is not performing.',
     'A leaf of light appears on an unfinished tree and fades.'
+  ],
+  'questionable-keys': [
+    'A key turns in a lock that is not presently attached to anything.',
+    'The duty coat adjusts a shoulder that is not there.',
+    'The permit stamp considers inventing a form, then decides the chair already has one.',
+    'Somewhere at the Threshold, Nettle invents a rule about visitors who tidy other people\'s lodges.'
   ]
 };
 
