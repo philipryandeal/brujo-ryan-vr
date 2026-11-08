@@ -4,8 +4,8 @@ export const SCENES = Object.freeze({
   threshold: Object.freeze({
     number: '001',
     title: 'The First Threshold',
-    exits: Object.freeze(['whisper-hedges']),
-    controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices']),
+    exits: Object.freeze(['whisper-hedges', 'questionable-keys']),
+    controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices', 'key-lodge-entry']),
     arrivalText: 'The thread winds home. Nettle is already blaming someone.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to Gate' })
   }),
@@ -59,6 +59,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['distance-keeper', 'borrowed-mile', 'bear-door', 'oracle-door', 'long-way-return']),
     arrivalText: 'The Orange Thread splits around a very old wall: river-cool air to one side, a patient ringing to the other. Someone has finally left room between the doors.',
     appearance: Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look Along the Thread'})
+  }),
+  'questionable-keys': Object.freeze({
+    number: '010',
+    title: 'The Lodge of Questionable Keys',
+    exits: Object.freeze(['threshold']),
+    controls: Object.freeze(['duty-coat', 'key-board', 'permit-stamp', 'key-lodge-return']),
+    arrivalText: 'The Orange Thread slips under a door marked KEEPER. The air smells of brass polish and unearned authority.',
+    appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Keys' })
   }),
   'river-house': Object.freeze({
     number: '004',

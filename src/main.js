@@ -13,6 +13,7 @@ import {makeUnnecessaryDoors} from './scenes/unnecessary-doors.js';
 import {makeOracleRoom} from './scenes/oracle-room.js';
 import {makeShoggothMoat} from './scenes/shoggoth-moat.js';
 import {makeKamidana} from './scenes/kamidana.js';
+import {makeQuestionableKeys} from './scenes/questionable-keys.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x476f95);scene.fog=new THREE.FogExp2(0x476f95,.017);
@@ -67,6 +68,20 @@ tube(0,1,-23,.36,3.5,stone);cone(0,5.5,-23,2,5,light);orb(0,6,-23,.48,orange);
 // Tiny floating sprites
 const sprites=[];for(let i=0;i<48;i++){let x=Math.sin(i*31.13)*7,z=-2-(i*13%22),y=1.2+i%5;
 const s=orb(x,y,z,.038+(i%3)*.02,i%3===0?orange:light);sprites.push({mesh:s,y,phase:i*.8})}
+// Nettle's lodge sits behind his booth. He remains on duty at the Threshold.
+const lodgeDoor=new THREE.Group();lodgeDoor.position.set(-5.4,0,-8.35);scene.add(lodgeDoor);
+function lodgePart(geo,material,x,y,z){const o=new THREE.Mesh(geo,material);o.position.set(x,y,z);lodgeDoor.add(o);return o}
+lodgePart(new THREE.BoxGeometry(.35,4.4,.5),stone,-1.4,2.2,0);
+lodgePart(new THREE.BoxGeometry(.35,4.4,.5),stone,1.4,2.2,0);
+lodgePart(new THREE.BoxGeometry(3.2,.35,.5),orange,0,4.5,0);
+lodgePart(new THREE.BoxGeometry(2.5,4.2,.18),dark,0,2.1,0);
+const lodgeCanvas=document.createElement('canvas');lodgeCanvas.width=512;lodgeCanvas.height=256;
+const lc=lodgeCanvas.getContext('2d');lc.fillStyle='#303636';lc.fillRect(0,0,512,256);
+lc.strokeStyle='#FF5E1F';lc.lineWidth=12;lc.strokeRect(8,8,496,240);
+lc.fillStyle='#FFFFFF';lc.textAlign='center';lc.font='bold 36px Georgia';
+lc.fillText('KEEPER',256,105,478);lc.fillText('AFTER HOURS',256,157,478);
+const lodgeSign=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1.4),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(lodgeCanvas),side:THREE.DoubleSide}));
+lodgeSign.position.set(0,5.55,.15);lodgeDoor.add(lodgeSign);
 // Scene 001 becomes one stage set; scene 002 follows a reusable scene contract.
 const thresholdGroup=new THREE.Group();
 for(const item of [...scene.children])if(!item.isLight)thresholdGroup.add(item);
@@ -79,18 +94,20 @@ const oracleRoom=makeOracleRoom(THREE,V);scene.add(oracleRoom.group);
 const shoggothMoat=makeShoggothMoat(THREE,V);scene.add(shoggothMoat.group);
 const kamidana=makeKamidana(THREE,V);scene.add(kamidana.group);
 const longWay=makeLongWay(THREE,V);scene.add(longWay.group);
+const questionableKeys=makeQuestionableKeys(THREE,V);scene.add(questionableKeys.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
 // metadata in scene-manager.js; the interaction and navigation engines stay put.
 const stages=createStageRuntime({
   threshold: {
     group:thresholdGroup,
-    hotspots:{goblin:[goblin],faerie:[faerie],gate:[gate],notices:[noticeBoard]},
+    hotspots:{goblin:[goblin],faerie:[faerie],gate:[gate],notices:[noticeBoard],'key-lodge-entry':[lodgeDoor]},
     actions:{
       goblin:{type:'story',id:'goblin'},
       faerie:{type:'story',id:'faerie'},
       gate:{type:'story',id:'gate'},
-      notices:{type:'notices'}
+      notices:{type:'notices'},
+      'key-lodge-entry':{type:'travel',destination:'questionable-keys'}
     },
     update(){}
   },
@@ -101,7 +118,8 @@ const stages=createStageRuntime({
   'oracle-room':oracleRoom,
   'shoggoth-moat':shoggothMoat,
   'long-way':longWay,
-  kamidana:kamidana
+  kamidana:kamidana,
+  'questionable-keys':questionableKeys
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
 function startZ(id){

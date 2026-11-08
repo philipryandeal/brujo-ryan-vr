@@ -64,6 +64,12 @@ function makeStages() {
       hotspots: { attendant: [attendant] },
       actions: { attendant: { type: 'story', id: 'kamidana-attendant' } },
       update() {}
+    },
+    'questionable-keys': {
+      group: { visible: false },
+      hotspots: { coat: [{ parent: null }] },
+      actions: { coat: { type: 'travel', destination: 'threshold' } },
+      update() {}
     }
   };
 }
