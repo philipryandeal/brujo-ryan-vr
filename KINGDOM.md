@@ -32,6 +32,11 @@
 | Quillon | Otter Librarian (River House) | Shelves books in the river: fiction floats, nonfiction sinks |
 | The Kettle | In negotiations (River House) | Will not boil without a signed contract; different kettle, same union |
 | Mrs. Pell | Heron of Late Fees (River House) | Has not moved in forty years; you are always late |
+| Ralph | The Brujo's shoggoth (Beneath the Heart Tree) | Housecat when he wants carrying, barn when comfortable; eats lost socks; very bad with doors |
+| The Simmering Pot | Coffee (Beneath the Heart Tree) | Has never boiled over and never been finished; not on speaking terms with the River House Kettle |
+| The Honest Lantern | Doorkeeper (Beneath the Heart Tree) | Lights only for an honest knock; refuses to be an experiment |
+
+The Brujo himself is out whenever visitors come, and has no authored lines; Ralph says one word, which sounds like *tekeli-li* from a distance and like *Ryan* up close. The altar beneath the taproot is the one place in the Labyrinth where nobody makes jokes.
 
 Biscuit and Moldy currently exist through noticeboard lore; they do not yet have 3D figures. Their future arrival should feel like meeting someone who has always lived here.
 

@@ -79,10 +79,18 @@ export const SCENES = Object.freeze({
   'river-house': Object.freeze({
     number: '004',
     title: 'The River House',
-    exits: Object.freeze(['long-way','shoggoth-moat']),
-    controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'water-gate', 'river-return']),
+    exits: Object.freeze(['long-way','shoggoth-moat','heart-tree']),
+    controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'water-gate', 'root-bridge', 'river-return']),
     arrivalText: 'The Orange Thread dips below the waterline, and somewhere ahead, a kettle clears its throat.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Downriver' })
+  }),
+  'heart-tree': Object.freeze({
+    number: '012',
+    title: 'Beneath the Heart Tree',
+    exits: Object.freeze(['river-house']),
+    controls: Object.freeze(['ralph', 'simmering-pot', 'ancestor-altar', 'honest-lantern', 'long-shelf', 'morning-dew', 'heart-tree-return']),
+    arrivalText: 'The Orange Thread crosses the Bridge of Roots, forgets where it was going, and arrives anyway. Something is simmering. Something very large is purring.',
+    appearance: Object.freeze({ background: 0x303636, torch: 0xff5e1f, resetLabel: 'Look to the Hearth' })
   })
 });
 

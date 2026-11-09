@@ -15,6 +15,7 @@ import {makeShoggothMoat} from './scenes/shoggoth-moat.js';
 import {makeKamidana} from './scenes/kamidana.js';
 import {makeQuestionableKeys} from './scenes/questionable-keys.js';
 import {makeWaitingHall} from './scenes/waiting-hall.js';
+import {makeHeartTree} from './scenes/heart-tree.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x476f95);scene.fog=new THREE.FogExp2(0x476f95,.017);
@@ -97,6 +98,7 @@ const kamidana=makeKamidana(THREE,V);scene.add(kamidana.group);
 const longWay=makeLongWay(THREE,V);scene.add(longWay.group);
 const questionableKeys=makeQuestionableKeys(THREE,V);scene.add(questionableKeys.group);
 const waitingHall=makeWaitingHall(THREE,V);scene.add(waitingHall.group);
+const heartTree=makeHeartTree(THREE,V);scene.add(heartTree.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
 // metadata in scene-manager.js; the interaction and navigation engines stay put.
@@ -122,7 +124,8 @@ const stages=createStageRuntime({
   'long-way':longWay,
   kamidana:kamidana,
   'questionable-keys':questionableKeys,
-  'waiting-hall':waitingHall
+  'waiting-hall':waitingHall,
+  'heart-tree':heartTree
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
 function startZ(id){
