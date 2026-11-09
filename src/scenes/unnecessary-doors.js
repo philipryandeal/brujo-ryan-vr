@@ -35,6 +35,12 @@ export function makeUnnecessaryDoors(THREE, palette) {
     sphere(x+.54,2.2,-13.2,.095,orange);
   }
   sign(['DEPARTMENT OF','UNNECESSARY DOORS'],5.6,2.15,0,5.8,-12.96);
+  // The far-right utility door is the real passage to Scene 013: The Weather Closet.
+  const weatherDoor=new THREE.Group();weatherDoor.position.set(7.35,0,-13.12);group.add(weatherDoor);
+  box(0,2.45,0,1.65,4.75,.3,green,weatherDoor);
+  box(0,4.65,.18,1.25,.12,.15,orange,weatherDoor);
+  sphere(.54,2.2,.2,.095,orange,weatherDoor);
+  sign(['WEATHER','STORAGE'],1.9,1.05,7.35,5.15,-12.92);
   box(0,1.05,-5.8,5.5,2.1,2.4,dark);
   box(0,2.17,-5.8,5.9,.17,2.6,stone);
   for(let i=0;i<12;i++)box(-2.15+(i%3)*.12,2.28+i*.055,-5.8,1.28,.045,.83,paper);
@@ -63,13 +69,14 @@ export function makeUnnecessaryDoors(THREE, palette) {
   group.visible=false;
   return {
     group,
-    hotspots:{picklesworth:[picklesworth], 'union-door':[unionDoor], 'office-bell':[bell], 'office-return':[returnDoor,exitSign], 'keep-out-door':[keepOutDoor]},
+    hotspots:{picklesworth:[picklesworth], 'union-door':[unionDoor], 'office-bell':[bell], 'office-return':[returnDoor,exitSign], 'keep-out-door':[keepOutDoor], 'weather-entry':[weatherDoor]},
     actions:{
       picklesworth:{type:'story',id:'picklesworth'},
       'union-door':{type:'story',id:'union-door'},
       'office-bell':{type:'story',id:'office-bell'},
       'office-return':{type:'travel',destination:'waiting-hall'},
-      'keep-out-door':{type:'travel',destination:'kamidana'}
+      'keep-out-door':{type:'travel',destination:'kamidana'},
+      'weather-entry':{type:'travel',destination:'weather-closet'}
     },
     update(t){picklesworth.rotation.y=Math.sin(t*.65)*.12;}
   };
