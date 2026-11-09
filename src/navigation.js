@@ -54,9 +54,9 @@ const riverReturnButton = document.getElementById('river-return');
 if (riverReturnButton) riverReturnButton.addEventListener('click', () => goToScene('long-way'));
 syncControls();
 const entry=document.getElementById('department-door');
-if(entry)entry.addEventListener('click',()=>goToScene('unnecessary-doors'));
+if(entry)entry.addEventListener('click',()=>goToScene('waiting-hall'));
 const exit=document.getElementById('office-return');
-if(exit)exit.addEventListener('click',()=>goToScene('counting-house'));
+if(exit)exit.addEventListener('click',()=>goToScene('waiting-hall'));
 
 const oracleReturnButton=document.getElementById('oracle-return');
 if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene('long-way'));
@@ -70,7 +70,7 @@ if(keepOutDoorButton)keepOutDoorButton.addEventListener('click',()=>goToScene('k
 const shrineReturnButton=document.getElementById('shrine-return');
 if(shrineReturnButton)shrineReturnButton.addEventListener('click',()=>goToScene('unnecessary-doors'));
 
-for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house'],['key-lodge-entry','questionable-keys'],['key-lodge-return','threshold']]) {
+for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house'],['key-lodge-entry','questionable-keys'],['key-lodge-return','threshold'],['hall-department-door','unnecessary-doors'],['hall-return','counting-house']]) {
   const button=document.getElementById(id);
   if(button)button.addEventListener('click',()=>goToScene(destination));
 }

@@ -15,8 +15,8 @@ test('the substantial connector separates both companions, with reciprocal exits
   for(const companion of ['river-house','oracle-room']){
     world.enter(companion);world.enter('long-way');
   }
-  world.enter('counting-house');world.enter('unnecessary-doors');world.enter('kamidana');
-  world.enter('unnecessary-doors');world.enter('counting-house');
+  world.enter('counting-house');world.enter('waiting-hall');world.enter('unnecessary-doors');world.enter('kamidana');
+  world.enter('unnecessary-doors');world.enter('waiting-hall');world.enter('counting-house');
   world.enter('whisper-hedges');world.enter('threshold');
 });
 

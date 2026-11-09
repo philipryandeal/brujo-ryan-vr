@@ -490,6 +490,34 @@ const RESIDENTS = {
       {id:'forms', label:'What are all these forms?', reply:'Permits for things that have not asked for them. A hedge requested nothing and received three. Nettle calls this being proactive.'},
       {id:'visitor', label:'Do I need a permit?', reply:'You needed one to ask that. Fortunately I have just issued it, retroactively, in invisible ink. Try not to lose it. The ink is very good at being lost.'}
     ]
+  },
+  'number-caller': {
+    name: 'Tuppence, Caller of Numbers',
+    greeting: 'A goblin in a very tall paper hat stands on a stool, calling through a brass trumpet: "NOW SERVING: SEVENTEEN." Nobody holds seventeen. She seems pleased about this.',
+    returnGreeting: 'Tuppence has moved on to eighteen. Still nobody. She marks it down as progress.',
+    questions: [
+      {id:'calling', label:'Who are you calling?', reply:'Whoever holds the number. Nobody ever does. That is how I know the system is working. A queue that empties is a queue that has given up.'},
+      {id:'open', label:'Is the Department open?', reply:'Always. The door is right there and nobody has to wait. Waiting is purely recreational here, like knitting, or doubt.'},
+      {id:'sit', label:'May I just sit for a while?', reply:'Sitting is our most popular service. The bench will want to hear about your day. Keep it short; the bench has a great many days of its own.'}
+    ]
+  },
+  'ticket-machine': {
+    name: 'The Ticket Machine',
+    greeting: 'A squat orange machine with a crank. Its sign reads: TAKE A NUMBER. NUMBERS ARE NOT TRANSFERABLE, REFUNDABLE, OR PARTICULARLY MEANINGFUL.',
+    returnGreeting: 'The machine has already printed your next ticket. It is warm, and it says NOT YET.',
+    questions: [
+      {id:'take', label:'Take a number.', reply:'Clunk. The ticket reads NOT YET. On the back, in very small print: THIS IS ALSO A NUMBER, ADMINISTRATIVELY SPEAKING.'},
+      {id:'counts', label:'What does it count?', reply:'Leftovers. The Counting House keeps the important figures. The machine handles the rest: pauses, shrugs, and the occasional "hm."'}
+    ]
+  },
+  'waiting-bench': {
+    name: 'The Bench of Long Patience',
+    greeting: 'A long green bench, worn smooth. At one end a small potted fern holds ticket number 4. It has been waiting since spring and is in no hurry at all.',
+    returnGreeting: 'The fern has not moved. It rustles once, which may be a greeting or may be weather.',
+    questions: [
+      {id:'fern', label:'Ask the fern what it is waiting for.', reply:'A long rustle. Loosely translated: "Nothing in particular. I simply enjoy the company of a queue."'},
+      {id:'rest', label:'Sit down for a while.', reply:'You sit. The bench creaks approvingly. Across the hall, Tuppence calls a number nobody holds, and the afternoon gets a little longer, in a pleasant way.'}
+    ]
   }
 };
 
@@ -562,6 +590,11 @@ const AMBIENT = {
     'An ember on a pillar brightens, then decides against it.',
     'The attendant is not performing.',
     'A leaf of light appears on an unfinished tree and fades.'
+  ],
+  'waiting-hall': [
+    'Tuppence calls number nineteen. A coat rack considers standing up, then thinks better of it.',
+    'The ticket machine prints a ticket for nobody, out of habit.',
+    'From one end of the hall, a faint STAMP. From the other, a faint sum being carried.'
   ],
   'questionable-keys': [
     'A key turns in a lock that is not presently attached to anything.',
