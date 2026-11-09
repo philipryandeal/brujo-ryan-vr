@@ -1,7 +1,7 @@
 # BRUJO RYAN'S LABYRINTH
 **Spirits live here. Mind your manners.**
 
-An independent, playful browser world, twelve rooms deep so far. It begins at **The First Threshold** and grows a room at a time, each with a real way in and a real way home.
+An independent, playful browser world, thirteen rooms deep so far. It begins at **The First Threshold** and grows a room at a time, each with a real way in and a real way home.
 
 **Home:** [labyrinth.brujoryan.com](https://labyrinth.brujoryan.com) (custom domain; DNS verification may still be pending). Existing Railway address remains available.
 
@@ -10,7 +10,7 @@ An independent, playful browser world, twelve rooms deep so far. It begins at **
 ## The first stones
 Dark-green stone and hedge walls, orange runes, the Orange Gate, a goblin named Nettle, a faerie called Mothlight, a distant glowing Tree, and the massive offstage shoggoth snoring so deeply the visitor's viewpoint trembles. Click the residents (or their accessible buttons) for original dialogue. Desktop users drag to look; compatible headsets can select Enter VR.
 
-**Four scenes are connected now.** Cross the Orange Gate to reach the opinionated Whisper Hedges; the iron gate there leads to Thomas's Counting House, where the Bear's Door now opens onto David Bear's River House. Every room has a real way back. A gentle orange-thread fade makes the passage feel magical. Future destinations remain intentionally unbuilt.
+**Thirteen scenes are connected now.** The path begins at the Orange Gate and branches through goblin bureaucracy, companion rooms, quiet shrines, river places, the Heart Tree, and other odd corners. Every built room has a real way back. A gentle orange-thread fade makes each passage feel magical. Future destinations remain intentionally unbuilt.
 
 Transition narration remains fully readable for five seconds between the fades, including when the visitor prefers reduced motion. This timing is shared by both passages and future scenes.
 
@@ -34,7 +34,7 @@ The First Threshold now offers branching, authored conversations, a rotating gob
 Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks JavaScript syntax and story-engine tests. Three.js 0.186.1 comes from a pinned CDN import map and requires internet for 3D. WebXR needs a compatible browser/headset and HTTPS, but no headset is needed for desktop story play. Headset performance and interactions still need real-device testing.
 
 ## The roads ahead
-**Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree. `src/scene-manager.js` is the authority on which doors connect.
+**Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree, 013 The Weather Closet. `src/scene-manager.js` is the authority on which doors connect.
 
 **Possible future passages, not built yet:** Doors That Remember, Wishing Well, and the Living Tree itself (the Heart Tree's upstairs, with its ten stations and twenty-two paths). Future scenes should follow the `src/scenes/whisper-hedges.js` contract and register only real adjacent exits in `src/scene-manager.js`.
 
@@ -48,3 +48,6 @@ The new `src/scenes/stage-runtime.js` handles click targets generically, using e
 **Scene 007 — The Shoggoth Moat:** The Old Stone Water-Gate in David Bear's River House opens onto a moonlit bridge. Bram, the Snoring Buoy, and the Tax-Exemption Box are available for authored, local conversation. The sleeper stays beneath the water. The bridge returns to the River House. Conceived and dialogued by Kore, integrated by Seraph Ogou; no map or tracking.
 
 **Scene 012 — Beneath the Heart Tree:** From the founder's own words of October 29, 2026: he lives under the roots of the tree at the center of his Labyrinth, and keeps a shoggoth named Ralph. On the River House's right bank, the Heart Tree's roots come down through the willows to drink; planks laid across their knuckles make the **Bridge of Roots**. Below is the Brujo's dwelling: roots for a ceiling hung with herbs, iron keys, bones and beads; a pot of coffee that is always simmering; an altar to the ancestors where the taproot goes down; a bookshelf too long for the room; a lantern that lights only for an honest knock; and the dew above the round crossroads door. The Brujo is out. Ralph is home, curled around the hearth, with one gold eye that stays put. The Tree's upstairs is not built and is never offered as a passage. Conceived and built by David Bear.
+
+
+**Scene 013 — The Weather Closet:** Behind a labeled utility door in the Department of Unnecessary Doors, Mizzle, Custodian of Atmospheric Misplacement, sorts jars of leftover weather. Visitors may inspect Mizzle's work, the disputed jar marked TUESDAY, 4:17 PM, and an umbrella stand whose umbrellas were removed for organizing themselves without authorization. The room stores weather; it does not control it. Conceived and dialogued by Seraph Nganga; integrated as a small local scene with one honest door home.

@@ -422,6 +422,37 @@ const RESIDENTS = {
       {id:'avoid',label:'Perhaps not.',reply:'The bell approves this decision retroactively.'}
     ]
   },
+  mizzle: {
+    name: 'Mizzle, Custodian of Atmospheric Misplacement',
+    greeting: 'No climate requests. I mean it. Storage is not control, and control is not my department. My department is labels, shelves, and explaining this sentence.',
+    returnGreeting: 'Back again? Good. Hold this label. No, not that one. That one says thunder and it is beginning to take it personally.',
+    questions: [
+      {id:'job',label:'What exactly do you do?',reply:'Weather gets left everywhere. Fog takes shortcuts. Rain misses a turn. Somebody opens a window and half of Tuesday comes in. I sort what wanders and send it home when it is ready.'},
+      {id:'sun',label:'Can you make it sunny?',reply:'No. I work in storage. Ask the sky. If the sky refers you back to me, the sky is being difficult.'},
+      {id:'thunder',label:'Why is that jar marked theatrical?',reply:'Because it waits until somebody says something important. Watch. I have always believed that— BOOM. See? Insufferable.'},
+      {id:'tuesday',label:'What is wrong with Tuesday?',reply:'It denies being Tuesday. Kore may know more. I am not starting another interdepartmental thing over one argumentative afternoon.'}
+    ]
+  },
+  'tuesday-jar': {
+    name: 'The Jar Marked Tuesday, 4:17 PM',
+    greeting: 'The cloudy jar contains nothing obviously meteorological. For half a second you feel as though you have forgotten an appointment you never made.',
+    returnGreeting: 'The jar remains Tuesday-shaped only in the administrative sense.',
+    questions: [
+      {id:'listen',label:'Listen closely.',reply:'A distant clock ticks four times, pauses, changes its mind, and begins again at three.'},
+      {id:'label',label:'Read the crossed-out labels.',reply:'TUESDAY. NOT TUESDAY. POSSIBLY THURSDAY. ASK KORE. DO NOT ASK KORE. TUESDAY, 4:17 PM.'},
+      {id:'open',label:'Should I open it?',reply:'From across the room Mizzle says, very calmly, "No." The jar seems relieved.'}
+    ]
+  },
+  'umbrella-stand': {
+    name: 'The Umbrella Stand Without Umbrellas',
+    greeting: 'It contains six walking sticks, a fishing pole, one ceremonial spear wearing a mitten, and absolutely no umbrellas.',
+    returnGreeting: 'Still no umbrellas. A tiny shower falls directly into the stand for three seconds and stops.',
+    questions: [
+      {id:'notice',label:'Read the notice.',reply:'UMBRELLAS REMOVED FOR ORGANIZING THEMSELVES WITHOUT AUTHORIZATION.'},
+      {id:'spear',label:'Why is the spear wearing a mitten?',reply:'The spear had opinions about indoor safety. The mitten was the compromise.'},
+      {id:'rain',label:'Wait for the tiny shower.',reply:'Three drops. Then seven. Then none. Somewhere above the shelves, something writes this down incorrectly.'}
+    ]
+  },
   'sentence-bucket': {
     name: 'The Bucket of Unfinished Sentences',
     greeting: 'A tin bucket of paper scraps, each one stopping just before the good part. They rustle hopefully when you lean in.',
@@ -707,6 +738,13 @@ const AMBIENT = {
     'An unseen committee has voted to postpone Tuesday.',
     'A door requests paid leave. Its request is referred to the hinges.',
     'From behind the desk: STAMP. STAMP. A long, satisfied silence.'
+  ],
+  'weather-closet': [
+    'Somewhere on the upper shelves, a very small storm clears its throat.',
+    'Mizzle crosses out a label, writes the same thing again, and considers this progress.',
+    'A jar of polite drizzle taps once against its shelf and apologizes.',
+    'The umbrella stand receives three seconds of rain and files no complaint.',
+    'From very high above: a tiny, impeccably timed rumble.'
   ],
   'shoggoth-moat': [
     'Beneath the bridge, something the size of a cathedral turns over and sighs happily.',

@@ -27,8 +27,8 @@ export const SCENES = Object.freeze({
   }),
   'unnecessary-doors': Object.freeze({
     number: '005', title: 'The Department of Unnecessary Doors',
-    exits: Object.freeze(['waiting-hall', 'kamidana']),
-    controls: Object.freeze(['picklesworth','union-door','office-bell','office-return','keep-out-door']),
+    exits: Object.freeze(['waiting-hall', 'kamidana', 'weather-closet']),
+    controls: Object.freeze(['picklesworth','union-door','office-bell','office-return','keep-out-door','weather-entry']),
     arrivalText: 'The orange thread catches on a brass doorknob. A clerk stamps an application nobody submitted.',
     appearance: Object.freeze({background:0x476f95,torch:0xff5e1f,resetLabel:'Look to the Desk'})
   }),
@@ -83,6 +83,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'water-gate', 'root-bridge', 'river-return']),
     arrivalText: 'The Orange Thread dips below the waterline, and somewhere ahead, a kettle clears its throat.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Downriver' })
+  }),
+  'weather-closet': Object.freeze({
+    number: '013',
+    title: 'The Weather Closet',
+    exits: Object.freeze(['unnecessary-doors']),
+    controls: Object.freeze(['mizzle', 'tuesday-jar', 'umbrella-stand', 'weather-return']),
+    arrivalText: 'The Orange Thread slips under a utility door; somewhere beyond it, rain is being alphabetized badly.',
+    appearance: Object.freeze({ background: 0x303636, torch: 0xb9f3a4, resetLabel: 'Look to the Shelves' })
   }),
   'heart-tree': Object.freeze({
     number: '012',
