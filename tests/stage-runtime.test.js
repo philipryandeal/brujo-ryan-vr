@@ -83,6 +83,12 @@ function makeStages() {
       hotspots: { ralph: [{ parent: null }] },
       actions: { ralph: { type: 'story', id: 'ralph' } },
       update() {}
+    },
+    'weather-closet': {
+      group: { visible: false },
+      hotspots: { mizzle: [{ parent: null }] },
+      actions: { mizzle: { type: 'story', id: 'mizzle' } },
+      update() {}
     }
   };
 }
