@@ -518,10 +518,155 @@ const RESIDENTS = {
       {id:'fern', label:'Ask the fern what it is waiting for.', reply:'A long rustle. Loosely translated: "Nothing in particular. I simply enjoy the company of a queue."'},
       {id:'rest', label:'Sit down for a while.', reply:'You sit. The bench creaks approvingly. Across the hall, Tuppence calls a number nobody holds, and the afternoon gets a little longer, in a pleasant way.'}
     ]
+  },
+  // ── The Bridge of Roots, on the River House's right bank, and the room beneath the Heart Tree.
+  'root-bridge': {
+    name: 'The Bridge of Roots',
+    greeting: 'On the right bank, roots as thick as rowboats come down through the willows to drink from the river. Someone has laid planks across their knuckles. A sign, nailed on at a slightly worried angle, reads: THE BRIDGE OF ROOTS. MIND THE KNUCKLES.',
+    returnGreeting: 'The roots are still drinking. One of them has shifted a plank, as if to make room for you.',
+    questions: [
+      {
+        id: 'enter', label: 'Follow the roots upstream.',
+        reply: 'You step from knuckle to knuckle. The roots lead away from the river, through the willows, and down. The path forgets where it was going. You arrive anyway.',
+        destination: 'heart-tree',
+        destinationLabel: 'Go down beneath the Heart Tree →'
+      },
+      {
+        id: 'whose', label: 'Whose roots are these?',
+        reply: 'The Heart Tree\'s, at the center of the Labyrinth. Every road here forgets where it was going and ends up there eventually. The roots simply got tired of waiting and came down to the river for a drink.'
+      },
+      {
+        id: 'quillon', label: 'Does Quillon mind?',
+        reply: 'Quillon minds a great deal. Roots in the river mean books shelved on roots, and roots do not follow the system. A formal complaint has been filed with the river. The river has not replied.'
+      }
+    ]
+  },
+  ralph: {
+    name: 'Ralph',
+    greeting: 'Curled around the hearth is a heap of black, iridescent something the size of a small barn. Eyes open and close across it like windows in a town at dusk. One of them, gold, stays put and looks at you. "Tekeli-li," says Ralph. Up close it sounds a great deal like "Ryan."',
+    returnGreeting: 'Ralph grows a new eye specifically to look at you. It seems pleased. The others go back to sleep.',
+    questions: [
+      {
+        id: 'pet', label: 'Pet him.',
+        reply: 'He is warm, like a stone that has been in the sun, and slightly sticky, like a stone that has been in the jam. A purr starts somewhere under the floor and rattles every key hanging from the roots.'
+      },
+      {
+        id: 'brujo', label: 'Where is the Brujo?',
+        reply: '"Ryan," says Ralph, and points a pseudopod at the round door, then at the coffee, then back at the door. Out, then. Back when the coffee is done.'
+      },
+      {
+        id: 'size', label: 'How big are you, really?',
+        reply: 'Ralph considers this and becomes the size of a housecat, then lifts two eyes at you hopefully. You pick him up. He becomes the size of a small barn. You are no longer carrying Ralph. Ralph is carrying you, very gently, back to where you were standing.'
+      },
+      {
+        id: 'sock', label: 'Offer him a lost sock.',
+        reply: 'There is one in your pocket that was not there this morning. Ralph accepts it with enormous dignity. Everything the Labyrinth drops and forgets ends up here eventually. Ralph considers this a meal plan.'
+      },
+      {
+        id: 'safe', label: 'Is he dangerous?',
+        reply: 'Ralph is extremely good with children and very bad with doors. The round door has been replaced four times. You are not a door. You are fine.'
+      }
+    ]
+  },
+  'simmering-pot': {
+    name: 'The Pot That Is Always Simmering',
+    greeting: 'An iron pot hangs over the hearth inside the curl of Ralph. It smells of coffee, black as a crossroads at midnight, and of something underneath the coffee that the coffee has agreed not to mention.',
+    returnGreeting: 'Still simmering. It has never boiled over, and it has never once been finished.',
+    questions: [
+      {
+        id: 'what', label: 'What is in it?',
+        reply: 'Coffee, mostly. The Brujo adds things to it that are better not asked about, and the coffee has stopped asking too.'
+      },
+      {
+        id: 'cup', label: 'May I have a cup?',
+        reply: 'A chipped cup is already beside the pot, as if it expected you. The coffee is very good and very strong. You can now hear the Whisper Hedges gossiping several rooms away. They are talking about you, kindly.'
+      },
+      {
+        id: 'kettle', label: 'Does it know the Kettle in the River House?',
+        reply: 'They are not on speaking terms. The Kettle will not boil without a signed contract. The pot has never stopped simmering for anyone. Each considers the other a cautionary tale.'
+      }
+    ]
+  },
+  'ancestor-altar': {
+    name: 'The Altar Beneath the Taproot',
+    greeting: 'Where the taproot goes down into the dark, the root wall opens into a hollow. In it: seven glasses of clear water, white flowers, a candle, a cigar, and photographs so old the faces have gone soft. Nobody makes jokes here. Even the goblins take their hats off at the door.',
+    returnGreeting: 'The water has been changed since you were last here. The candle is still lit.',
+    questions: [
+      {
+        id: 'offer', label: 'May I leave something?',
+        reply: 'A moment of quiet is the offering this altar takes from guests. You give it. The candle leans toward you, very slightly, and straightens again.'
+      },
+      {
+        id: 'deep', label: 'How far down does the taproot go?',
+        reply: 'Farther than anyone has followed it. Ralph went down once, came back smaller than usual and very quiet, and slept for a week. Some roots are for the dead to use.'
+      },
+      {
+        id: 'who', label: 'Who are they?',
+        reply: 'The ones who came before him, and the ones who came before them. The Brujo knows their names. The house does not hand them to strangers, and you find you do not need it to.'
+      }
+    ]
+  },
+  'honest-lantern': {
+    name: 'The Lantern That Waits for a Knock',
+    greeting: 'A lantern hangs dark from a root just inside the door. The tag on its handle reads: I LIGHT FOR HONEST KNOCKING ONLY. The round door has a knocker. So, it turns out, does the lantern.',
+    returnGreeting: 'The lantern remembers your last knock and is reserving judgment.',
+    questions: [
+      {
+        id: 'honest', label: 'Knock with an honest intention.',
+        reply: 'The lantern lights, warm and orange, and seems a little surprised. Most people knock to see if it works.'
+      },
+      {
+        id: 'test', label: 'Knock just to see if it works.',
+        reply: 'Nothing. The lantern does not light for experiments. It has been an experiment before, and it did not care for the methodology.'
+      },
+      {
+        id: 'coffee', label: 'Knock while thinking about stealing the coffee.',
+        reply: 'Nothing. Somewhere behind you, Ralph grows one extra eye, just to see who you are.'
+      }
+    ]
+  },
+  'long-shelf': {
+    name: 'The Shelf That Is Too Long for the Room',
+    greeting: 'Along the left wall runs a bookshelf. It reaches the back of the room and keeps going, through a gap in the earth, into the dark, past where any room could possibly end.',
+    returnGreeting: 'The shelf is, if anything, a little longer than it was.',
+    questions: [
+      {
+        id: 'pull', label: 'Pull out a book.',
+        reply: 'It is a field guide to your own handwriting, annotated in the margins by someone who knows you rather well. You put it back quickly. The shelf seems amused.'
+      },
+      {
+        id: 'end', label: 'Where does it end?',
+        reply: 'Under the hedges, says Moldy. Under the moon, says Mothlight. Biscuit charges a fee to tell you and then does not. Nobody has walked it to the end, because the end keeps being farther.'
+      },
+      {
+        id: 'borrow', label: 'May I borrow one?',
+        reply: 'The house lends books the way the river lends water: freely, and expecting them back by a different route.'
+      }
+    ]
+  },
+  'morning-dew': {
+    name: 'The Dew Above the Door',
+    greeting: 'Above the round door, the Heart Tree\'s lowest leaves hang down through a gap in the roots, beaded with dew in lines like handwriting. While the Brujo sleeps, the Tree listens to every road in the Labyrinth. In the morning, the dew says what he ought to know.',
+    returnGreeting: 'The dew has rearranged itself while you were not looking.',
+    questions: [
+      {
+        id: 'read', label: 'Read today\'s dew.',
+        reply: 'In small bright beads: OUT FOR NOW. BACK WHEN THE COFFEE IS DONE. A moment later, a correction appears beneath it: THE COFFEE IS NEVER DONE.'
+      },
+      {
+        id: 'again', label: 'Read it again.',
+        reply: 'It now says: WIPE YOUR FEET. A pause, while the beads reconsider. PLEASE.'
+      },
+      {
+        id: 'visitors', label: 'Does it ever mention visitors?',
+        reply: 'Once it said only: SOMEONE KIND IS COMING. The Brujo put the coffee on. It was you, or someone very like you.'
+      }
+    ]
   }
 };
 
-const NOTICES = [
+const NOTICES
+ = [
   'LOST: One extremely important key. REWARD: A slightly less important key. — Nettle, Acting Head of Doors',
   'The hedges are NOT accepting appointments after sundown. Please stop asking them personal questions. — Moldy, Groundskeeper',
   'FOUND: Three left socks, an abandoned prophecy, and a rock that keeps demanding a lawyer. Storage fees apply. — Biscuit, Treasurer of Lost Things',
@@ -583,7 +728,16 @@ const AMBIENT = {
     'Somewhere underwater, a footnote is trying to get your attention.',
     'The Kettle sighs through its spout. Talks continue.',
     'Mrs. Pell has not moved. You are fairly sure she is watching you anyway.',
-    'The fishing line twitches once, then thinks better of it.'
+    'The fishing line twitches once, then thinks better of it.',
+    'On the right bank, the roots of something enormous lean down to drink.'
+  ],
+  'heart-tree': [
+    'Ralph grows an eye, looks at the coffee, and absorbs the eye again. He has decided not to tell anyone.',
+    'Far above, the Heart Tree goes about its tree business. Its upstairs is not open to visitors yet.',
+    'A root creaks overhead. Every key hanging from it agrees, half a second late.',
+    'The pot simmers. It has been simmering since before the hedges had opinions.',
+    'A lost sock rolls in from one of the tunnels. Ralph regards it with tremendous interest.',
+    'Down the taproot, someone old is listening, and does not mind you.'
   ],
   kamidana: [
     'The basin does not keep the reflection.',

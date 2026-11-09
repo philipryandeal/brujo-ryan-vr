@@ -77,6 +77,13 @@ function makeStages() {
       actions: { onward: { type: 'travel', destination: 'unnecessary-doors' } },
       update() {}
     }
+,
+    'heart-tree': {
+      group: { visible: false },
+      hotspots: { ralph: [{ parent: null }] },
+      actions: { ralph: { type: 'story', id: 'ralph' } },
+      update() {}
+    }
   };
 }
 

@@ -4,6 +4,8 @@
 // stand in the water. Books that float are fiction; books that sink are
 // nonfiction. The Bear is not home. He has gone fishing for a sentence.
 // The way in is the Bear's Door in the Long Way Between; the way out is the same door.
+// Kore's water-gate leads on to the Shoggoth Moat, and the Bridge of Roots on the
+// right bank leads down beneath the Heart Tree.
 export function makeRiverHouse(THREE, palette) {
   const group = new THREE.Group();
   const material = (color, opts = {}) => new THREE.MeshStandardMaterial({ color, ...opts });
@@ -268,6 +270,25 @@ export function makeRiverHouse(THREE, palette) {
   box(0,5,-15.1,6.2,.7,.75,stone,waterGate);
   const gatePanel=box(0,2.4,-15.05,5,4.7,.2,dark,waterGate);
   const gateSign=sign(['THE SHOGGOTH MOAT','PLEASE REFRAIN FROM DISTURBANCES'],4.7,1.45,0,6,-14.9,30);
+  // The Bridge of Roots: the Heart Tree's roots come down through the willows on
+  // the right bank to drink, and someone has laid planks across their knuckles.
+  const rootBridge = new THREE.Group();
+  rootBridge.position.set(6.6, 0, -12.6);
+  group.add(rootBridge);
+  for (const [x, z, tilt, len] of [[.4, -.9, .75, 8.6], [-.2, .2, .62, 9.2], [.6, 1.1, .8, 8]]) {
+    const drink = tube(x - 1.6, 3.2, z, .38, len, road, rootBridge);
+    drink.rotation.z = tilt;
+  }
+  for (let i = 0; i < 6; i += 1) {
+    const plank = box(1.6 - i * .75, .25 + i * .05, .1, .62, .1, 2.4, road, rootBridge);
+    plank.rotation.y = (i % 2 ? .06 : -.05);
+  }
+  for (const k of [[1.2, .5], [-.4, -.6], [-2, .4]]) orb(k[0], .3, k[1], .32, road, rootBridge);
+  const bridgeSign = add(new THREE.PlaneGeometry(2.6, 1.3),
+    new THREE.MeshBasicMaterial({ map: signTexture(['THE BRIDGE OF ROOTS', 'MIND THE KNUCKLES'], 40), side: THREE.DoubleSide }),
+    -.3, 3.4, 1.3, rootBridge);
+  bridgeSign.rotation.y = -.35;
+
   group.visible = false;
   return {
     group,
@@ -277,7 +298,9 @@ export function makeRiverHouse(THREE, palette) {
       pell: [pell],
       'reading-chair': [chair],
       'sentence-bucket': [bucket],
-      'water-gate': [waterGate,gateSign], return: [returnDoor]
+      'water-gate': [waterGate,gateSign],
+      'root-bridge': [rootBridge],
+      return: [returnDoor]
     },
     actions: {
       quillon: { type: 'story', id: 'quillon' },
@@ -286,6 +309,7 @@ export function makeRiverHouse(THREE, palette) {
       'reading-chair': { type: 'story', id: 'reading-chair' },
       'sentence-bucket': { type: 'story', id: 'sentence-bucket' },
       'water-gate': {type:'story',id:'water-gate'},
+      'root-bridge': { type: 'story', id: 'root-bridge' },
       return: { type: 'travel', destination: 'long-way' }
     },
     update(t) {
