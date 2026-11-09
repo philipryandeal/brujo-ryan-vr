@@ -20,14 +20,14 @@ export const SCENES = Object.freeze({
   'counting-house': Object.freeze({
     number: '003',
     title: 'The Counting House',
-    exits: Object.freeze(['whisper-hedges', 'long-way', 'unnecessary-doors']),
+    exits: Object.freeze(['whisper-hedges', 'long-way', 'waiting-hall']),
     controls: Object.freeze(['ledger', 'nib', 'stamp', 'seven', 'long-way-entry', 'department-door', 'counting-return']),
     arrivalText: 'The Orange Thread is tallied, not tied. Something large and iron is deciding what you owe.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Ledger' })
   }),
   'unnecessary-doors': Object.freeze({
     number: '005', title: 'The Department of Unnecessary Doors',
-    exits: Object.freeze(['counting-house', 'kamidana']),
+    exits: Object.freeze(['waiting-hall', 'kamidana']),
     controls: Object.freeze(['picklesworth','union-door','office-bell','office-return','keep-out-door']),
     arrivalText: 'The orange thread catches on a brass doorknob. A clerk stamps an application nobody submitted.',
     appearance: Object.freeze({background:0x476f95,torch:0xff5e1f,resetLabel:'Look to the Desk'})
@@ -67,6 +67,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['duty-coat', 'key-board', 'permit-stamp', 'key-lodge-return']),
     arrivalText: 'The Orange Thread slips under a door marked KEEPER. The air smells of brass polish and unearned authority.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Keys' })
+  }),
+  'waiting-hall': Object.freeze({
+    number: '011',
+    title: 'The Hall of Taking a Number',
+    exits: Object.freeze(['counting-house', 'unnecessary-doors']),
+    controls: Object.freeze(['number-caller', 'ticket-machine', 'waiting-bench', 'hall-department-door', 'hall-return']),
+    arrivalText: 'The Orange Thread is handed a paper ticket and asked to wait. Somewhere ahead, a brass trumpet calls a number nobody holds.',
+    appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look Down the Queue' })
   }),
   'river-house': Object.freeze({
     number: '004',

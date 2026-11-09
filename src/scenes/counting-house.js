@@ -237,7 +237,7 @@ export function makeCountingHouse(THREE, palette) {
       seven: { type: 'story', id: 'seven' },
       'bear-door': { type: 'travel', destination: 'long-way' },
       'oracle-door': { type: 'travel', destination: 'long-way' },
-      'department-door': { type: 'travel', destination: 'unnecessary-doors' },
+      'department-door': { type: 'travel', destination: 'waiting-hall' },
       return: { type: 'travel', destination: 'whisper-hedges' }
     },
     update(t) {

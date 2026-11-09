@@ -58,7 +58,7 @@ export function makeUnnecessaryDoors(THREE, palette) {
   box(-1.78,2.5,10.85,.35,5.2,.5,orange);
   box(1.78,2.5,10.85,.35,5.2,.5,orange);
   sphere(1,2.2,10.63,.14,orange);
-  const exitSign=sign(['BACK TO THE','COUNTING HOUSE'],3.8,1.75,0,5.75,10.65);
+  const exitSign=sign(['BACK TO THE','WAITING HALL'],3.8,1.75,0,5.75,10.65);
   exitSign.rotation.y=Math.PI;
   group.visible=false;
   return {
@@ -68,7 +68,7 @@ export function makeUnnecessaryDoors(THREE, palette) {
       picklesworth:{type:'story',id:'picklesworth'},
       'union-door':{type:'story',id:'union-door'},
       'office-bell':{type:'story',id:'office-bell'},
-      'office-return':{type:'travel',destination:'counting-house'},
+      'office-return':{type:'travel',destination:'waiting-hall'},
       'keep-out-door':{type:'travel',destination:'kamidana'}
     },
     update(t){picklesworth.rotation.y=Math.sin(t*.65)*.12;}

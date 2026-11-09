@@ -21,6 +21,7 @@ test('the lodge opens from the Threshold and returns there without rewriting com
   world.enter('oracle-room');
   world.enter('long-way');
   world.enter('counting-house');
+  world.enter('waiting-hall');
   world.enter('unnecessary-doors');
   world.enter('kamidana');
 });

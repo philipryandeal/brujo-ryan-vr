@@ -70,6 +70,12 @@ function makeStages() {
       hotspots: { coat: [{ parent: null }] },
       actions: { coat: { type: 'travel', destination: 'threshold' } },
       update() {}
+    },
+    'waiting-hall': {
+      group: { visible: false },
+      hotspots: { onward: [{ parent: null }] },
+      actions: { onward: { type: 'travel', destination: 'unnecessary-doors' } },
+      update() {}
     }
   };
 }
