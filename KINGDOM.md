@@ -24,8 +24,8 @@
 | Nettle | Keeper of Questionable Keys | Invents permits, admires his own authority |
 | Mothlight | Unlicensed Oracle | Delivers perfectly accurate but unhelpful prophecies |
 | Orange Gate | Threshold | Kindly refuses to open before paths exist |
-| Biscuit | Treasurer of Lost Things | Charges fees for objects nobody lost |
-| Moldy | Groundskeeper | Is outraged that plants insist on growing |
+| Biscuit | Treasurer of Lost Things (Lost Property Office) | Charges fees for objects nobody lost; has invoiced Ralph forty-one times |
+| Moldy | Groundskeeper (found at the Lost Property Office) | Is outraged that plants insist on growing; wants his rake back |
 | The Hedge | Acting receptionist | Refuses appointments while standing beneath a welcome sign |
 | The Iron Ledger | Chief Accountant | Counts everything so it is not lost; has stamped the kettle fourteen times |
 | Nib | Filing imp (entire staff) | Files everything under M; is hunting an escaped Seven with a net |
@@ -39,7 +39,7 @@
 
 The Brujo himself is out whenever visitors come, and has no authored lines; Ralph says one word, which sounds like *tekeli-li* from a distance and like *Ryan* up close. The altar beneath the taproot is the one place in the Labyrinth where nobody makes jokes.
 
-Biscuit and Moldy currently exist through noticeboard lore; they do not yet have 3D figures. Their future arrival should feel like meeting someone who has always lived here.
+Biscuit and Moldy now have figures in the Lost Property Office (Scene 014), behind the hatch beside Mothlight at the First Threshold. They arrived the way the charter asked: as if they had always been there.
 
 ## How to extend the foundation
 

@@ -4,8 +4,8 @@ export const SCENES = Object.freeze({
   threshold: Object.freeze({
     number: '001',
     title: 'The First Threshold',
-    exits: Object.freeze(['whisper-hedges', 'questionable-keys']),
-    controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices', 'key-lodge-entry']),
+    exits: Object.freeze(['whisper-hedges', 'questionable-keys', 'lost-property']),
+    controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices', 'key-lodge-entry', 'lost-property-entry']),
     arrivalText: 'The thread winds home. Nettle is already blaming someone.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to Gate' })
   }),
@@ -99,6 +99,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['ralph', 'simmering-pot', 'ancestor-altar', 'honest-lantern', 'long-shelf', 'morning-dew', 'heart-tree-return']),
     arrivalText: 'The Orange Thread crosses the Bridge of Roots, forgets where it was going, and arrives anyway. Something is simmering. Something very large is purring.',
     appearance: Object.freeze({ background: 0x303636, torch: 0xff5e1f, resetLabel: 'Look to the Hearth' })
+  }),
+  'lost-property': Object.freeze({
+    number: '014',
+    title: 'The Lost Property Office',
+    exits: Object.freeze(['threshold']),
+    controls: Object.freeze(['biscuit', 'moldy', 'lawyer-rock', 'unclaimed-shelves', 'fee-schedule', 'lost-property-return']),
+    arrivalText: 'The Orange Thread is weighed, tagged and entered into inventory. A small bell rings. Somebody is already writing you a receipt for something you never lost.',
+    appearance: Object.freeze({ background: 0x303636, torch: 0xff5e1f, resetLabel: 'Look to the Counter' })
   })
 });
 

@@ -693,10 +693,111 @@ const RESIDENTS = {
         reply: 'Once it said only: SOMEONE KIND IS COMING. The Brujo put the coffee on. It was you, or someone very like you.'
       }
     ]
+  },
+  // ── The Lost Property Office, behind the hatch at the First Threshold.
+  biscuit: {
+    name: 'Biscuit, Treasurer of Lost Things',
+    greeting: 'A round goblin in a waistcoat made almost entirely of pockets looks up from an enormous ledger, screws a brass loupe into one eye, and beams. "Welcome to Lost Property! Have you lost something? Don\'t answer. Everyone has lost something. That will be one shiny thing."',
+    returnGreeting: 'Biscuit is already holding out a receipt with your name on it. "Back so soon! Your file has grown. That will be one shiny thing, for the file."',
+    questions: [
+      {
+        id: 'lost', label: 'I have lost something.',
+        reply: 'Splendid. Describe it. No, don\'t, I\'ll find something that matches. Here is a left sock. Is it yours? It is now. Retrieval fee: one shiny thing. Storage fee: one more. Emotional handling is free, because I am not a monster.'
+      },
+      {
+        id: 'nothing', label: 'I have not lost anything.',
+        reply: 'Not yet. I\'ll open a file for you anyway. Pre-loss registration is our fastest-growing service.'
+      },
+      {
+        id: 'inventory', label: 'Who keeps eating your inventory?',
+        reply: 'A certain shoggoth, beneath a certain tree. I have sent him forty-one invoices. He ate forty-one invoices. I have now invoiced him for the invoices. We are in a very healthy business relationship.'
+      },
+      {
+        id: 'undefeated', label: 'Are you really Undefeated?',
+        reply: 'The Iron Ledger wrote it down in green ink, so it is canon. Undefeated at what, nobody remembers, which is the best kind of undefeated. I keep the title in the safe.'
+      },
+      {
+        id: 'fees', label: 'Why does everything cost something?',
+        reply: 'Because nobody values a thing until it wears a price tag. Also, the cash box is very large, and very empty, and it gets lonely.'
+      }
+    ]
+  },
+  moldy: {
+    name: 'Moldy, Groundskeeper',
+    greeting: 'A goblin in a battered straw hat and very muddy boots is glaring past the counter at a rake hanging on the wall. "That," he says, "is MY rake. I put it down for one minute. The hedges grew over it. Out of SPITE."',
+    returnGreeting: 'Moldy is still here. The rake is still there. Negotiations have entered their second hour.',
+    questions: [
+      {
+        id: 'rake', label: 'Why not just take it back?',
+        reply: 'Because it has a tag on it now, and Biscuit says a tagged rake is legally a different rake. I have filed an appeal with the hedges. The hedges laughed.'
+      },
+      {
+        id: 'grounds', label: 'How are the grounds?',
+        reply: 'Terrible. Everything keeps growing. I cut it all back on Monday, and by Tuesday it had opinions.'
+      },
+      {
+        id: 'friends', label: 'Are you and Biscuit friends?',
+        reply: 'Since before the hedges were planted. Don\'t tell him. He\'ll charge me for it.'
+      }
+    ]
+  },
+  'lawyer-rock': {
+    name: 'The Rock That Keeps Demanding a Lawyer',
+    greeting: 'On a velvet cushion behind a little brass rail sits an ordinary grey rock. Its tag reads FOUND (UNDER PROTEST). As you come near, it clears its throat. "I want a lawyer."',
+    returnGreeting: '"Still waiting on that lawyer," says the rock.',
+    questions: [
+      {
+        id: 'charge', label: 'What are you charged with?',
+        reply: '"Nothing. That is the outrage. I was found. Nobody asked me whether I was lost. I was perfectly happy being exactly where I was."'
+      },
+      {
+        id: 'where', label: 'Where were you before?',
+        reply: '"Under a hedge, around the second bend. I had a view. I had a moss. I had a whole life."'
+      },
+      {
+        id: 'represent', label: 'May I represent you?',
+        reply: 'The rock looks you up and down, which takes a while, because it has no eyes. "Do you have a law degree?" You do not. "Then you\'ll do. Neither does Biscuit."'
+      }
+    ]
+  },
+  'unclaimed-shelves': {
+    name: 'The Shelves of Things Nobody Lost',
+    greeting: 'Floor to ceiling, shelves of tagged objects, each priced in Biscuit\'s very confident hand. Three left socks. A prophecy, still warm, with the ending torn off. A spare hinge from the Orange Gate. A whisper the hedges dropped. A brass key that opens absolutely nothing.',
+    returnGreeting: 'Something new has been tagged since you were last here. It looks a little like your shadow.',
+    questions: [
+      {
+        id: 'prophecy', label: 'Read the abandoned prophecy.',
+        reply: '"Beware the visitor who—" The rest is missing. The tag reads: ABANDONED BY AN UNLICENSED ORACLE. FINDER\'S FEE APPLIES TO THE ENDING.'
+      },
+      {
+        id: 'key', label: 'Isn\'t that Nettle\'s key?',
+        reply: 'It is the one he gives everyone. Biscuit has eleven of them and sells them back to Nettle at a modest markup. Nettle has never noticed. Nettle has absolutely noticed.'
+      },
+      {
+        id: 'socks', label: 'Where are all the right socks?',
+        reply: 'Nobody knows. It is the great unsolved mystery of the Lost Property Office. Biscuit suspects the shoggoth. Biscuit suspects the shoggoth of most things.'
+      }
+    ]
+  },
+  'fee-schedule': {
+    name: 'The Schedule of Fees',
+    greeting: 'A board by the door, lettered in orange: RETRIEVAL, one shiny thing. STORAGE, one shiny thing per Tuesday. FINDING SOMETHING YOU DID NOT LOSE, two shiny things. LOSING SOMETHING ON THE PREMISES, charged twice, for the loss and for the finding. SHOGGOTHS: NO.',
+    returnGreeting: 'A new line has been added at the bottom, in fresher paint: READING THE FEES, no charge (yet).',
+    questions: [
+      {
+        id: 'shiny', label: 'What counts as a shiny thing?',
+        reply: 'Biscuit decides. He is a very fair goblin. He decides it is whatever you happen to be holding.'
+      },
+      {
+        id: 'free', label: 'Is anything free?',
+        reply: 'Leaving. Leaving is free. Coming back is free too, but Biscuit will look at you as if it should not be.'
+      }
+    ]
   }
 };
 
 const NOTICES
+
  = [
   'LOST: One extremely important key. REWARD: A slightly less important key. — Nettle, Acting Head of Doors',
   'The hedges are NOT accepting appointments after sundown. Please stop asking them personal questions. — Moldy, Groundskeeper',
@@ -713,7 +814,15 @@ const AMBIENT = {
     'Two goblins are conducting an audit of the moon.',
     'A shoggoth snores beneath the moat. The stones politely tremble.',
     'The Orange Gate hums. Something beyond it is arguing with a fern.',
-    'Behind the booth, a small door practices looking official.'
+    'Behind the booth, a small door practices looking official.',
+    'Behind Mothlight, a hatch marked LOST PROPERTY rattles as something is filed.'
+  ],
+  'lost-property': [
+    'STAMP. Biscuit has accepted something into inventory. It was a moth. The moth disagrees.',
+    'Moldy mutters the word "spite" at the rake again.',
+    'The rock on the cushion clears its throat. Nobody brings a lawyer.',
+    'A price tag on the top shelf turns slowly, as if it heard its name.',
+    'The cash box rattles hopefully. Nothing is in it.'
   ],
   'whisper-hedges': [
     'The hedges whisper. One of them is telling a very long joke.',
