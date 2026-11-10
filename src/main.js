@@ -16,6 +16,7 @@ import {makeKamidana} from './scenes/kamidana.js';
 import {makeQuestionableKeys} from './scenes/questionable-keys.js';
 import {makeWaitingHall} from './scenes/waiting-hall.js';
 import {makeHeartTree} from './scenes/heart-tree.js';
+import {makeLostProperty} from './scenes/lost-property.js';
 import {makeWeatherCloset} from './scenes/weather-closet.js';
 
 const stage=document.getElementById('stage');
@@ -85,6 +86,21 @@ lc.fillStyle='#FFFFFF';lc.textAlign='center';lc.font='bold 36px Georgia';
 lc.fillText('KEEPER',256,105,478);lc.fillText('AFTER HOURS',256,157,478);
 const lodgeSign=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1.4),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(lodgeCanvas),side:THREE.DoubleSide}));
 lodgeSign.position.set(0,5.55,.15);lodgeDoor.add(lodgeSign);
+// Biscuit's hatch sits behind Mothlight: the Lost Property Office (Scene 014).
+const lostHatch=new THREE.Group();lostHatch.position.set(5.4,0,-8.35);scene.add(lostHatch);
+function hatchPart(geo,material,x,y,z){const o=new THREE.Mesh(geo,material);o.position.set(x,y,z);lostHatch.add(o);return o}
+hatchPart(new THREE.BoxGeometry(.35,3.6,.5),stone,-1.2,1.8,0);
+hatchPart(new THREE.BoxGeometry(.35,3.6,.5),stone,1.2,1.8,0);
+hatchPart(new THREE.BoxGeometry(2.8,.35,.5),orange,0,3.7,0);
+hatchPart(new THREE.BoxGeometry(2.1,3.4,.18),dark,0,1.7,0);
+hatchPart(new THREE.BoxGeometry(1.2,.12,.22),orange,0,2.4,.05);
+const hatchCanvas=document.createElement('canvas');hatchCanvas.width=512;hatchCanvas.height=256;
+const hc=hatchCanvas.getContext('2d');hc.fillStyle='#303636';hc.fillRect(0,0,512,256);
+hc.strokeStyle='#FF5E1F';hc.lineWidth=12;hc.strokeRect(8,8,496,240);
+hc.fillStyle='#FFFFFF';hc.textAlign='center';hc.font='bold 36px Georgia';
+hc.fillText('LOST PROPERTY',256,105,478);hc.fillText('FEES APPLY',256,157,478);
+const hatchSign=new THREE.Mesh(new THREE.PlaneGeometry(2.8,1.3),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(hatchCanvas),side:THREE.DoubleSide}));
+hatchSign.position.set(0,4.6,.15);lostHatch.add(hatchSign);
 // Scene 001 becomes one stage set; scene 002 follows a reusable scene contract.
 const thresholdGroup=new THREE.Group();
 for(const item of [...scene.children])if(!item.isLight)thresholdGroup.add(item);
@@ -100,6 +116,7 @@ const longWay=makeLongWay(THREE,V);scene.add(longWay.group);
 const questionableKeys=makeQuestionableKeys(THREE,V);scene.add(questionableKeys.group);
 const waitingHall=makeWaitingHall(THREE,V);scene.add(waitingHall.group);
 const heartTree=makeHeartTree(THREE,V);scene.add(heartTree.group);
+const lostProperty=makeLostProperty(THREE,V);scene.add(lostProperty.group);
 const weatherCloset=makeWeatherCloset(THREE,V);scene.add(weatherCloset.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
@@ -107,13 +124,14 @@ const weatherCloset=makeWeatherCloset(THREE,V);scene.add(weatherCloset.group);
 const stages=createStageRuntime({
   threshold: {
     group:thresholdGroup,
-    hotspots:{goblin:[goblin],faerie:[faerie],gate:[gate],notices:[noticeBoard],'key-lodge-entry':[lodgeDoor]},
+    hotspots:{goblin:[goblin],faerie:[faerie],gate:[gate],notices:[noticeBoard],'key-lodge-entry':[lodgeDoor],'lost-property-entry':[lostHatch]},
     actions:{
       goblin:{type:'story',id:'goblin'},
       faerie:{type:'story',id:'faerie'},
       gate:{type:'story',id:'gate'},
       notices:{type:'notices'},
-      'key-lodge-entry':{type:'travel',destination:'questionable-keys'}
+      'key-lodge-entry':{type:'travel',destination:'questionable-keys'},
+      'lost-property-entry':{type:'travel',destination:'lost-property'}
     },
     update(){}
   },
@@ -128,6 +146,7 @@ const stages=createStageRuntime({
   'questionable-keys':questionableKeys,
   'waiting-hall':waitingHall,
   'heart-tree':heartTree,
+  'lost-property':lostProperty,
   'weather-closet':weatherCloset
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();

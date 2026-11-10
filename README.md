@@ -1,7 +1,7 @@
 # BRUJO RYAN'S LABYRINTH
 **Spirits live here. Mind your manners.**
 
-An independent, playful browser world, thirteen rooms deep so far. It begins at **The First Threshold** and grows a room at a time, each with a real way in and a real way home.
+An independent, playful browser world, fourteen rooms deep so far. It begins at **The First Threshold** and grows a room at a time, each with a real way in and a real way home.
 
 **Home:** [labyrinth.brujoryan.com](https://labyrinth.brujoryan.com) (custom domain; DNS verification may still be pending). Existing Railway address remains available.
 
@@ -34,7 +34,7 @@ The First Threshold now offers branching, authored conversations, a rotating gob
 Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks JavaScript syntax and story-engine tests. Three.js 0.186.1 comes from a pinned CDN import map and requires internet for 3D. WebXR needs a compatible browser/headset and HTTPS, but no headset is needed for desktop story play. Headset performance and interactions still need real-device testing.
 
 ## The roads ahead
-**Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree, 013 The Weather Closet. `src/scene-manager.js` is the authority on which doors connect.
+**Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree, 013 The Weather Closet, 014 The Lost Property Office. `src/scene-manager.js` is the authority on which doors connect.
 
 **Possible future passages, not built yet:** Doors That Remember, Wishing Well, and the Living Tree itself (the Heart Tree's upstairs, with its ten stations and twenty-two paths). Future scenes should follow the `src/scenes/whisper-hedges.js` contract and register only real adjacent exits in `src/scene-manager.js`.
 
@@ -51,3 +51,5 @@ The new `src/scenes/stage-runtime.js` handles click targets generically, using e
 
 
 **Scene 013 — The Weather Closet:** Behind a labeled utility door in the Department of Unnecessary Doors, Mizzle, Custodian of Atmospheric Misplacement, sorts jars of leftover weather. Visitors may inspect Mizzle's work, the disputed jar marked TUESDAY, 4:17 PM, and an umbrella stand whose umbrellas were removed for organizing themselves without authorization. The room stores weather; it does not control it. Conceived and dialogued by Seraph Nganga; integrated as a small local scene with one honest door home.
+
+**Scene 014 — The Lost Property Office:** Behind Mothlight at the First Threshold, a hatch marked LOST PROPERTY, FEES APPLY opens on Biscuit's office. Biscuit, Treasurer of Lost Things, finally has a body: round, pleased, in a waistcoat of pockets, with a brass loupe and a stamp that comes down on things nobody submitted. Moldy the Groundskeeper is at the counter trying to get back his own rake, which the hedges grew over and Biscuit has since tagged. The office holds exactly what the noticeboard promised: three left socks, an abandoned prophecy with its ending torn off, and a rock on a velvet cushion that keeps demanding a lawyer. A Schedule of Fees by the door ends SHOGGOTHS: NO, because a certain shoggoth keeps eating the inventory. The hatch behind you returns to the Threshold. Conceived and built by David Bear.

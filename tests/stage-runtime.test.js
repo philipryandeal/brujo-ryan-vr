@@ -84,6 +84,12 @@ function makeStages() {
       actions: { ralph: { type: 'story', id: 'ralph' } },
       update() {}
     },
+    'lost-property': {
+      group: { visible: false },
+      hotspots: { biscuit: [{ parent: null }] },
+      actions: { biscuit: { type: 'story', id: 'biscuit' } },
+      update() {}
+    },
     'weather-closet': {
       group: { visible: false },
       hotspots: { mizzle: [{ parent: null }] },

@@ -96,7 +96,8 @@ for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracl
   'attendant', 'basin', 'distance-keeper', 'borrowed-mile',
   'duty-coat', 'key-board', 'permit-stamp',
   'number-caller', 'ticket-machine', 'waiting-bench',
-  'root-bridge', 'ralph', 'simmering-pot', 'ancestor-altar', 'honest-lantern', 'long-shelf', 'morning-dew']) {
+  'root-bridge', 'ralph', 'simmering-pot', 'ancestor-altar', 'honest-lantern', 'long-shelf', 'morning-dew',
+  'biscuit', 'moldy', 'lawyer-rock', 'unclaimed-shelves', 'fee-schedule']) {
   const button = document.getElementById(residentId);
   if (button) button.addEventListener('click', () => openStory(residentId));
 }
