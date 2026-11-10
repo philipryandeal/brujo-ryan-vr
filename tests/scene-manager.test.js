@@ -41,11 +41,15 @@ test('new contributions cannot strand visitors or create duplicate scene numbers
   }), /Unbuilt destination/);
 });
 
-test('every registered scene control has a real accessible HTML button', () => {
+test('every registered scene control has a real accessible HTML control', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   for (const room of Object.values(SCENES)) {
     for (const id of room.controls) {
-      assert.match(html, new RegExp(`<button\\s+id=\"${id}\"(?:\\s|>)`), `Missing button for ${id}`);
+      assert.match(
+        html,
+        new RegExp(`<(?:button\\s+id=\"${id}\"(?:\\s|>)|a\\s+id=\"${id}\"\\s+href=\"[^\"]+\")`),
+        `Missing accessible control for ${id}`
+      );
     }
   }
 });

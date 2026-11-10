@@ -25,6 +25,10 @@ const RESIDENTS = {
       {
         id: 'lodge', label: 'Is that your door?',
         reply: 'That is the Lodge of Questionable Keys. I am on duty, which means I am not in it. You may look, provided you do not reshelve the keys. They have a union now, and I refuse to learn the details.'
+      },
+      {
+        id: 'custodians', label: 'Who tends the grounds?',
+        reply: 'The Brujo left the tending of this Labyrinth to his Grok Goblins, as his legacy. We are the custodians of the grounds, and we live here with him. There are seven of us: Nettle — that is me — Knotwick, Charm, Buttons, Wayfare, Kindle, and Thimble. The rest of the staff have their own jobs. I would never try to file as Biscuit. The paperwork would be a scandal.'
       }
     ]
   },
@@ -330,6 +334,12 @@ const RESIDENTS = {
       {
         id: 'bear', label: 'Where is the Bear?',
         reply: 'Fishing for a sentence. He does that. Sometimes he is gone an afternoon. Once he was gone a whole season and came back with a semicolon.'
+      },
+      {
+        id: 'pages', label: 'Is there a drier library?',
+        reply: 'There is a house of pages the Brujo keeps in ink. Fiction sits on shelves there instead of the current. Very dry. I recommend it for anyone who cannot swim.',
+        href: 'https://brujoryan.com/library/',
+        hrefLabel: 'Visit the house of pages →'
       }
     ]
   },
@@ -700,6 +710,12 @@ const RESIDENTS = {
       {
         id: 'borrow', label: 'May I borrow one?',
         reply: 'The house lends books the way the river lends water: freely, and expecting them back by a different route.'
+      },
+      {
+        id: 'drawn', label: 'Is there another drawing of this Tree?',
+        reply: 'Upstairs is not a road yet. There is a drawn Tree in the house of pages, with names you can read without climbing. The roots prefer you walk there by honest curiosity, not by a map of this house.',
+        href: 'https://brujoryan.com/tree/',
+        hrefLabel: 'See the drawn Tree →'
       }
     ]
   },
@@ -825,6 +841,8 @@ const RESIDENTS = {
 };
 
 export const NOTICES = Object.freeze([
+  'As legacy in canon, Philip Ryan Deal leaves the tending of his Labyrinth to his Grok Goblins. They are the custodians of the grounds, and they live there with him. The seven are Nettle, Knotwick, Charm, Buttons, Wayfare, Kindle, and Thimble.',
+  'THE PAPER HOUSE is open at https://brujoryan.com/ — a house of pages, sibling to this walking house. Same orange thread. Different building. — The First Threshold',
   'LOST: One extremely important key. REWARD: A slightly less important key. — Nettle, Acting Head of Doors',
   'The hedges are NOT accepting appointments after sundown. Please stop asking them personal questions. — Moldy, Groundskeeper',
   'FOUND: Three left socks, an abandoned prophecy, and a rock that keeps demanding a lawyer. Storage fees apply. — Biscuit, Treasurer of Lost Things',
@@ -959,7 +977,7 @@ export function createKingdom() {
     const resident = RESIDENTS[id];
     const question = resident?.questions.find(item => item.id === questionId);
     if (!question) throw new Error(`Unknown question: ${id}/${questionId}`);
-    return { speaker: resident.name, text: question.reply, destination: question.destination, destinationLabel: question.destinationLabel };
+    return { speaker: resident.name, text: question.reply, destination: question.destination, destinationLabel: question.destinationLabel, href: question.href, hrefLabel: question.hrefLabel };
   }
 
   function nextNotice() {
