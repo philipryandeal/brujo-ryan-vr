@@ -23,6 +23,7 @@ test('the lodge opens from the Threshold and returns there without rewriting com
   world.enter('counting-house');
   world.enter('waiting-hall');
   world.enter('unnecessary-doors');
+  world.enter('hushing-stair');
   world.enter('kamidana');
 });
 

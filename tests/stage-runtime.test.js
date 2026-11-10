@@ -95,6 +95,12 @@ function makeStages() {
       hotspots: { mizzle: [{ parent: null }] },
       actions: { mizzle: { type: 'story', id: 'mizzle' } },
       update() {}
+    },
+    'hushing-stair': {
+      group: { visible: false },
+      hotspots: { sotto: [{ parent: null }] },
+      actions: { sotto: { type: 'story', id: 'sotto' } },
+      update() {}
     }
   };
 }

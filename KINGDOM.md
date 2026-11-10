@@ -36,6 +36,7 @@
 | The Simmering Pot | Coffee (Beneath the Heart Tree) | Has never boiled over and never been finished; not on speaking terms with the River House Kettle |
 | The Honest Lantern | Doorkeeper (Beneath the Heart Tree) | Lights only for an honest knock; refuses to be an experiment |
 | Mizzle | Custodian of Atmospheric Misplacement (Weather Closet) | Sorts wandering weather; refuses climate requests and interdepartmental Tuesday disputes |
+| Sotto | Keeper of Inside Voices (The Hushing Stair) | Wraps the Department's loud noises in felt; wears her ear trumpet backwards so it points at herself |
 
 The Brujo himself is out whenever visitors come, and has no authored lines; Ralph says one word, which sounds like *tekeli-li* from a distance and like *Ryan* up close. The altar beneath the taproot is the one place in the Labyrinth where nobody makes jokes.
 
