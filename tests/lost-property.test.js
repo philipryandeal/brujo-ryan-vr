@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {createKingdom} from '../src/kingdom.js';
+import {createKingdom, NOTICES} from '../src/kingdom.js';
 import {SCENES, createSceneManager, validateSceneRegistry} from '../src/scene-manager.js';
 import {makeLostProperty} from '../src/scenes/lost-property.js';
 import {createStageRuntime} from '../src/scenes/stage-runtime.js';
@@ -37,7 +37,7 @@ test('Biscuit, Moldy, the rock and the office can all be spoken to', () => {
 test('the office keeps faith with the existing lore', () => {
   const story = createKingdom();
   // The noticeboard's FOUND notice is what the office actually holds.
-  const notices = Array.from({length: 7}, () => story.nextNotice().text).join(' ');
+  const notices = Array.from({length: NOTICES.length}, () => story.nextNotice().text).join(' ');
   assert.match(notices, /left socks, an abandoned prophecy, and a rock that keeps demanding a lawyer/);
   const shelves = createKingdom().meet('unclaimed-shelves').text;
   assert.match(shelves, /left socks/);

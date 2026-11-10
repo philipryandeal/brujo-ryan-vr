@@ -796,17 +796,16 @@ const RESIDENTS = {
   }
 };
 
-const NOTICES
-
- = [
+export const NOTICES = Object.freeze([
   'LOST: One extremely important key. REWARD: A slightly less important key. — Nettle, Acting Head of Doors',
   'The hedges are NOT accepting appointments after sundown. Please stop asking them personal questions. — Moldy, Groundskeeper',
   'FOUND: Three left socks, an abandoned prophecy, and a rock that keeps demanding a lawyer. Storage fees apply. — Biscuit, Treasurer of Lost Things',
   'NOTICE: The moat is occupied. Do not wake the occupant, feed the occupant, or tell the occupant about taxation. — Goblin Council',
   "Today's staff meeting has been postponed because the meeting room wandered off. — Provisional Office of Meetings",
   'Visitors are reminded that wishing is permitted. Expecting the Wishing Well to honor its promises is a separate matter. — The Well',
-  'COMPLAINTS: Place them in the orange box. The box is a carnivorous plant. — Customer Relations'
-];
+  'COMPLAINTS: Place them in the orange box. The box is a carnivorous plant. — Customer Relations',
+  'NOW OPEN: The Lost Property Office, behind the faerie. Claims are heard in whatever order is most profitable. Shoggoths: NO. — Biscuit, Treasurer of Lost Things'
+]);
 
 const AMBIENT = {
   threshold: [
