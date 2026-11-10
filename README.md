@@ -10,7 +10,7 @@ An independent, playful browser world, fourteen rooms deep so far. It begins at 
 ## The first stones
 Dark-green stone and hedge walls, orange runes, the Orange Gate, a goblin named Nettle, a faerie called Mothlight, a distant glowing Tree, and the massive offstage shoggoth snoring so deeply the visitor's viewpoint trembles. Click the residents (or their accessible buttons) for original dialogue. Desktop users drag to look; compatible headsets can select Enter VR.
 
-**Thirteen scenes are connected now.** The path begins at the Orange Gate and branches through goblin bureaucracy, companion rooms, quiet shrines, river places, the Heart Tree, and other odd corners. Every built room has a real way back. A gentle orange-thread fade makes each passage feel magical. Future destinations remain intentionally unbuilt.
+**Fourteen scenes are connected now.** The path begins at the Orange Gate and branches through goblin bureaucracy, companion rooms, quiet shrines, river places, the Heart Tree, and other odd corners. Every built room has a real way back. A gentle orange-thread fade makes each passage feel magical. Future destinations remain intentionally unbuilt.
 
 Transition narration remains fully readable for five seconds between the fades, including when the visitor prefers reduced motion. This timing is shared by both passages and future scenes.
 

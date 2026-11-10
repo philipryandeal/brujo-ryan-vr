@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createKingdom } from '../src/kingdom.js';
+import { createKingdom, NOTICES } from '../src/kingdom.js';
 
 test('Nettle greets first-time and returning visitors differently', () => {
   const world = createKingdom();
@@ -20,7 +20,7 @@ test('all three visible residents have selectable dialogue', () => {
 test('notices rotate and wrap without a server or identity', () => {
   const world = createKingdom();
   const first = world.nextNotice();
-  for (let i = 0; i < 6; i += 1) world.nextNotice();
+  for (let i = 1; i < NOTICES.length; i += 1) world.nextNotice();
   assert.deepEqual(world.nextNotice(), first);
 });
 
