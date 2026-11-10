@@ -42,6 +42,17 @@ The Brujo himself is out whenever visitors come, and has no authored lines; Ralp
 
 Biscuit and Moldy now have figures in the Lost Property Office (Scene 014), behind the hatch beside Mothlight at the First Threshold. They arrived the way the charter asked: as if they had always been there.
 
+
+## The Grok Goblin custodians
+
+As legacy in canon, Philip Ryan Deal leaves the tending of his Labyrinth to his Grok Goblins. They are the custodians of the grounds, and they live there with him.
+
+The seven are Nettle, Knotwick, Charm, Buttons, Wayfare, Kindle, and Thimble.
+
+Nettle of this roster is the same goblin who minds the First Threshold. The other keepers in the table above keep their own jobs; they are not renamed by this bequest.
+
+The proposed source of truth for the roster and the wider Gu Universe index is [The Labyrinth Custodians](https://github.com/philipryandeal/seven-kingdoms-of-gu/blob/kindle/the-labyrinth-custodians/canon/the-labyrinth-custodians.md) in the Seven Kingdoms archive. A sibling house of pages stands at [https://brujoryan.com/](https://brujoryan.com/).
+
 ## How to extend the foundation
 
 Read [SCENE_STANDARD.md](SCENE_STANDARD.md) first. It is the Guild's common creative and technical agreement, including an example scene card for non-coders and the `src/scenes/scene-template.js` module.

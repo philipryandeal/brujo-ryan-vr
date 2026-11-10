@@ -44,6 +44,13 @@ function showPanel(entry, actions = []) {
   speech.textContent = entry.text;
   choices.replaceChildren();
   for (const action of actions) {
+    if (action.href) {
+      const link = document.createElement('a');
+      link.href = action.href;
+      link.textContent = action.label;
+      choices.appendChild(link);
+      continue;
+    }
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = action.label;
@@ -51,7 +58,7 @@ function showPanel(entry, actions = []) {
     choices.appendChild(button);
   }
   dialogue.hidden = false;
-  choices.querySelector('button')?.focus();
+  (choices.querySelector('button') || choices.querySelector('a'))?.focus();
 }
 
 export function openStory(id, newVisit = true) {
@@ -63,6 +70,7 @@ export function openStory(id, newVisit = true) {
       const reply = kingdom.answer(id, choice.id);
       showPanel(reply, [
         ...(reply.destination ? [{label:reply.destinationLabel || 'Cross the Orange Gate →',run:()=>goToScene(reply.destination)}] : []),
+        ...(reply.href ? [{label: reply.hrefLabel || 'Visit the paper house →', href: reply.href}] : []),
         { label: 'Ask another question', run: () => openStory(id, false) },
         { label: 'Leave them to it', run: closeStory }
       ]);

@@ -5,7 +5,7 @@ export const SCENES = Object.freeze({
     number: '001',
     title: 'The First Threshold',
     exits: Object.freeze(['whisper-hedges', 'questionable-keys', 'lost-property']),
-    controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices', 'key-lodge-entry', 'lost-property-entry']),
+    controls: Object.freeze(['goblin', 'faerie', 'gate', 'notices', 'paper-house', 'key-lodge-entry', 'lost-property-entry']),
     arrivalText: 'The thread winds home. Nettle is already blaming someone.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to Gate' })
   }),
