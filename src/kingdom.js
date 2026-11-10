@@ -550,6 +550,34 @@ const RESIDENTS = {
       {id:'rest', label:'Sit down for a while.', reply:'You sit. The bench creaks approvingly. Across the hall, Tuppence calls a number nobody holds, and the afternoon gets a little longer, in a pleasant way.'}
     ]
   },
+  sotto: {
+    name: 'Sotto, Keeper of Inside Voices',
+    greeting: 'A small goblin in felt slippers sits on the bottom step, wearing an ear trumpet backwards. "Welcome," she whispers. "You may keep your voice. I only collect the loud parts."',
+    returnGreeting: 'Sotto lifts one finger, finishes wrapping a sneeze in felt, and nods hello.',
+    questions: [
+      {id:'job', label:'What do you keep?', reply:'Inside voices. Mostly I keep the outside ones from coming up the stair. The Department makes a great deal of noise about very little, and the room upstairs has asked for none of it.'},
+      {id:'trumpet', label:'Why is your ear trumpet backwards?', reply:'So it points at me. I find I am the only one on this stair who needs reminding.'},
+      {id:'upstairs', label:'What is up the stair?', reply:'A quiet room. I do not go up; I would only be in the way of the quiet. Climb slowly, and if you want to whisper, the stair will not tell.'}
+    ]
+  },
+  'noise-basket': {
+    name: 'The Basket of Muffled Noises',
+    greeting: 'A wide basket of felt bundles, each tied with orange string and labeled in tiny careful letters: ONE DOOR SLAM. EMERGENCY BELL (UNNECESSARY). A STAMP, LOUDLY. A trumpet note from somewhere called number nineteen.',
+    returnGreeting: 'A new bundle has arrived. Its label says STRIKE CHANT, DOOR UNION, VERSE TWO.',
+    questions: [
+      {id:'unwrap', label:'Unwrap one, just a little.', reply:'You loosen a string. A very small THUNK escapes, apologizes, and climbs back into its felt. Sotto pretends not to notice.'},
+      {id:'return', label:'Do the noises ever go home?', reply:'Every evening Sotto carries the basket back down and lets them out in the Department, where they are enormously welcome. Nobody there has noticed they were ever gone.'}
+    ]
+  },
+  'shoe-bench': {
+    name: 'The Bench of Left Shoes',
+    greeting: 'A stone bench at the foot of the stair with three pairs of boots waiting politely. A small sign reads: SHOES MAY WAIT HERE IF THEY LIKE. NOBODY IS REQUIRED TO ASK THEM.',
+    returnGreeting: 'The boots have shuffled over to make room. One pair is orange and seems proud of it.',
+    questions: [
+      {id:'whose', label:'Whose boots are these?', reply:'Nobody remembers. They came up the stair once, sat down, and found they liked the waiting better than the walking. Biscuit has tried to invoice them twice.'},
+      {id:'mine', label:'Should I leave mine?', reply:'Only if you wish. The stair takes everyone as they come, shod or not. The bench simply enjoys company.'}
+    ]
+  },
   // ── The Bridge of Roots, on the River House's right bank, and the room beneath the Heart Tree.
   'root-bridge': {
     name: 'The Bridge of Roots',
@@ -890,6 +918,12 @@ const AMBIENT = {
     'An ember on a pillar brightens, then decides against it.',
     'The attendant is not performing.',
     'A leaf of light appears on an unfinished tree and fades.'
+  ],
+  'hushing-stair': [
+    'Sotto wraps a stray STAMP in felt and sets it gently in the basket.',
+    'From below, a door slams. By the third step it has become a polite knock.',
+    'One of the waiting boots taps once, then remembers itself.',
+    'Somewhere up the stair, a single ember settles.'
   ],
   'waiting-hall': [
     'Tuppence calls number nineteen. A coat rack considers standing up, then thinks better of it.',

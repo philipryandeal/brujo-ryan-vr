@@ -17,9 +17,9 @@ test('only discovered adjacent thresholds can be crossed', () => {
 });
 
 test('scene registry contains no map or unbuilt destinations', () => {
-  assert.deepEqual(Object.keys(SCENES).sort(),['counting-house','heart-tree','kamidana','long-way','lost-property','oracle-room','questionable-keys','river-house','shoggoth-moat','threshold','unnecessary-doors','waiting-hall','weather-closet','whisper-hedges']);
+  assert.deepEqual(Object.keys(SCENES).sort(),['counting-house','heart-tree','hushing-stair','kamidana','long-way','lost-property','oracle-room','questionable-keys','river-house','shoggoth-moat','threshold','unnecessary-doors','waiting-hall','weather-closet','whisper-hedges']);
   assert.equal(validateSceneRegistry(), true);
-  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002', '003', '005', '006', '007', '008', '009', '010', '011', '004', '013', '012', '014']);
+  assert.deepEqual(Object.values(SCENES).map(scene => scene.number), ['001', '002', '003', '005', '006', '007', '008', '009', '010', '011', '004', '013', '012', '014', '015']);
 });
 
 test('new contributions cannot strand visitors or create duplicate scene numbers', () => {

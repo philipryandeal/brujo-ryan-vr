@@ -27,7 +27,7 @@ export const SCENES = Object.freeze({
   }),
   'unnecessary-doors': Object.freeze({
     number: '005', title: 'The Department of Unnecessary Doors',
-    exits: Object.freeze(['waiting-hall', 'kamidana', 'weather-closet']),
+    exits: Object.freeze(['waiting-hall', 'hushing-stair', 'weather-closet']),
     controls: Object.freeze(['picklesworth','union-door','office-bell','office-return','keep-out-door','weather-entry']),
     arrivalText: 'The orange thread catches on a brass doorknob. A clerk stamps an application nobody submitted.',
     appearance: Object.freeze({background:0x476f95,torch:0xff5e1f,resetLabel:'Look to the Desk'})
@@ -48,7 +48,7 @@ export const SCENES = Object.freeze({
   'kamidana': Object.freeze({
     number: '008',
     title: 'The Kamidana',
-    exits: Object.freeze(['unnecessary-doors']),
+    exits: Object.freeze(['hushing-stair']),
     controls: Object.freeze(['attendant', 'basin', 'shrine-return']),
     arrivalText: 'The orange thread thins to a single ember. The air here does not ask your name.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xff5e1f, resetLabel: 'Look to the Basin' })
@@ -107,6 +107,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['biscuit', 'moldy', 'lawyer-rock', 'unclaimed-shelves', 'fee-schedule', 'lost-property-return']),
     arrivalText: 'The Orange Thread is weighed, tagged and entered into inventory. A small bell rings. Somebody is already writing you a receipt for something you never lost.',
     appearance: Object.freeze({ background: 0x303636, torch: 0xff5e1f, resetLabel: 'Look to the Counter' })
+  }),
+  'hushing-stair': Object.freeze({
+    number: '015',
+    title: 'The Hushing Stair',
+    exits: Object.freeze(['unnecessary-doors', 'kamidana']),
+    controls: Object.freeze(['sotto', 'noise-basket', 'shoe-bench', 'stair-up', 'stair-return']),
+    arrivalText: 'Behind the KEEP OUT door, the Orange Thread lowers its voice. A stair climbs toward one small ember, and the Department\'s clatter is gently taken from you at the bottom step.',
+    appearance: Object.freeze({ background: 0x303636, torch: 0xb9f3a4, resetLabel: 'Look Up the Stair' })
   })
 });
 

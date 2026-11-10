@@ -43,7 +43,7 @@ export function makeKamidana(THREE, palette) {
   box(0,4.4,0,3.2,.4,.5,orange,returnDoor);
   box(0,2.2,0,2.6,4.2,.18,dark,returnDoor);
   orb(.9,2.1,-.1,.1,orange,returnDoor);
-  const exitSign=sign(['BACK TO THE','UNNECESSARY DOORS'],3.6,1.3,0,5.4,6.1,0);
+  const exitSign=sign(['DOWN THE','HUSHING STAIR'],3.6,1.3,0,5.4,6.1,0);
   group.visible=false;
   return {
     group,
@@ -51,7 +51,7 @@ export function makeKamidana(THREE, palette) {
     actions:{
       attendant:{type:'story',id:'kamidana-attendant'},
       basin:{type:'story',id:'kamidana-basin'},
-      'shrine-return':{type:'travel',destination:'unnecessary-doors'}
+      'shrine-return':{type:'travel',destination:'hushing-stair'}
     },
     update(t){attendant.rotation.y=Math.sin(t*.4)*.08;}
   };

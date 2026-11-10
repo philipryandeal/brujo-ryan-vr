@@ -15,7 +15,9 @@ test('the hall separates the Counting House from the Department, with physical r
   assert.deepEqual([...SCENES['waiting-hall'].exits].sort(), ['counting-house', 'unnecessary-doors']);
   world.enter('unnecessary-doors');
   assert.equal(world.canEnter('counting-house'), false);
+  world.enter('hushing-stair');
   world.enter('kamidana');
+  world.enter('hushing-stair');
   world.enter('unnecessary-doors');
   world.enter('waiting-hall');
   world.enter('counting-house');

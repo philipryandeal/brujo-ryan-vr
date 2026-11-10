@@ -22,7 +22,7 @@ export function makeUnnecessaryDoors(THREE, palette) {
   box(-9,3,-1,.7,6,26,green);box(9,3,-1,.7,6,26,green);
   box(0,3,-14,19,6,.65,stone);
   box(0,6,-1,19,.28,26,dark);
-  // Far-left door is marked KEEP OUT and leads to the Kamidana.
+  // Far-left door is marked KEEP OUT and opens onto the Hushing Stair, which climbs to the Kamidana.
   const keepOutDoor=new THREE.Group();keepOutDoor.position.set(-7.35,0,-13.45);group.add(keepOutDoor);
   box(0,2.45,0,1.65,4.75,.25,iron,keepOutDoor);
   box(0,4.65,.25,1.25,.12,.15,orange,keepOutDoor);
@@ -75,7 +75,7 @@ export function makeUnnecessaryDoors(THREE, palette) {
       'union-door':{type:'story',id:'union-door'},
       'office-bell':{type:'story',id:'office-bell'},
       'office-return':{type:'travel',destination:'waiting-hall'},
-      'keep-out-door':{type:'travel',destination:'kamidana'},
+      'keep-out-door':{type:'travel',destination:'hushing-stair'},
       'weather-entry':{type:'travel',destination:'weather-closet'}
     },
     update(t){picklesworth.rotation.y=Math.sin(t*.65)*.12;}
