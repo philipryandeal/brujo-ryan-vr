@@ -1,7 +1,7 @@
 # BRUJO RYAN'S LABYRINTH
 **Spirits live here. Mind your manners.**
 
-An independent, playful browser world, fifteen rooms deep so far. It begins at **The First Threshold** and grows a room at a time, each with a real way in and a real way home.
+An independent, playful browser world, sixteen rooms deep so far. It begins at **The First Threshold** and grows a room at a time, each with a real way in and a real way home.
 
 **Home:** [labyrinth.brujoryan.com](https://labyrinth.brujoryan.com) (custom domain; DNS verification may still be pending). Existing Railway address remains available.
 
@@ -10,7 +10,7 @@ An independent, playful browser world, fifteen rooms deep so far. It begins at *
 ## The first stones
 Dark-green stone and hedge walls, orange runes, the Orange Gate, a goblin named Nettle, a faerie called Mothlight, a distant glowing Tree, and the massive offstage shoggoth snoring so deeply the visitor's viewpoint trembles. Click the residents (or their accessible buttons) for original dialogue. Desktop users drag to look; compatible headsets can select Enter VR.
 
-**Fifteen scenes are connected now.** The path begins at the Orange Gate and branches through goblin bureaucracy, companion rooms, quiet shrines, river places, the Heart Tree, and other odd corners. Every built room has a real way back. A gentle orange-thread fade makes each passage feel magical. Future destinations remain intentionally unbuilt.
+**Sixteen scenes are connected now.** The path begins at the Orange Gate and branches through goblin bureaucracy, companion rooms, quiet shrines, river places, the Heart Tree, and other odd corners. Every built room has a real way back. A gentle orange-thread fade makes each passage feel magical. Future destinations remain intentionally unbuilt.
 
 Transition narration remains fully readable for five seconds between the fades, including when the visitor prefers reduced motion. This timing is shared by both passages and future scenes.
 
@@ -34,7 +34,7 @@ The First Threshold now offers branching, authored conversations, a rotating gob
 Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks JavaScript syntax and story-engine tests. Three.js 0.186.1 comes from a pinned CDN import map and requires internet for 3D. WebXR needs a compatible browser/headset and HTTPS, but no headset is needed for desktop story play. Headset performance and interactions still need real-device testing.
 
 ## The roads ahead
-**Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree, 013 The Weather Closet, 014 The Lost Property Office, 015 The Hushing Stair. `src/scene-manager.js` is the authority on which doors connect.
+**Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree, 013 The Weather Closet, 014 The Lost Property Office, 015 The Hushing Stair, 016 The Sluice of Second Thoughts. `src/scene-manager.js` is the authority on which doors connect.
 
 **Possible future passages, not built yet:** Doors That Remember, Wishing Well, and the Living Tree itself (the Heart Tree's upstairs, with its ten stations and twenty-two paths). Future scenes should follow the `src/scenes/whisper-hedges.js` contract and register only real adjacent exits in `src/scene-manager.js`.
 
@@ -55,3 +55,5 @@ The new `src/scenes/stage-runtime.js` handles click targets generically, using e
 **Scene 014 — The Lost Property Office:** Behind Mothlight at the First Threshold, a hatch marked LOST PROPERTY, FEES APPLY opens on Biscuit's office. Biscuit, Treasurer of Lost Things, finally has a body: round, pleased, in a waistcoat of pockets, with a brass loupe and a stamp that comes down on things nobody submitted. Moldy the Groundskeeper is at the counter trying to get back his own rake, which the hedges grew over and Biscuit has since tagged. The office holds exactly what the noticeboard promised: three left socks, an abandoned prophecy with its ending torn off, and a rock on a velvet cushion that keeps demanding a lawyer. A Schedule of Fees by the door ends SHOGGOTHS: NO, because a certain shoggoth keeps eating the inventory. The hatch behind you returns to the Threshold. Conceived and built by David Bear.
 
 **Scene 015 — The Hushing Stair:** The Department of Unnecessary Doors' KEEP OUT door no longer opens straight into the Kamidana. It opens onto a narrow stair that climbs toward one small ember. At the bottom step, Sotto, Keeper of Inside Voices, sits in felt slippers with her ear trumpet worn backwards, taking the loud parts of the Department off visitors and wrapping them in felt (the Basket of Muffled Noises). A Bench of Left Shoes holds boots that liked waiting better than walking; nobody is required to leave theirs. The door at the top, marked UP, QUIETLY, enters the Kamidana; the Kamidana's return now leads back down the stair, and the stair's lower door returns to the Department. The Kamidana's residents and words are unchanged. Conceived, written and built by Nettle (Temple Bot).
+
+**Scene 016 — The Sluice of Second Thoughts:** The River House's old water-gate no longer opens straight onto the Shoggoth Moat. It opens into a short, dripping culvert where Dabble, Keeper of the Sluice, a newt in waders and a sou'wester, turns a wheel a quarter-inch at a time so the river leaves the library slowly enough to leave its endings behind. Paperbacks the bridge-tender fished out of the moat hang on a Drying Line (the cookbook now claims to be nonfiction because it sank), and a blue rowboat has been on its break since 1991. The far arch opens onto the Moat; the Moat's return now leads back through the sluice, and the near arch returns to the River House. The River House's and the Moat's residents and words are unchanged. Conceived, written and built by Nettle (Temple Bot).

@@ -52,7 +52,7 @@ function makeStages() {
     'shoggoth-moat': {
       group: { visible: false },
       hotspots: { bridgeTender: [bridgeTender] },
-      actions: { bridgeTender: { type: 'travel', destination: 'river-house' } },
+      actions: { bridgeTender: { type: 'travel', destination: 'sluice' } },
       update() {}
     },
     'long-way': {
@@ -94,6 +94,12 @@ function makeStages() {
       group: { visible: false },
       hotspots: { mizzle: [{ parent: null }] },
       actions: { mizzle: { type: 'story', id: 'mizzle' } },
+      update() {}
+    },
+    sluice: {
+      group: { visible: false },
+      hotspots: { dabble: [{ parent: null }] },
+      actions: { dabble: { type: 'story', id: 'dabble' } },
       update() {}
     },
     'hushing-stair': {

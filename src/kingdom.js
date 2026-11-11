@@ -227,7 +227,7 @@ const RESIDENTS = {
     greeting:'At the far end of the library, the river slips beneath a weathered stone arch. A damp brass plaque reads: THE SHOGGOTH MOAT — PLEASE REFRAIN FROM MAKING GEOLOGICAL DISTURBANCES.',
     returnGreeting:'The water-gate breathes cool night air. A paperback floats toward the arch, reconsiders, and paddles back to the shelves.',
     questions:[
-      {id:'enter',label:'Follow the river out to the Moat.',reply:'You duck beneath the low stone arch. The library roof gives way to open sky, moonlight, and a bridge trembling with a very peaceful snore.',destination:'shoggoth-moat',destinationLabel:'Step onto the Moat Bridge →'},
+      {id:'enter',label:'Follow the river out to the Moat.',reply:'You duck beneath the low stone arch into a dripping stone culvert. Somewhere beyond it: open sky, moonlight, and a bridge trembling with a very peaceful snore.',destination:'sluice',destinationLabel:'Duck into the Sluice →'},
       {id:'listen',label:'Listen at the arch.',reply:'Water lapping against old stone, a rhythmic bubble the size of a carriage, and a goblin whispering SHH at the top of his lungs.'},
       {id:'pell',label:'Does Mrs. Pell mind if I go?',reply:'Mrs. Pell does not move, the closest she comes to blessing anything. You will still be late when you get back.'}
     ]
@@ -588,6 +588,34 @@ const RESIDENTS = {
       {id:'mine', label:'Should I leave mine?', reply:'Only if you wish. The stair takes everyone as they come, shod or not. The bench simply enjoys company.'}
     ]
   },
+  dabble: {
+    name: 'Dabble, Keeper of the Sluice',
+    greeting: 'A newt in rubber waders and a sou\'wester stands at a wheel set into the wall, turning it a quarter-inch at a time. "Mind the drip," he says, without looking round. "Everything that leaves the library comes through here, and everything gets one second thought."',
+    returnGreeting: 'Dabble gives the wheel another quarter-inch. "Back again. That\'s a second thought, that is. Good for you."',
+    questions: [
+      {id:'job', label:'What does the sluice do?', reply:'Lets the river out to the moat, one thought at a time. A river that leaves a library in a hurry takes the plots with it. Here it slows down, has a think, and leaves the endings behind for Quillon.'},
+      {id:'books', label:'Why do the books stop here?', reply:'Second thoughts. A paperback floats this far, smells moat, and reconsiders. Most go back to the shelves. The brave ones go on, and the bridge-tender fishes them out and sends them back to me to dry.'},
+      {id:'snore', label:'Is that snoring?', reply:'That\'s the neighbour. You get used to it. After forty years I find I can\'t sleep without it, which I have not told him, as he is asleep.'}
+    ]
+  },
+  'drying-line': {
+    name: 'The Drying Line',
+    greeting: 'A line strung across the culvert, pegged with damp paperbacks: three romances, a mystery missing its last chapter, and a cookbook that insists it fell in on purpose. A tag reads: RETURNED BY THE BRIDGE-TENDER. DO NOT SPOIL.',
+    returnGreeting: 'The mystery has dried a little. It still will not say who did it.',
+    questions: [
+      {id:'read', label:'Read a damp page.', reply:'The ink has run into a sentence nobody wrote: "and then the river, too, decided to stay for tea." The romance beside it looks scandalized.'},
+      {id:'sank', label:'Did any of these sink?', reply:'One. The cookbook. It now claims to be nonfiction on the strength of it, and Quillon has agreed to consider the matter after lunch.'}
+    ]
+  },
+  rowboat: {
+    name: 'The Rowboat on Its Break',
+    greeting: 'A small blue rowboat is moored to an iron ring, oars folded neatly across its seat. A card propped in the bow reads: ON MY BREAK. BACK WHEN I FEEL LIKE IT.',
+    returnGreeting: 'The rowboat has not moved. The card now has a second line: STILL.',
+    questions: [
+      {id:'ride', label:'Could I row to the moat?', reply:'The rowboat declines, very politely, by not moving. The culvert is a short walk anyway, and the walk has never once asked for a break.'},
+      {id:'how-long', label:'How long is its break?', reply:'Dabble checks a damp notebook. "Since about 1991. Something big rolled over and asked if it was Saturday. She has been thinking about it ever since."'}
+    ]
+  },
   // ── The Bridge of Roots, on the River House's right bank, and the room beneath the Heart Tree.
   'root-bridge': {
     name: 'The Bridge of Roots',
@@ -942,6 +970,12 @@ const AMBIENT = {
     'From below, a door slams. By the third step it has become a polite knock.',
     'One of the waiting boots taps once, then remembers itself.',
     'Somewhere up the stair, a single ember settles.'
+  ],
+  sluice: [
+    'Dabble turns the wheel a quarter-inch. The river says thank you in a long low gurgle.',
+    'A paperback drifts to the grate, reconsiders, and turns back toward the library.',
+    'From the moat end, a snore arrives and is politely let through.',
+    'A drop falls from the roof, lands on the rowboat, and is ignored.'
   ],
   'waiting-hall': [
     'Tuppence calls number nineteen. A coat rack considers standing up, then thinks better of it.',

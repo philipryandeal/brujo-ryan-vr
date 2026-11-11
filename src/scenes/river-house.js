@@ -4,7 +4,7 @@
 // stand in the water. Books that float are fiction; books that sink are
 // nonfiction. The Bear is not home. He has gone fishing for a sentence.
 // The way in is the Bear's Door in the Long Way Between; the way out is the same door.
-// Kore's water-gate leads on to the Shoggoth Moat, and the Bridge of Roots on the
+// Kore's water-gate leads through the Sluice of Second Thoughts to the Shoggoth Moat, and the Bridge of Roots on the
 // right bank leads down beneath the Heart Tree.
 export function makeRiverHouse(THREE, palette) {
   const group = new THREE.Group();

@@ -60,7 +60,7 @@ export function makeShoggothMoat(THREE,palette){
  box(-2.8,2.45,0,.65,4.9,.65,stone,exit);box(2.8,2.45,0,.65,4.9,.65,stone,exit);
  box(0,5,0,6.1,.7,.65,stone,exit);
  const door=box(0,2.4,.1,4.7,4.7,.22,green,exit);
- const exitSign=sign(['BACK TO THE','RIVER HOUSE'],3.7,1.5,0,6,14.55,0);
+ const exitSign=sign(['BACK THROUGH','THE SLUICE'],3.7,1.5,0,6,14.55,0);
  const bubbles=[];
  for(let i=0;i<9;i++){const b=orb(3+(i%3)*.8,-.45,-9-(i%4),.11+(i%3)*.07,light);bubbles.push({mesh:b,phase:i*.7})}
  group.visible=false;
@@ -71,7 +71,7 @@ export function makeShoggothMoat(THREE,palette){
    'bridge-tender':{type:'story',id:'bridge-tender'},
    'snoring-buoy':{type:'story',id:'snoring-buoy'},
    'tax-box':{type:'story',id:'tax-box'},
-   'moat-return':{type:'travel',destination:'river-house'}
+   'moat-return':{type:'travel',destination:'sluice'}
   },
   update(t){
    // Six-second breathing: no startle, no attack.
