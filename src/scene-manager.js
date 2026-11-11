@@ -40,7 +40,7 @@ export const SCENES = Object.freeze({
     appearance:Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look to the Astrolabe'})
   }),
   'shoggoth-moat': Object.freeze({
-    number:'007',title:'The Shoggoth Moat',exits:Object.freeze(['river-house']),
+    number:'007',title:'The Shoggoth Moat',exits:Object.freeze(['sluice']),
     controls:Object.freeze(['bridge-tender','snoring-buoy','tax-box','moat-return']),
     arrivalText:'The low stone arch gives way to open night; moonlight silvers the water, the bridge sways with a slow six-second breath, and someone very small whispers at you to mind your shoes.',
     appearance:Object.freeze({background:0x476f95,torch:0xb9f3a4,resetLabel:'Look Along the Bridge'})
@@ -79,7 +79,7 @@ export const SCENES = Object.freeze({
   'river-house': Object.freeze({
     number: '004',
     title: 'The River House',
-    exits: Object.freeze(['long-way','shoggoth-moat','heart-tree']),
+    exits: Object.freeze(['long-way','sluice','heart-tree']),
     controls: Object.freeze(['quillon', 'river-kettle', 'pell', 'reading-chair', 'sentence-bucket', 'water-gate', 'root-bridge', 'river-return']),
     arrivalText: 'The Orange Thread dips below the waterline, and somewhere ahead, a kettle clears its throat.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Downriver' })
@@ -115,6 +115,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['sotto', 'noise-basket', 'shoe-bench', 'stair-up', 'stair-return']),
     arrivalText: 'Behind the KEEP OUT door, the Orange Thread lowers its voice. A stair climbs toward one small ember, and the Department\'s clatter is gently taken from you at the bottom step.',
     appearance: Object.freeze({ background: 0x303636, torch: 0xb9f3a4, resetLabel: 'Look Up the Stair' })
+  }),
+  sluice: Object.freeze({
+    number: '016',
+    title: 'The Sluice of Second Thoughts',
+    exits: Object.freeze(['river-house', 'shoggoth-moat']),
+    controls: Object.freeze(['dabble', 'drying-line', 'rowboat', 'sluice-onward', 'sluice-return']),
+    arrivalText: 'The Orange Thread ducks under the water-gate and begins to drip. Somewhere ahead a wheel turns a quarter-inch, a very large snore is being let through, and a paperback is having second thoughts.',
+    appearance: Object.freeze({ background: 0x303636, torch: 0xb9f3a4, resetLabel: 'Look Down the Culvert' })
   })
 });
 

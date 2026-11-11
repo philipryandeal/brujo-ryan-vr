@@ -62,7 +62,7 @@ const oracleReturnButton=document.getElementById('oracle-return');
 if(oracleReturnButton)oracleReturnButton.addEventListener('click',()=>goToScene('long-way'));
 
 const moatReturnButton=document.getElementById('moat-return');
-if(moatReturnButton)moatReturnButton.addEventListener('click',()=>goToScene('river-house'));
+if(moatReturnButton)moatReturnButton.addEventListener('click',()=>goToScene('sluice'));
 
 const keepOutDoorButton=document.getElementById('keep-out-door');
 if(keepOutDoorButton)keepOutDoorButton.addEventListener('click',()=>goToScene('hushing-stair'));
@@ -70,7 +70,7 @@ if(keepOutDoorButton)keepOutDoorButton.addEventListener('click',()=>goToScene('h
 const shrineReturnButton=document.getElementById('shrine-return');
 if(shrineReturnButton)shrineReturnButton.addEventListener('click',()=>goToScene('hushing-stair'));
 
-for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house'],['key-lodge-entry','questionable-keys'],['key-lodge-return','threshold'],['hall-department-door','unnecessary-doors'],['hall-return','counting-house'],['weather-entry','weather-closet'],['weather-return','unnecessary-doors'],['heart-tree-return','river-house'],['lost-property-entry','lost-property'],['lost-property-return','threshold'],['stair-up','kamidana'],['stair-return','unnecessary-doors']]) {
+for (const [id,destination] of [['long-way-entry','long-way'],['long-way-return','counting-house'],['key-lodge-entry','questionable-keys'],['key-lodge-return','threshold'],['hall-department-door','unnecessary-doors'],['hall-return','counting-house'],['weather-entry','weather-closet'],['weather-return','unnecessary-doors'],['heart-tree-return','river-house'],['lost-property-entry','lost-property'],['lost-property-return','threshold'],['stair-up','kamidana'],['stair-return','unnecessary-doors'],['sluice-onward','shoggoth-moat'],['sluice-return','river-house']]) {
   const button=document.getElementById(id);
   if(button)button.addEventListener('click',()=>goToScene(destination));
 }
