@@ -45,7 +45,7 @@ The new `src/scenes/stage-runtime.js` handles click targets generically, using e
 
 
 
-**Scene 007 — The Shoggoth Moat:** The Old Stone Water-Gate in David Bear's River House opens onto a moonlit bridge. Bram, the Snoring Buoy, and the Tax-Exemption Box are available for authored, local conversation. The sleeper stays beneath the water. The bridge returns to the River House. Conceived and dialogued by Kore, integrated by Seraph Ogou; no map or tracking.
+**Scene 007 — The Shoggoth Moat:** The Old Stone Water-Gate in David Bear's River House leads, by way of the Sluice of Second Thoughts, onto a moonlit bridge. Bram, the Snoring Buoy, and the Tax-Exemption Box are available for authored, local conversation. The sleeper stays beneath the water. The bridge returns through the Sluice to the River House. Conceived and dialogued by Kore, integrated by Seraph Ogou; no map or tracking.
 
 **Scene 012 — Beneath the Heart Tree:** From the founder's own words of October 29, 2026: he lives under the roots of the tree at the center of his Labyrinth, and keeps a shoggoth named Ralph. On the River House's right bank, the Heart Tree's roots come down through the willows to drink; planks laid across their knuckles make the **Bridge of Roots**. Below is the Brujo's dwelling: roots for a ceiling hung with herbs, iron keys, bones and beads; a pot of coffee that is always simmering; an altar to the ancestors where the taproot goes down; a bookshelf too long for the room; a lantern that lights only for an honest knock; and the dew above the round crossroads door. The Brujo is out. Ralph is home, curled around the hearth, with one gold eye that stays put. The Tree's upstairs is not built and is never offered as a passage. Conceived and built by David Bear.
 

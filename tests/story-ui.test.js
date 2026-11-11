@@ -22,7 +22,8 @@ function fakeElement() {
 const ids = [
   'scene-veil', 'scene-veil-text', 'goblin', 'faerie', 'gate', 'notices',
   'hedge', 'return-gate', 'dialogue', 'speaker', 'speech', 'choices',
-  'hint', 'sound', 'reset', 'dismiss', 'begin', 'threshold'
+  'hint', 'sound', 'reset', 'dismiss', 'begin', 'threshold',
+  'attendant', 'basin'
 ];
 const elements = new Map(ids.map(id => [id, fakeElement()]));
 const controls = fakeElement();
@@ -62,4 +63,27 @@ test('the hedges also wait until the visitor initiates a conversation', async ()
   elements.get('hedge').click();
   assert.equal(elements.get('dialogue').hidden, false);
   assert.equal(elements.get('speaker').textContent, 'The Hedge, Acting Receptionist');
+});
+
+test('the Kamidana buttons open the same quiet residents as its hotspots', () => {
+  elements.get('attendant').click();
+  assert.equal(elements.get('dialogue').hidden, false);
+  assert.equal(elements.get('speaker').textContent, 'The Attendant');
+  elements.get('dismiss').click();
+
+  elements.get('basin').click();
+  assert.equal(elements.get('speaker').textContent, 'The Basin');
+  elements.get('dismiss').click();
+});
+
+test('every resident button in the story wiring reaches a known resident', async () => {
+  const fs = await import('node:fs');
+  const { createKingdom } = await import('../src/kingdom.js');
+  const source = fs.readFileSync(new URL('../src/story-ui.js', import.meta.url), 'utf8');
+  const list = source.match(/for \(const residentId of \[([\s\S]*?)\]\)/)[1];
+  const buttonIds = [...list.matchAll(/'([a-z-]+)'/g)].map(m => m[1]);
+  const aliases = Object.fromEntries([...source.matchAll(/^\s+([a-z-]+): '([a-z-]+)',?$/gm)].map(m => [m[1], m[2]]));
+  const kingdom = createKingdom();
+  assert.ok(buttonIds.length > 40);
+  for (const id of buttonIds) assert.doesNotThrow(() => kingdom.meet(aliases[id] || id, false), id);
 });
