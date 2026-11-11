@@ -21,6 +21,12 @@ try {
   document.getElementById('sound').hidden = true;
   document.getElementById('reset').hidden = true;
 }
+// A few buttons share a short ID with their room while the resident's words
+// live under a longer one. Keep these in step with the stage's hotspot actions.
+const STORY_FOR_BUTTON = Object.freeze({
+  attendant: 'kamidana-attendant',
+  basin: 'kamidana-basin'
+});
 let lastTrigger = null;
 let started = false;
 let onWorldStart = () => {};
@@ -109,7 +115,7 @@ for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracl
   'sotto', 'noise-basket', 'shoe-bench',
   'dabble', 'drying-line', 'rowboat']) {
   const button = document.getElementById(residentId);
-  if (button) button.addEventListener('click', () => openStory(residentId));
+  if (button) button.addEventListener('click', () => openStory(STORY_FOR_BUTTON[residentId] || residentId));
 }
 document.getElementById('notices').addEventListener('click', openNotices);
 document.getElementById('begin').addEventListener('click', () => {
