@@ -38,6 +38,7 @@
 | Mizzle | Custodian of Atmospheric Misplacement (Weather Closet) | Sorts wandering weather; refuses climate requests and interdepartmental Tuesday disputes |
 | Sotto | Keeper of Inside Voices (The Hushing Stair) | Wraps the Department's loud noises in felt; wears her ear trumpet backwards so it points at herself |
 | Dabble | Keeper of the Sluice (The Sluice of Second Thoughts) | A newt in waders who lets the river out one thought at a time; cannot sleep without the moat's snoring and has not told the moat |
+| Snip | Stylist to the Hedge (The Topiary Parlour) | Thinks plants grow out of hope; has been re-trimming the same swan, which grows back into a duck, for eleven years and enjoys it |
 
 The Brujo himself is out whenever visitors come, and has no authored lines; Ralph says one word, which sounds like *tekeli-li* from a distance and like *Ryan* up close. The altar beneath the taproot is the one place in the Labyrinth where nobody makes jokes.
 

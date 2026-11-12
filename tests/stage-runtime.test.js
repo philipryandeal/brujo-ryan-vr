@@ -102,6 +102,12 @@ function makeStages() {
       actions: { dabble: { type: 'story', id: 'dabble' } },
       update() {}
     },
+    'topiary-parlour': {
+      group: { visible: false },
+      hotspots: { snip: [{ parent: null }] },
+      actions: { snip: { type: 'story', id: 'snip' } },
+      update() {}
+    },
     'hushing-stair': {
       group: { visible: false },
       hotspots: { sotto: [{ parent: null }] },

@@ -63,6 +63,25 @@ export function makeWhisperHedges(THREE, palette) {
   brush.fillText('HEDGE VISITS',256,108);brush.fillText('BY APPOINTMENT',256,176);
   const sign=add(new THREE.PlaneGeometry(3.5,1.75),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(signCanvas),side:THREE.DoubleSide}),0,4.6,-10);
 
+  // A trimmed gap in the left-hand hedge, with a small salon sign: the Topiary Parlour.
+  const parlourGap = new THREE.Group();
+  parlourGap.position.set(-4.9, 0, 3);
+  parlourGap.rotation.y = Math.PI / 2;
+  group.add(parlourGap);
+  function gapPart(geometry, mat, x, y, z) {
+    const mesh = new THREE.Mesh(geometry, mat); mesh.position.set(x, y, z); parlourGap.add(mesh); return mesh;
+  }
+  gapPart(new THREE.BoxGeometry(2, 3.4, .12), deep, 0, 1.7, -.2);
+  gapPart(new THREE.BoxGeometry(2.4, .14, .14), orange, 0, 3.45, 0);
+  gapPart(new THREE.SphereGeometry(.14, 10, 8), orange, .9, 3.1, .1);
+  const gapCanvas = document.createElement('canvas'); gapCanvas.width = 512; gapCanvas.height = 128;
+  const pbrush = gapCanvas.getContext('2d');
+  pbrush.fillStyle = '#303636'; pbrush.fillRect(0, 0, 512, 128);
+  pbrush.strokeStyle = '#FF5E1F'; pbrush.lineWidth = 8; pbrush.strokeRect(6, 6, 500, 116);
+  pbrush.fillStyle = '#ffffff'; pbrush.textAlign = 'center'; pbrush.font = 'bold 44px Georgia';
+  pbrush.fillText('TOPIARY PARLOUR', 256, 80);
+  gapPart(new THREE.PlaneGeometry(2.6, .65), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(gapCanvas), side: THREE.DoubleSide }), 0, 4, .05);
+
   // The iron gate at the end of the path: the Counting House.
   const countingGate = new THREE.Group();
   group.add(countingGate);
@@ -85,11 +104,12 @@ export function makeWhisperHedges(THREE, palette) {
   group.visible=false;
   return {
     group,
-    hotspots: {hedge:[...hedgeFace.children,sign],return:[returnDoor,returnHandle],'counting-gate':[countingGate]},
+    hotspots: {hedge:[...hedgeFace.children,sign],return:[returnDoor,returnHandle],'counting-gate':[countingGate],'parlour-gap':[parlourGap]},
     actions: {
       hedge: {type:'story',id:'hedge'},
       return: {type:'travel',destination:'threshold'},
-      'counting-gate': {type:'travel',destination:'counting-house'}
+      'counting-gate': {type:'travel',destination:'counting-house'},
+      'parlour-gap': {type:'travel',destination:'topiary-parlour'}
     },
     update(t) {
       hedgeFace.rotation.y=Math.sin(t*.9)*.06;

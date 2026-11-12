@@ -12,8 +12,8 @@ export const SCENES = Object.freeze({
   'whisper-hedges': Object.freeze({
     number: '002',
     title: 'The Whisper Hedges',
-    exits: Object.freeze(['threshold', 'counting-house']),
-    controls: Object.freeze(['hedge', 'return-gate', 'counting-gate']),
+    exits: Object.freeze(['threshold', 'counting-house', 'topiary-parlour']),
+    controls: Object.freeze(['hedge', 'return-gate', 'counting-gate', 'parlour-gap']),
     arrivalText: 'The Orange Thread unspools. Somewhere, a hedge files a complaint.',
     appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Ahead' })
   }),
@@ -123,6 +123,14 @@ export const SCENES = Object.freeze({
     controls: Object.freeze(['dabble', 'drying-line', 'rowboat', 'sluice-onward', 'sluice-return']),
     arrivalText: 'The Orange Thread ducks under the water-gate and begins to drip. Somewhere ahead a wheel turns a quarter-inch, a very large snore is being let through, and a paperback is having second thoughts.',
     appearance: Object.freeze({ background: 0x303636, torch: 0xb9f3a4, resetLabel: 'Look Down the Culvert' })
+  }),
+  'topiary-parlour': Object.freeze({
+    number: '017',
+    title: 'The Topiary Parlour',
+    exits: Object.freeze(['whisper-hedges']),
+    controls: Object.freeze(['snip', 'half-swan', 'appointment-book', 'parlour-return']),
+    arrivalText: 'The Orange Thread squeezes through a gap in the hedge and comes out the other side with a slightly better haircut. Somewhere ahead, a pair of shears is thinking.',
+    appearance: Object.freeze({ background: 0x476f95, torch: 0xb9f3a4, resetLabel: 'Look Around the Parlour' })
   })
 });
 
