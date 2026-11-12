@@ -113,7 +113,8 @@ for (const residentId of ['ledger', 'nib', 'stamp', 'seven', 'bear-door', 'oracl
   'root-bridge', 'ralph', 'simmering-pot', 'ancestor-altar', 'honest-lantern', 'long-shelf', 'morning-dew',
   'biscuit', 'moldy', 'lawyer-rock', 'unclaimed-shelves', 'fee-schedule',
   'sotto', 'noise-basket', 'shoe-bench',
-  'dabble', 'drying-line', 'rowboat']) {
+  'dabble', 'drying-line', 'rowboat',
+  'snip', 'half-swan', 'appointment-book']) {
   const button = document.getElementById(residentId);
   if (button) button.addEventListener('click', () => openStory(STORY_FOR_BUTTON[residentId] || residentId));
 }

@@ -95,6 +95,10 @@ const RESIDENTS = {
       {
         id: 'doors', label: 'Where do these paths lead?',
         reply: 'Places with very poor signage. The Orange Gate takes you back to the Threshold \u2014 and the iron gate at the end of the path leads to the Counting House. Mind you stand still while you are counted.'
+      },
+      {
+        id: 'stylist', label: 'Who does your leaves?',
+        reply: 'Snip. Through the little gap on the left with the salon sign. Do not tell Snip I sent you. I am meant to be exclusive.'
       }
     ]
   },
@@ -616,6 +620,34 @@ const RESIDENTS = {
       {id:'how-long', label:'How long is its break?', reply:'Dabble checks a damp notebook. "Since about 1991. Something big rolled over and asked if it was Saturday. She has been thinking about it ever since."'}
     ]
   },
+  snip: {
+    name: 'Snip, Stylist to the Hedge',
+    greeting: 'A small goblin in a striped smock stands beside a pair of shears longer than he is, studying a hedge the way other people study a sunset. "Mind the clippings," he says. "Some of them are still whispering."',
+    returnGreeting: 'Snip has trimmed one leaf since you left. He steps back to admire it. "Better. Not done. Better."',
+    questions: [
+      {id:'job', label:'What do you do here?', reply:'Leaves. Shapes. Restraint. The Hedge comes in once a week for a trim and a little gossip, and leaves claiming it grew that way naturally. I let it.'},
+      {id:'moldy', label:'Do you and the groundskeeper get along?', reply:'He thinks plants grow out of spite. I think they grow out of hope. We have agreed to sweep different leaves.'},
+      {id:'trim', label:'Could you trim me?', reply:'Snip looks you over, closes one eye, and lowers the shears. "No. You are coming along nicely. Come back when you have grown into something."'}
+    ]
+  },
+  'half-swan': {
+    name: 'The Half-Finished Swan',
+    greeting: 'A topiary on a stone plinth: a fine swan from the neck up and, from the neck down, unmistakably a duck. A card on the plinth reads SWAN (IN PROGRESS).',
+    returnGreeting: 'The swan has grown back a little more duck overnight. It holds its head very high about it.',
+    questions: [
+      {id:'duck', label:'Is that a duck?', reply:'The topiary does not answer. Snip, from across the parlour: "Every night it grows back into a duck, and every morning I give it the neck again. We have been at this eleven years. I think we both enjoy it."'},
+      {id:'finish', label:'Will it ever be finished?', reply:'Snip shrugs. "Finished is a shape too. I am in no hurry to give it that one."'}
+    ]
+  },
+  'appointment-book': {
+    name: 'The Appointment Book',
+    greeting: 'A fat book lies open on a lectern, its pages ruled into neat half-hours. Every booking, in every column, in the same leafy handwriting, says: HEDGE.',
+    returnGreeting: 'A new line has been added, slightly greener than the rest: HEDGE (AGAIN, URGENT, A LEAF IS WRONG).',
+    questions: [
+      {id:'others', label:'Does anyone else ever book?', reply:'One entry, crossed out, from 1897: ROOTS, LUNCH. Snip says they never showed up and never paid.'},
+      {id:'book', label:'Could I book an appointment?', reply:'You may write your name, and the book will politely move it to the margin. The Hedge has taken all the half-hours, including the ones after midnight.'}
+    ]
+  },
   // ── The Bridge of Roots, on the River House's right bank, and the room beneath the Heart Tree.
   'root-bridge': {
     name: 'The Bridge of Roots',
@@ -902,6 +934,12 @@ const AMBIENT = {
     'Somewhere among the leaves, Moldy loses an argument with a rake.',
     'A flower turns its head to watch you, then pretends it was stretching.',
     'The Labyrinth continues its business, with or without an audience.'
+  ],
+  'topiary-parlour': [
+    'Snip trims a single leaf, steps back, and trims it again.',
+    'The swan holds its neck very still, as if it might set.',
+    'A clipping on the floor whispers the end of a joke the hedges started.',
+    'The little bell over the gap rings once for nobody, out of good manners.'
   ],
   'long-way': [
     'A paper boat makes a very small voyage along the left-hand gutter.',

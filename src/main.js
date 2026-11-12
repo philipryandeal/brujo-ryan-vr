@@ -20,6 +20,7 @@ import {makeLostProperty} from './scenes/lost-property.js';
 import {makeWeatherCloset} from './scenes/weather-closet.js';
 import {makeHushingStair} from './scenes/hushing-stair.js';
 import {makeSluice} from './scenes/sluice.js';
+import {makeTopiaryParlour} from './scenes/topiary-parlour.js';
 
 const stage=document.getElementById('stage');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x476f95);scene.fog=new THREE.FogExp2(0x476f95,.017);
@@ -122,6 +123,7 @@ const lostProperty=makeLostProperty(THREE,V);scene.add(lostProperty.group);
 const weatherCloset=makeWeatherCloset(THREE,V);scene.add(weatherCloset.group);
 const hushingStair=makeHushingStair(THREE,V);scene.add(hushingStair.group);
 const sluice=makeSluice(THREE,V);scene.add(sluice.group);
+const topiaryParlour=makeTopiaryParlour(THREE,V);scene.add(topiaryParlour.group);
 // Scene 001 is legacy geometry adapted to the same contract as contributed scenes.
 // Once a new scene is reviewed, the steward registers its stage here and its
 // metadata in scene-manager.js; the interaction and navigation engines stay put.
@@ -153,7 +155,8 @@ const stages=createStageRuntime({
   'lost-property':lostProperty,
   'weather-closet':weatherCloset,
   'hushing-stair':hushingStair,
-  sluice
+  sluice,
+  'topiary-parlour':topiaryParlour
 },SCENES);
 const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
 function startZ(id){
