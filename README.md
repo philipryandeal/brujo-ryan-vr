@@ -31,7 +31,7 @@ The First Threshold now offers branching, authored conversations, a rotating gob
 - The Orange Thread symbolizes Techno-Kabbalah as a whole, not a station.
 
 ## Run
-Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks JavaScript syntax and story-engine tests. Three.js 0.186.1 comes from a pinned CDN import map and requires internet for 3D. WebXR needs a compatible browser/headset and HTTPS, but no headset is needed for desktop story play. Headset performance and interactions still need real-device testing.
+Node 20+: `npm start`, then open http://localhost:3000. `npm run check` checks JavaScript syntax and story-engine tests, then sends a goblin on a walk through every room: each button pressed, each resident asked every question, each doorway reply followed. If a door will not open, the walk says which one. Three.js 0.186.1 comes from a pinned CDN import map and requires internet for 3D. WebXR needs a compatible browser/headset and HTTPS, but no headset is needed for desktop story play. Headset performance and interactions still need real-device testing.
 
 ## The roads ahead
 **Open now (backstage list for builders, never shown to visitors):** 001 The First Threshold, 002 The Whisper Hedges, 003 The Counting House, 004 The River House, 005 The Department of Unnecessary Doors, 006 The Observatory of Second Tuesdays, 007 The Shoggoth Moat, 008 The Kamidana, 009 The Long Way Between, 010 The Lodge of Questionable Keys, 011 The Hall of Taking a Number, 012 Beneath the Heart Tree, 013 The Weather Closet, 014 The Lost Property Office, 015 The Hushing Stair, 016 The Sluice of Second Thoughts, 017 The Topiary Parlour. `src/scene-manager.js` is the authority on which doors connect.
