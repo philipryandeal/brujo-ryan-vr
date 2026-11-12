@@ -1,0 +1,12 @@
+# Dependabot opens a pull request when a GitHub Action or npm package
+# used here gets a security or version update. Nothing merges on its own.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
