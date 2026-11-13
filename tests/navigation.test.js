@@ -21,7 +21,7 @@ globalThis.window={matchMedia:()=>({matches:true})};
 const navigation=await import('../src/navigation.js');
 
 test('threshold has an encounter, not a shortcut or map',()=>{
-  assert.equal(navigation.TRANSITION_READ_MS,5000);
+  assert.equal(navigation.TRANSITION_READ_MS,4000);
   assert.equal(navigation.currentScene(),'threshold');
   assert.equal(elements.has('enter-gate'),false);
   assert.equal(elements.get('gate').hidden,false);
@@ -62,5 +62,5 @@ test('connector controls and both companion returns follow the new physical pass
   }
   assert.equal(await navigation.goToScene('counting-house',{readMs:0}),true);
   assert.equal(elements.get('distance-keeper').hidden,true);
-  assert.equal(navigation.TRANSITION_READ_MS,5000);
+  assert.equal(navigation.TRANSITION_READ_MS,4000);
 });
