@@ -71,7 +71,7 @@ Keep geometry and textures small enough for ordinary laptops and phones. Inactiv
 
 Only the integration steward needs to touch the shared wiring:
 
-1. Add one entry to the **backstage** `SCENES` manifest in `src/scene-manager.js`: unique three-digit `number`, `title`, real adjacent `exits`, accessible HTML `controls`, entry transition `arrivalText`, and scene `appearance` (background, torch color, reset label). Make sure there is a path back to Scene 001.
+1. Add one entry to the **backstage** `SCENES` manifest in `src/scene-manager.js`: unique three-digit `number`, `title`, real adjacent `exits`, accessible HTML `controls`, entry transition `arrivalText`, scene `appearance` (background, torch color, reset label), and `setting` (`outdoor` or `indoor` — the shoggoth's snore is heard only outdoors, and its tremor only at the First Threshold). Make sure there is a path back to Scene 001.
 2. Import and instantiate the new stage once in `src/main.js` and add it to `createStageRuntime`. The shared raycast engine reads the scene's `hotspots` and `actions`; it should not need a scene-specific `if` branch.
 3. Add accessible controls to `index.html` and wire any new local resident text into `src/kingdom.js` / `src/story-ui.js`. This small integration task belongs to the steward so contributors don't compete to edit the same core files.
 4. Update the physically adjacent scene's exit and story dialogue so the visitor can discover the new passage in both directions. Do not add a visible level-selection button.

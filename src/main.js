@@ -211,7 +211,8 @@ function walk(dt){
 }
 let audio=null,soundEnabled=true,started=false;
 function makeAudio(){if(audio)return;const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;const ctx=new AudioContext(),master=ctx.createGain();master.gain.value=.13;master.connect(ctx.destination);audio={ctx,master};}
-function snore(){if(!audio||!soundEnabled)return;const {ctx,master}=audio;if(ctx.state==='suspended')ctx.resume();const now=ctx.currentTime;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sawtooth';osc.frequency.setValueAtTime(56,now);osc.frequency.exponentialRampToValueAtTime(31,now+1.9);gain.gain.setValueAtTime(.001,now);gain.gain.exponentialRampToValueAtTime(.3,now+.5);gain.gain.exponentialRampToValueAtTime(.001,now+2.6);osc.connect(gain).connect(master);osc.start(now);osc.stop(now+2.7);shaking=2.7}
+function snore(){if(!audio||!soundEnabled)return false;const {ctx,master}=audio;if(ctx.state==='suspended')ctx.resume();const now=ctx.currentTime;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sawtooth';osc.frequency.setValueAtTime(56,now);osc.frequency.exponentialRampToValueAtTime(31,now+1.9);gain.gain.setValueAtTime(.001,now);gain.gain.exponentialRampToValueAtTime(.3,now+.5);gain.gain.exponentialRampToValueAtTime(.001,now+2.6);osc.connect(gain).connect(master);osc.start(now);osc.stop(now+2.7);return true}
+const prefersReducedMotion=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('sound').onclick=()=>{soundEnabled=!soundEnabled;document.getElementById('sound').textContent=soundEnabled?'Sound: On':'Sound: Off';if(soundEnabled)makeAudio()};
 registerWorldStart(()=>{started=true;makeAudio();audio?.ctx.resume()});
 // No unsupported-VR warning on desktop. Show entry only on compatible headsets.
@@ -227,7 +228,10 @@ const clock=new THREE.Clock();let elapsed=0,lastSnore=0,shaking=0;
 renderer.setAnimationLoop(()=>{const dt=Math.min(clock.getDelta(),.1);elapsed+=dt;walk(dt);
 faerie.position.y=2.5+Math.sin(elapsed*1.7)*.22;goblin.rotation.y=Math.sin(elapsed*.65)*.12;
 for(const s of sprites)s.mesh.position.y=s.y+Math.sin(elapsed*1.2+s.phase)*.18;
-if(started&&currentScene()==='threshold'&&elapsed-lastSnore>17){lastSnore=elapsed;snore()}
+const here=currentScene();
+// The snore is outdoor air only; its tremor belongs to the First Threshold
+// alone, and a visitor who asked for reduced motion is never shaken.
+if(started&&SCENES[here].setting==='outdoor'&&elapsed-lastSnore>17){lastSnore=elapsed;if(snore()&&here==='threshold'&&!prefersReducedMotion())shaking=2.7}
 if(shaking>0){shaking-=dt;if(!renderer.xr.isPresenting){camera.position.y=1.65+Math.sin(elapsed*28)*.035*Math.max(0,shaking)/2.7}}else camera.position.y=1.65;
 torch.intensity=60+Math.sin(elapsed*2)*9;
 stages.update(currentScene(),elapsed);
