@@ -65,5 +65,7 @@ test('stage factory registers real nested hotspots and safe animations', () => {
   assert.doesNotThrow(()=>runtime.update('questionable-keys',42));
   const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
   for(const id of SCENES['questionable-keys'].controls)assert.match(html,new RegExp(`<button id="${id}"`));
-  assert.match(html,/<button id="key-lodge-entry"/);
+  assert.doesNotMatch(html,/<button id="key-lodge-entry"/);
+  const main=readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
+  assert.match(main,/'key-lodge-entry':\{type:'travel',destination:'questionable-keys'\}/);
 });

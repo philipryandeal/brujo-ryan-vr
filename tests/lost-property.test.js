@@ -13,7 +13,9 @@ test('the hatch behind Mothlight opens on the Lost Property Office, and it leads
   assert.deepEqual([...SCENES['lost-property'].exits], ['threshold']);
   assert.equal(world.canEnter('whisper-hedges'), false);
   world.enter('threshold');
-  assert.ok(SCENES.threshold.controls.includes('lost-property-entry'));
+  // By Philip's ruling (Nov 13, 2026) the Threshold bar keeps four buttons
+  // and the paper house link; the Office is reached through the hatch.
+  assert.equal(SCENES.threshold.controls.includes('lost-property-entry'), false);
   assert.equal(validateSceneRegistry(), true);
 });
 
@@ -87,9 +89,11 @@ test('stage factory keeps the palette, wires real hotspots and one way home', ()
   walk(stage.group);
   for(const t of [0,1.5,5.7,42,600])assert.doesNotThrow(()=>runtime.update('lost-property',t));
   const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
-  for(const id of [...SCENES['lost-property'].controls,'lost-property-entry'])assert.match(html,new RegExp(`<button id="${id}" hidden>`));
+  for(const id of SCENES['lost-property'].controls)assert.match(html,new RegExp(`<button id="${id}" hidden>`));
+  assert.doesNotMatch(html,/<button id="lost-property-entry"/);
   const nav=readFileSync(new URL('../src/navigation.js',import.meta.url),'utf8');
-  assert.match(nav,/\['lost-property-entry','lost-property'\],\['lost-property-return','threshold'\]/);
+  assert.match(nav,/\['lost-property-return','threshold'\]/);
+  assert.doesNotMatch(nav,/\['lost-property-entry','lost-property'\]/);
   const main=readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
   assert.match(main,/'lost-property-entry':\{type:'travel',destination:'lost-property'\}/);
 });
