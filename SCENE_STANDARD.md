@@ -63,7 +63,7 @@ All hotspot arrays contain real Three.js objects (or parent groups) inside this 
 
 Keep geometry and textures small enough for ordinary laptops and phones. Inactive scenes currently remain in browser memory but are hidden; **do not add heavy assets or large videos without a performance review**. Only one scene's `update()` runs at a time.
 
-**Accessibility:** Any meaningful clickable object also needs an ordinary, keyboard-focusable HTML button in the scene controls. Never make an inaccessible tiny 3D mesh the only way through. Support the existing text-only fallback when WebGL is unavailable. Audio should remain optional.
+**Accessibility:** Any meaningful clickable object also needs an ordinary, keyboard-focusable HTML button in the scene controls. Never make an inaccessible tiny 3D mesh the only way through. One standing exception, by Philip's ruling (Nov 13, 2026): at the First Threshold the Lodge of Questionable Keys and the Lost Property Office are reached only through their world doors (the KEEPER door and Biscuit's hatch) — the Threshold's button bar keeps just Meet the Goblin, Ask the Faerie, Approach the Gate, Goblin Notices, and the paper house link. Support the existing text-only fallback when WebGL is unavailable. Audio should remain optional.
 
 **Privacy:** No logins, analytics, trackers, visitor IDs, cookies, local storage, remote chat calls, third-party scripts, or secret keys. Dialogue is local authored fiction. New external services or dependencies require a separate proposal and Ryan's approval.
 
