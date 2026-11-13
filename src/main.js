@@ -41,12 +41,17 @@ function tube(x,y,z,r,h,m){const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r
 box(0,-.22,-10,36,.45,55,road);
 for(let i=0;i<17;i++){const z=9-i*2.4;box(-7,2,z,1,4.3,2.1,hedge);box(7,2,z,1,4.3,2.1,hedge);if(i%3===0){cone(-7,5,z,1.3,2.7,light);cone(7,5,z,1.3,2.7,light)}}
 for(let i=0;i<12;i++){const z=7-i*2.4;box(-2.5,0.02,z,.18,.04,.9,orange);box(2.5,.02,z,.18,.04,.9,orange)}
-// The first gate: closed until future world scenes exist.
+// The first gate stands open: both leaves swung back against the posts,
+// so the way through to the Whisper Hedges reads open at first sight.
 box(-4,3.5,-14,2,7.4,2,stone);box(4,3.5,-14,2,7.4,2,stone);box(0,7.2,-14,10,1.5,2,stone);
 box(0,8.1,-14,.9,.25,1.2,orange);for(let s of [-1,1]){for(let y=1;y<6.6;y+=1.25){orb(s*4.9,y,-12.8,.18,orange)}}
-const gate=box(0,2.6,-13.9,5.9,5.2,.25,black);
-for(let x=-2.6;x<3;x+=.95){box(x,2.6,-13.7,.10,5.1,.13,orange)}
-box(0,2.3,-13.56,5.8,.16,.2,stone);
+const gate=new THREE.Group();scene.add(gate);
+for(const s of [-1,1]){
+  const hinge=new THREE.Group();hinge.position.set(s*2.95,0,-13.9);hinge.rotation.y=-s*1.85;gate.add(hinge);
+  const leaf=new THREE.Mesh(new THREE.BoxGeometry(2.95,5.2,.25),black);leaf.position.set(-s*1.475,2.6,0);hinge.add(leaf);
+  for(const bx of [.35,1.3,2.25]){const bar=new THREE.Mesh(new THREE.BoxGeometry(.10,5.1,.13),orange);bar.position.set(-s*bx,2.6,.19);hinge.add(bar)}
+  const cross=new THREE.Mesh(new THREE.BoxGeometry(2.9,.16,.2),stone);cross.position.set(-s*1.45,2.3,.34);hinge.add(cross);
+}
 orb(0,5.2,-13.35,.6,orange);
 const arch=box(0,7.3,-12.7,7,.7,.3,dark);
 const greeting=new THREE.Group();scene.add(greeting);
@@ -70,7 +75,7 @@ const faerie=new THREE.Group();faerie.position.set(5,2.5,-6);scene.add(faerie);
 part(faerie,new THREE.SphereGeometry(.29,14,9),orange,0,0,0);
 for(let s of [-1,1]){const wing=part(faerie,new THREE.SphereGeometry(.36,10,7),mat(V.light,{transparent:true,opacity:.42,side:THREE.DoubleSide}),s*.42,.12,0);wing.scale.set(.7,1.65,.28)}
 for(let i=0;i<7;i++){const t=i/7*Math.PI*2;orb(5+Math.sin(t)*1.2,1.2+(i%3)*.7,-6+Math.cos(t)*.7,.12,orange)}
-// Distant orange tree beacon, intentionally behind the closed gate
+// Distant orange tree beacon, framed by the open gate
 tube(0,1,-23,.36,3.5,stone);cone(0,5.5,-23,2,5,light);orb(0,6,-23,.48,orange);
 // Tiny floating sprites
 const sprites=[];for(let i=0;i<48;i++){let x=Math.sin(i*31.13)*7,z=-2-(i*13%22),y=1.2+i%5;
