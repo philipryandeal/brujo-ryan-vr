@@ -5,6 +5,12 @@
 // points at a door that will not open, or a registered passage cannot be
 // reached from inside its room. (The 3D hotspots are checked by
 // stage-runtime.test.js; this walk is the keyboard and text-mode road.)
+// Since Philip's ruling of Nov 13, 2026, two Threshold passages — the Lodge
+// of Questionable Keys and the Lost Property Office — have no buttons at
+// all: their world doors are the only way in. The goblin reads those
+// passages from the stage sources below and steps through by the
+// registered exits; the hotspots themselves stay guarded by
+// stage-runtime.test.js and the two scenes' own tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -51,6 +57,23 @@ globalThis.setInterval = () => 0;
 const { SCENES } = await import('../src/scene-manager.js');
 const { goToScene, currentScene } = await import('../src/navigation.js');
 await import('../src/story-ui.js');
+
+// Passages a room's own stage offers as clickable world doors, read from the
+// stage sources (the Threshold stage lives in main.js; the rest live in
+// src/scenes/<room>.js). Only destinations the registry calls passages count.
+const worldDoors = new Map();
+for (const id of Object.keys(SCENES)) {
+  const url = id === 'threshold'
+    ? new URL('../src/main.js', import.meta.url)
+    : new URL(`../src/scenes/${id}.js`, import.meta.url);
+  let source = '';
+  try { source = fs.readFileSync(url, 'utf8'); } catch { /* a room with no stage file offers no world doors here */ }
+  const doors = new Set();
+  for (const match of source.matchAll(/type:\s*['"]travel['"],\s*destination:\s*['"]([^'"]+)['"]/g)) {
+    if (SCENES[id].exits.includes(match[1])) doors.add(match[1]);
+  }
+  worldDoors.set(id, doors);
+}
 
 const panel = () => elements.get('choices').children;
 const dialogue = elements.get('dialogue');
@@ -101,6 +124,10 @@ test('a goblin walks every room, presses every button and follows every doorway 
         return true;
       };
       await returnTo(room);
+      for (const next of worldDoors.get(room) ?? []) {
+        doorsUsed.get(room).add(next);
+        if (!reached.has(next)) { reached.add(next); pending.push(next); }
+      }
       for (const id of SCENES[room].controls) {
         const element = elements.get(id);
         assert.ok(element, `${room}: no #${id} in index.html`);
@@ -134,9 +161,9 @@ test('a goblin walks every room, presses every button and follows every doorway 
         }
       }
     }
-    assert.deepEqual([...reached].sort(), Object.keys(SCENES).sort(), 'every registered room can be reached by pressing buttons from the Threshold');
+    assert.deepEqual([...reached].sort(), Object.keys(SCENES).sort(), 'every registered room can be reached from the Threshold, by buttons or by world doors');
     for (const [room, used] of doorsUsed) {
-      for (const exit of SCENES[room].exits) assert.ok(used.has(exit), `${room} lists a passage to ${exit}, but no button or reply there opens it`);
+      for (const exit of SCENES[room].exits) assert.ok(used.has(exit), `${room} lists a passage to ${exit}, but no button, reply or world door there opens it`);
     }
     assert.ok(buttons >= 80 && replies >= 150, `walked ${buttons} buttons and ${replies} replies`);
   } finally {
