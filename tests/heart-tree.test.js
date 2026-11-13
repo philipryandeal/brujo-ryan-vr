@@ -36,6 +36,17 @@ test('Ralph and the house can all be spoken to, and the Brujo is out', () => {
   assert.match(story.answer('honest-lantern', 'test').text, /does not light for experiments/);
 });
 
+test('Ralph answers Biscuit\'s forty-second invoice, the one for the first forty-one', () => {
+  const story = createKingdom();
+  story.meet('biscuit');
+  assert.match(story.answer('biscuit', 'inventory').text, /forty-one invoices/);
+  story.meet('ralph');
+  const reply = story.answer('ralph', 'invoice');
+  assert.match(reply.text, /Invoice forty-two/);
+  assert.match(reply.text, /one through forty-one/);
+  assert.equal(reply.destination, undefined, 'the invoice is a joke, not a door');
+});
+
 test('the Tree upstairs is mentioned honestly and never offered as a passage', () => {
   const story = createKingdom();
   const lines = new Set();

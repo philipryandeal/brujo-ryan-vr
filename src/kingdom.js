@@ -694,6 +694,10 @@ const RESIDENTS = {
       {
         id: 'safe', label: 'Is he dangerous?',
         reply: 'Ralph is extremely good with children and very bad with doors. The round door has been replaced four times. You are not a door. You are fine.'
+      },
+      {
+        id: 'invoice', label: 'What is that paper stuck to him?',
+        reply: 'An envelope from the Lost Property Office, stamped FINAL NOTICE (AGAIN). Invoice forty-two: "For the eating of invoices one through forty-one." Ralph reads it carefully with four eyes, signs it with a fifth, and eats it. Far off at the First Threshold, Biscuit sighs happily and begins invoice forty-three.'
       }
     ]
   },
