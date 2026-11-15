@@ -144,7 +144,7 @@ const RESIDENTS = {
       },
       {
         id: 'help', label: 'Can I help catch it?',
-        reply: 'Walk up slowly and say something official. It respects confidence and fears nothing else. It hates official. Be official.'
+        reply: 'Walk up slowly and say something official. It respects confidence. It fears paperwork. Be official.'
       }
     ]
   },
