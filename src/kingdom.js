@@ -24,7 +24,15 @@ const RESIDENTS = {
       },
       {
         id: 'lodge', label: 'Is that your door?',
-        reply: 'That is the Lodge of Questionable Keys. I am on duty, which means I am not in it. You may look, provided you do not reshelve the keys. They have a union now, and I refuse to learn the details.'
+        reply: 'That is the Lodge of Questionable Keys. I am on duty, which means I am not in it. You may look, provided you do not reshelve the keys. They have a union now, and I refuse to learn the details.',
+        destination: 'questionable-keys',
+        destinationLabel: 'Step through the KEEPER door →'
+      },
+      {
+        id: 'hatch', label: 'And the hatch on the other side?',
+        reply: 'That is Biscuit\'s hatch — the Lost Property Office. He keeps what the Labyrinth mislays: umbrellas, left gloves, one (1) dignity, slightly used. He will charge you a shiny thing for looking and then lose the shiny thing. It is a very complete service.',
+        destination: 'lost-property',
+        destinationLabel: 'Duck through Biscuit\'s hatch →'
       },
       {
         id: 'custodians', label: 'Who tends the grounds?',
