@@ -126,7 +126,9 @@ export function makeRiverHouse(THREE, palette) {
   box(-5.2, 3.4, -16.5, 6.4, 6.8, 1, stone);
   box(5.2, 3.4, -16.5, 6.4, 6.8, 1, stone);
   box(0, 6, -16.5, 4.2, 1.6, 1, stone);
-  sign(['PLEASE DO NOT', 'FEED THE FOOTNOTES'], 3.4, 1.7, 0, 3.4, -16, 46);
+  // The footnotes sign used to hang behind the water-gate's solid door,
+  // where nobody could see it. It now hangs on the left pier of the back wall.
+  sign(['PLEASE DO NOT', 'FEED THE FOOTNOTES'], 3.4, 1.7, -5.6, 3.6, -16, 46);
 
   // Floating fiction: books drifting downstream, quite pleased with themselves.
   const floaters = [];
@@ -269,7 +271,7 @@ export function makeRiverHouse(THREE, palette) {
   box(2.9,2.4,-15.1,.65,4.8,.65,stone,waterGate);
   box(0,5,-15.1,6.2,.7,.75,stone,waterGate);
   const gatePanel=box(0,2.4,-15.05,5,4.7,.2,dark,waterGate);
-  const gateSign=sign(['THE SHOGGOTH MOAT','PLEASE REFRAIN FROM DISTURBANCES'],4.7,1.45,0,6,-14.9,30);
+  const gateSign=sign(['THE SLUICE OF SECOND THOUGHTS','· MOAT BEYOND','PLEASE REFRAIN FROM DISTURBANCES'],5.4,1.9,0,6.35,-14.9,28);
   // The Bridge of Roots: the Heart Tree's roots come down through the willows on
   // the right bank to drink, and someone has laid planks across their knuckles.
   const rootBridge = new THREE.Group();

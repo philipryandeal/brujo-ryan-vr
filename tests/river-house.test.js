@@ -36,3 +36,17 @@ test('Mrs. Pell is succinct', () => {
   assert.equal(world.meet('pell').text, 'You’re late.');
   assert.equal(world.answer('pell', 'late').text, 'Precisely.');
 });
+
+test('the water-gate leads to the Sluice of Second Thoughts', () => {
+  const world = createKingdom();
+  const enter = world.answer('water-gate', 'enter');
+  assert.equal(enter.destination, 'sluice');
+  assert.ok(SCENES['river-house'].exits.includes('sluice'));
+});
+
+test('the Bridge of Roots leads to the Heart Tree', () => {
+  const world = createKingdom();
+  const enter = world.answer('root-bridge', 'enter');
+  assert.equal(enter.destination, 'heart-tree');
+  assert.ok(SCENES['river-house'].exits.includes('heart-tree'));
+});
