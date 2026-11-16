@@ -236,10 +236,10 @@ const RESIDENTS = {
   },
   'water-gate': {
     name:'The Old Stone Water-Gate',
-    greeting:'At the far end of the library, the river slips beneath a weathered stone arch. A damp brass plaque reads: THE SHOGGOTH MOAT — PLEASE REFRAIN FROM MAKING GEOLOGICAL DISTURBANCES.',
+    greeting:'At the far end of the library, the river slips beneath a weathered stone arch. A damp brass plaque reads: THE SLUICE OF SECOND THOUGHTS · MOAT BEYOND — PLEASE REFRAIN FROM MAKING GEOLOGICAL DISTURBANCES.',
     returnGreeting:'The water-gate breathes cool night air. A paperback floats toward the arch, reconsiders, and paddles back to the shelves.',
     questions:[
-      {id:'enter',label:'Follow the river out to the Moat.',reply:'You duck beneath the low stone arch into a dripping stone culvert. Somewhere beyond it: open sky, moonlight, and a bridge trembling with a very peaceful snore.',destination:'sluice',destinationLabel:'Duck into the Sluice →'},
+      {id:'enter',label:'Follow the river into the Sluice.',reply:'You duck beneath the low stone arch into a dripping stone culvert. Somewhere beyond it: open sky, moonlight, and a bridge trembling with a very peaceful snore.',destination:'sluice',destinationLabel:'Duck into the Sluice →'},
       {id:'listen',label:'Listen at the arch.',reply:'Water lapping against old stone, a rhythmic bubble the size of a carriage, and a goblin whispering SHH at the top of his lungs.'},
       {id:'pell',label:'Does Mrs. Pell mind if I go?',reply:'Mrs. Pell does not move, the closest she comes to blessing anything. You will still be late when you get back.'}
     ]
