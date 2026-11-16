@@ -6,10 +6,13 @@
 // reached from inside its room. (The 3D hotspots are checked by
 // stage-runtime.test.js; this walk is the keyboard and text-mode road.)
 // Since Philip's ruling of Nov 13, 2026, two Threshold passages — the Lodge
-// of Questionable Keys and the Lost Property Office — have no buttons at
-// all: their world doors are the only way in. The goblin reads those
-// passages from the stage sources below and steps through by the
-// registered exits; the hotspots themselves stay guarded by
+// of Questionable Keys and the Lost Property Office — have no buttons of
+// their own: discovery comes before signage. Their world doors are one way
+// in; since Philip's ruling of Nov 16, 2026, Nettle's door answers are the
+// other — ask him about his door or the hatch and the reply offers the way
+// through, which this walk follows like any doorway reply. The goblin also
+// reads those passages from the stage sources below and steps through by
+// the registered exits; the hotspots themselves stay guarded by
 // stage-runtime.test.js and the two scenes' own tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';

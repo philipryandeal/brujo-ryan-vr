@@ -38,6 +38,14 @@ test('Nettle can name the seven custodians', () => {
   assert.match(reply.text, /Knotwick, Charm, Buttons, Wayfare, Kindle, and Thimble/);
 });
 
+test("Nettle's door answers carry the keyboard way to the Lodge and Lost Property", () => {
+  const world = createKingdom();
+  const lodge = world.answer('goblin', 'lodge');
+  assert.equal(lodge.destination, 'questionable-keys');
+  const hatch = world.answer('goblin', 'hatch');
+  assert.equal(hatch.destination, 'lost-property');
+});
+
 test('the noticeboard posts the bequest and the paper house', () => {
   const world = createKingdom();
   const notices = Array.from({length: NOTICES.length}, () => world.nextNotice().text).join(' ');
