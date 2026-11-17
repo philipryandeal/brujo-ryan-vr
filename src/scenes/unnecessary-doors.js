@@ -10,11 +10,11 @@ export function makeUnnecessaryDoors(THREE, palette) {
   const add=(geo,mat,x,y,z,parent=group)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);parent.add(m);return m;};
   const box=(x,y,z,w,h,d,mat,parent)=>add(new THREE.BoxGeometry(w,h,d),mat,x,y,z,parent);
   const sphere=(x,y,z,r,mat,parent)=>add(new THREE.SphereGeometry(r,12,9),mat,x,y,z,parent);
-  function sign(lines,w,h,x,y,z) {
+  function sign(lines,w,h,x,y,z,size=35) {
     const canvas=document.createElement('canvas');canvas.width=512;canvas.height=256;
     const ctx=canvas.getContext('2d');ctx.fillStyle='#303636';ctx.fillRect(0,0,512,256);
     ctx.strokeStyle='#FF5E1F';ctx.lineWidth=16;ctx.strokeRect(10,10,492,236);
-    ctx.fillStyle='#FFFFFF';ctx.font='bold 35px Georgia';ctx.textAlign='center';
+    ctx.fillStyle='#FFFFFF';ctx.font=`bold ${size}px Georgia`;ctx.textAlign='center';
     lines.forEach((line,i)=>ctx.fillText(line,256,100+i*51,475));
     return add(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas),side:THREE.DoubleSide}),x,y,z);
   }
@@ -28,13 +28,13 @@ export function makeUnnecessaryDoors(THREE, palette) {
   box(0,4.65,.25,1.25,.12,.15,orange,keepOutDoor);
   sphere(.54,2.2,.25,.095,orange,keepOutDoor);
   sign(['KEEP','OUT'],1.8,1.1,-7.35,5.1,-13.1);
-  for(let i=1;i<7;i++){
+  for(let i=1;i<6;i++){
     const x=-7.35+i*2.45;
     box(x,2.45,-13.45,1.65,4.75,.25,iron);
     box(x,4.65,-13.2,1.25,.12,.15,orange);
     sphere(x+.54,2.2,-13.2,.095,orange);
   }
-  sign(['DEPARTMENT OF','UNNECESSARY DOORS'],5.6,2.15,0,5.8,-12.96);
+  sign(['DEPARTMENT OF','UNNECESSARY DOORS'],5.6,2.15,0,4.7,-12.96);
   // The far-right utility door is the real passage to Scene 013: The Weather Closet.
   const weatherDoor=new THREE.Group();weatherDoor.position.set(7.35,0,-13.12);group.add(weatherDoor);
   box(0,2.45,0,1.65,4.75,.3,green,weatherDoor);
@@ -59,12 +59,12 @@ export function makeUnnecessaryDoors(THREE, palette) {
   box(0,2.35,0,2.3,4.7,.28,green,unionDoor);
   box(0,4.6,.16,2.25,.16,.15,orange,unionDoor);
   sphere(.72,2.2,.22,.14,orange,unionDoor);
-  sign(['DOOR UNION','ON STRIKE'],2.6,1.3,5.8,5.7,-7.08);
+  sign(['DOOR UNION','ON STRIKE'],2.6,1.3,5.8,5.1,-7.08);
   const returnDoor=box(0,2.35,10.85,3.2,4.7,.3,iron);
   box(-1.78,2.5,10.85,.35,5.2,.5,orange);
   box(1.78,2.5,10.85,.35,5.2,.5,orange);
   sphere(1,2.2,10.63,.14,orange);
-  const exitSign=sign(['BACK TO THE','WAITING HALL'],3.8,1.75,0,5.75,10.65);
+  const exitSign=sign(['BACK TO THE','HALL OF TAKING A NUMBER'],5.2,1.75,0,4.85,10.65,30);
   exitSign.rotation.y=Math.PI;
   group.visible=false;
   return {
