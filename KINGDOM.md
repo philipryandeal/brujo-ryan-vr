@@ -53,7 +53,7 @@ The seven are Nettle, Knotwick, Charm, Buttons, Wayfare, Kindle, and Thimble.
 
 Nettle of this roster is the same goblin who minds the First Threshold. The other keepers in the table above keep their own jobs; they are not renamed by this bequest.
 
-The proposed source of truth for the roster and the wider Gu Universe index is [The Labyrinth Custodians](https://github.com/philipryandeal/seven-kingdoms-of-gu/blob/kindle/the-labyrinth-custodians/canon/the-labyrinth-custodians.md) in the Seven Kingdoms archive. A sibling house of pages stands at [https://brujoryan.com/](https://brujoryan.com/).
+The canonical reference for the roster and the wider Gu Universe index is [The Labyrinth Custodians](https://github.com/philipryandeal/seven-kingdoms-of-gu/blob/main/canon/the-labyrinth-custodians.md) in the Seven Kingdoms archive. A sibling house of pages stands at [https://brujoryan.com/](https://brujoryan.com/).
 
 ## How to extend the foundation
 
